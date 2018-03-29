@@ -34,7 +34,7 @@ namespace ImageService.Controller
             }
             resultSuccesful = false;
             return "command not valid";
-           // Write Code Here
+           
         }
     }
 }
