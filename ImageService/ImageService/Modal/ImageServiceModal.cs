@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace ImageService.Modal
 {
     public class ImageServiceModal : IImageServiceModal
@@ -23,30 +24,34 @@ namespace ImageService.Modal
             this.m_thumbnailSize = size;
         }
         #endregion
-        public string CreateFolder(string year)
+        public string CreateFolder(string year, string month)
         {
-            
-            string newPath = m_OutputFolder + "/" + year;
+            DirectoryInfo info = Directory.CreateDirectory(this.m_OutputFolder);
+            string newPath = m_OutputFolder + "/" + year + month;
             if (!Directory.Exists(newPath))
             {
-                return Directory.CreateDirectory(newPath).ToString;
+                return Directory.CreateDirectory(newPath).Name;
                 
             }
-            return this.m_OutputFolder + "/" + year;
+            return newPath;
         }
         public string AddFile(string path, out bool result)
         {
-            try
+            if (File.Exists(path))
             {
-                System.IO.File.Move(path, new_path);
-            } catch (Exception e)
-            {
-                Console.WriteLine("Error with moving the image");
-                result = false;
-                return path;
+                DateTime t = this.ExtractDate(path);
+                string newPath = this.CreateFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
+                if (path.Equals(newPath))
+                {
+                    result = false;
+                    return path;
+                }
+                result = true;
+                return newPath;
             }
-            result = true;
-            return new_path;
+            result = false;
+            return path;
+          
         }
         public DateTime ExtractDate(string path)
         {
