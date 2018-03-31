@@ -36,11 +36,8 @@ namespace ImageService.Controller.Handlers
             this.m_dirWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.FileName |
                     NotifyFilters.CreationTime | NotifyFilters.DirectoryName | NotifyFilters.LastWrite |
                     NotifyFilters.FileName;
-            this.m_dirWatcher.Filter = "*.jpj";
-            this.m_dirWatcher.Filter = "*.png";
-            this.m_dirWatcher.Filter = "*.gif";
-            this.m_dirWatcher.Filter = "*.bmp";
-            this.m_dirWatcher.Created += new 
+            this.m_dirWatcher.Filter = "*.*";
+            this.m_dirWatcher.Created += new FileSystemEventHandler(createNewFile);
 
             this.m_dirWatcher.EnableRaisingEvents = true;
 
@@ -62,15 +59,27 @@ namespace ImageService.Controller.Handlers
            
         }
 
-        public void createNewFile(object sender, CommandRecievedEventArgs e)
+        public void createNewFile(object sender, FileSystemEventArgs e)
         {
-            e.CommandID = (int) CommandEnum.NewFileCommand;
-            this.OnCommandRecieved(this, e);
+            FileInfo file = new FileInfo(e.FullPath);
+            if (!(file.Extension.Equals("*.jpg") || file.Extension.Equals("*.png") || file.Extension.Equals("*.gif") ||
+                file.Extension.Equals("*.bmp")))
+            {
+                return;
+            }
+            string[] args = { e.FullPath, e.Name, };
+            CommandRecievedEventArgs ce = new CommandRecievedEventArgs((int)CommandEnum.NewFileCommand,
+                args, e.FullPath);
+            this.OnCommandRecieved(this, ce);
         }
 
-        public void closeFile(object sender, DirectoryCloseEventArgs e)
+        public void stopHandel(object sender, DirectoryCloseEventArgs e)
         {
-
+            string[] args = { e.Message, e.DirectoryPath };
+            CommandRecievedEventArgs ce = new CommandRecievedEventArgs((int)CommandEnum.CloseCommand,
+                args, e.DirectoryPath);
+            this.OnCommandRecieved(this, ce);
+            this.m_dirWatcher.EnableRaisingEvents = false;
         } 
 
         // Implement Here!
