@@ -29,18 +29,27 @@ namespace ImageService.Server
             this.m_logging = logging;
             foreach (string path in pathes)
             {
-                this.createHandeler(path);
+                this.CreateHandler(path);
             }
 
         }
 
-        public void createHandeler(string path)
+        public void CreateHandler(string path)
         {
-            IDirectoryHandler handler = new DirectoryHandler(this.m_controller, this.m_logging);
+            IDirectoryHandler handler = new DirectoyHandler(this.m_controller, this.m_logging);
             this.CommandRecieved += handler.OnCommandRecieved;
-            
+            handler.StartHandleDirectory(path);   
         }
-
+        public void CloseHandler(object sender, DirectoryCloseEventArgs e)
+        {
+            IDirectoryHandler temp = (IDirectoryHandler)sender;
+            this.CommandRecieved -= temp.OnCommandRecieved;
+        }
+        public void CloseServer()
+        {
+            
+        } 
+       
 
     }
 }
