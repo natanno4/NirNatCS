@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Configuration;
 
 namespace ImageService.Modal
 {
@@ -17,11 +17,15 @@ namespace ImageService.Modal
     {
         #region Members
         private string m_OutputFolder;            // The Output Folder
-        private int m_thumbnailSize;              // The Size Of The Thumbnail Size
-        public ImageServiceModal (string output, int size)
+        private int m_thumbnailSize;             // The Size Of The Thumbnail Size
+        public ImageServiceModal ()
         {
-            this.m_OutputFolder = output;
-            this.m_thumbnailSize = size;
+            this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
+            if (!Int32.TryParse(ConfigurationManager.AppSettings["ThumbnailSize"], out this.m_thumbnailSize))
+            {
+
+            }
+
         }
         #endregion
         public string CreateFolder(string year, string month)
