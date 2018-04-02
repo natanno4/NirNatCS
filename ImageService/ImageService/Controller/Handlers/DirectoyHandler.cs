@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ImageService.Infrastructure.Enums;
 using ImageService.Logging;
 using ImageService.Logging.Modal;
+using ImageService.Server;
 using System.Text.RegularExpressions;
 
 namespace ImageService.Controller.Handlers
@@ -41,7 +42,7 @@ namespace ImageService.Controller.Handlers
                     NotifyFilters.CreationTime | NotifyFilters.DirectoryName | NotifyFilters.LastWrite |
                     NotifyFilters.FileName;
             this.m_dirWatcher.Filter = "*.*";
-            this.m_dirWatcher.Created += new FileSystemEventHandler(createNewFile);
+            this.m_dirWatcher.Created += new FileSystemEventHandler(CreateNewFile);
 
             this.m_dirWatcher.EnableRaisingEvents = true;
 
@@ -63,7 +64,7 @@ namespace ImageService.Controller.Handlers
            
         }
 
-        public void createNewFile(object sender, FileSystemEventArgs e)
+        public void CreateNewFile(object sender, FileSystemEventArgs e)
         {
             FileInfo file = new FileInfo(e.FullPath);
             if (!(file.Extension.Equals("*.jpg") || file.Extension.Equals("*.png") || file.Extension.Equals("*.gif") ||
@@ -77,13 +78,12 @@ namespace ImageService.Controller.Handlers
             this.OnCommandRecieved(this, ce);
         }
 
-        public void stopHandel(object sender, DirectoryCloseEventArgs e)
+        public void StopHandle(object sender, DirectoryCloseEventArgs e)
         {
-            string[] args = { e.Message, e.DirectoryPath };
-            CommandRecievedEventArgs ce = new CommandRecievedEventArgs((int)CommandEnum.CloseCommand,
-                args, e.DirectoryPath);
-            this.OnCommandRecieved(this, ce);
+            
+            ((ImageServer)sender).CommandRecieved -= this.OnCommandRecieved;
             this.m_dirWatcher.EnableRaisingEvents = false;
+            this.m_logging.Log("handler" + this.m_path + "was closed successfully", MessageTypeEnum.INFO);
         } 
 
         // Implement Here!

@@ -5,6 +5,8 @@ using ImageService.Logging;
 using ImageService.Modal;
 using System;
 using System.Configuration;
+using ImageService.Infrastructure.Enums;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,14 +47,10 @@ namespace ImageService.Server
             handler.StartHandleDirectory(path);
             handler.DirectoryClose += CloseHandler;
         }
-        public void CloseHandler(object sender, DirectoryCloseEventArgs e)
-        {
-            IDirectoryHandler temp = (IDirectoryHandler)sender;
-            this.CommandRecieved -= temp.OnCommandRecieved;
-        }
+        
         public void CloseServer()
         {
-            
+            this.m_logging.Log("the service is about to shutdown", Logging.Modal.MessageTypeEnum.INFO);
         } 
        
 
