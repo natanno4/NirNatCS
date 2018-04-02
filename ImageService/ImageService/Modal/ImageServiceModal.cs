@@ -21,6 +21,7 @@ namespace ImageService.Modal
         public ImageServiceModal ()
         {
             this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
+            DirectoryInfo info = Directory.CreateDirectory(this.m_OutputFolder);
             if (!Int32.TryParse(ConfigurationManager.AppSettings["ThumbnailSize"], out this.m_thumbnailSize))
             {
 
@@ -30,21 +31,32 @@ namespace ImageService.Modal
         #endregion
         public string CreateFolder(string year, string month)
         {
-            DirectoryInfo info = Directory.CreateDirectory(this.m_OutputFolder);
+            string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
             string newPath = m_OutputFolder + "/" + year + month;
             if (!Directory.Exists(newPath))
             {
                 return Directory.CreateDirectory(newPath).Name;
                 
             }
+            string newThumbPath = tumbnailPath + "/" + year + month;
+            if (!Directory.Exists(newThumbPath))
+            {
+                return Directory.CreateDirectory(newThumbPath).Name;
+            }
             return newPath;
         }
         public string AddFile(string path, out bool result)
         {
+            Image image = Image.FromFile(path);
+            string tumbPath = this.m_OutputFolder + "/Thumbnails";
             if (File.Exists(path))
             {
                 DateTime t = this.ExtractDate(path);
                 string newPath = this.CreateFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
+                string fileName = "/" + Path.GetFileName(path);  
+                File.Move(path, newPath + fileName);
+                string tumb = this.CreateTumbnailFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
+                File.Copy(tumb, tumb + fileName);
                 if (path.Equals(newPath))
                 {
                     result = false;
@@ -84,5 +96,18 @@ namespace ImageService.Modal
                 return dt.Day.ToString;
             }
         }
+
+        private string CreateTumbnailFolder(string year, string month)
+        {
+            string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
+            string newThumbPath = tumbnailPath + "/" + year + month;
+            if (!Directory.Exists(newThumbPath))
+            {
+                return Directory.CreateDirectory(newThumbPath).Name;
+            }
+            return newThumbPath;
+
+        }
     }
+    
 }
