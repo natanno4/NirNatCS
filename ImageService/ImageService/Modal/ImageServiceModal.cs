@@ -21,7 +21,9 @@ namespace ImageService.Modal
         public ImageServiceModal ()
         {
             this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
+            string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
             DirectoryInfo info = Directory.CreateDirectory(this.m_OutputFolder);
+            Directory.CreateDirectory(tumbnailPath);
             if (!Int32.TryParse(ConfigurationManager.AppSettings["ThumbnailSize"], out this.m_thumbnailSize))
             {
 
@@ -31,18 +33,14 @@ namespace ImageService.Modal
         #endregion
         public string CreateFolder(string year, string month)
         {
-            string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
+            
             string newPath = m_OutputFolder + "/" + year + month;
             if (!Directory.Exists(newPath))
             {
                 return Directory.CreateDirectory(newPath).Name;
                 
             }
-            string newThumbPath = tumbnailPath + "/" + year + month;
-            if (!Directory.Exists(newThumbPath))
-            {
-                return Directory.CreateDirectory(newThumbPath).Name;
-            }
+            
             return newPath;
         }
         public string AddFile(string path, out bool result)

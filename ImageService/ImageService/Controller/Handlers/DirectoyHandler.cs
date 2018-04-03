@@ -82,6 +82,7 @@ namespace ImageService.Controller.Handlers
         {
             
             ((ImageServer)sender).CommandRecieved -= this.OnCommandRecieved;
+            ((ImageServer)sender).ServerClose -= this.OnStopHandle;
             this.m_dirWatcher.EnableRaisingEvents = false;
             this.m_dirWatcher.Dispose();
             this.m_logging.Log("handler" + this.m_path + "was closed successfully", MessageTypeEnum.INFO);
