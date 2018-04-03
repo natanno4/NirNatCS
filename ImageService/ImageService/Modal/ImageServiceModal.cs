@@ -18,6 +18,10 @@ namespace ImageService.Modal
         #region Members
         private string m_OutputFolder;            // The Output Folder
         private int m_thumbnailSize;             // The Size Of The Thumbnail Size
+        /// <summary>
+        /// constructor.
+        /// receive all his data from the AppConfig.
+        /// </summary>
         public ImageServiceModal()
         {
             this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
@@ -31,6 +35,12 @@ namespace ImageService.Modal
 
         }
         #endregion
+        /// <summary>
+        /// create an appropriate folder (if doesnt exist already) with year and month.
+        /// </summary>
+        /// <param name="year">year that photo has taken</param>
+        /// <param name="month">month that photo has taken</param>
+        /// <returns>return path to new folder</returns>
         public string CreateFolder(string year, string month)
         {
             string newPath = m_OutputFolder + "/" + year + month;
@@ -41,6 +51,12 @@ namespace ImageService.Modal
             }
             return newPath;
         }
+        /// <summary>
+        /// add file to appropriate folder (and also thumbnails folder), a part of interface IImageModal.
+        /// </summary>
+        /// <param name="path"> path to the file</param>
+        /// <param name="result"> boolean result of process</param>
+        /// <returns> ......</returns>
         public string AddFile(string path, out bool result)
         {
             Image image = Image.FromFile(path);
@@ -67,6 +83,11 @@ namespace ImageService.Modal
             return path;
 
         }
+        /// <summary>
+        /// from a given path to a photo, extract the date which the photo has taken.
+        /// </summary>
+        /// <param name="path"> path to the photo</param>
+        /// <returns>the full date (in shape of DateTime class) of photo</returns>
         public DateTime ExtractDate(string path)
         {
             Image myImage = Image.FromFile(path);
@@ -81,6 +102,13 @@ namespace ImageService.Modal
             sdate = firsthalf + secondhalf;
             return DateTime.Parse(sdate);
         }
+        /// <summary>
+        /// extract from a given DateTime the specified component which 
+        /// we want to use.
+        /// </summary>
+        /// <param name="dt">DateTime</param>
+        /// <param name="component"> component of DateTime(day/month/year)</param>
+        /// <returns>a string represent of the component</returns>
         public string ConvertDate(DateTime dt, string component)
         {
             if (component.Equals("month"))
@@ -96,7 +124,12 @@ namespace ImageService.Modal
                 return dt.Day.ToString;
             }
         }
-
+        /// <summary>
+        /// create a thumbnail folder with year and month.
+        /// </summary>
+        /// <param name="year">year</param>
+        /// <param name="month">month</param>
+        /// <returns>path to new folder</returns>
         private string CreateTumbnailFolder(string year, string month)
         {
             string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
@@ -108,7 +141,10 @@ namespace ImageService.Modal
             return newThumbPath;
 
         }
-
+        /// <summary>
+        /// .....
+        /// </summary>
+        /// <returns>bool</returns>
         private bool TumbnailCallback()
         {
             return false;

@@ -49,6 +49,7 @@ namespace ImageService.Server
         
         public void CloseServer()
         {
+            // ivoke all relevant handlers to being closed
             this.ServerClose?.Invoke(this, new DirectoryCloseEventArgs("path", "server is close"));
             this.m_logging.Log("the server was closed successfully", Logging.Modal.MessageTypeEnum.INFO);
         } 
