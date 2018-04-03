@@ -18,7 +18,7 @@ namespace ImageService.Modal
         #region Members
         private string m_OutputFolder;            // The Output Folder
         private int m_thumbnailSize;             // The Size Of The Thumbnail Size
-        public ImageServiceModal ()
+        public ImageServiceModal()
         {
             this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
             string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
@@ -33,28 +33,28 @@ namespace ImageService.Modal
         #endregion
         public string CreateFolder(string year, string month)
         {
-            
             string newPath = m_OutputFolder + "/" + year + month;
             if (!Directory.Exists(newPath))
             {
                 return Directory.CreateDirectory(newPath).Name;
-                
+
             }
-            
             return newPath;
         }
         public string AddFile(string path, out bool result)
         {
             Image image = Image.FromFile(path);
-            string tumbPath = this.m_OutputFolder + "/Thumbnails";
+            Image.GetThumbnailImageAbort myCallback = new Image.GetThumbnailImageAbort(TumbnailCallback);
+            Bitmap bitMap = new Bitmap(image);
             if (File.Exists(path))
             {
                 DateTime t = this.ExtractDate(path);
                 string newPath = this.CreateFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
-                string fileName = "/" + Path.GetFileName(path);  
+                string fileName = "/" + Path.GetFileName(path);
                 File.Move(path, newPath + fileName);
                 string tumb = this.CreateTumbnailFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
-                File.Copy(tumb, tumb + fileName);
+                Image tumbImage = bitMap.GetThumbnailImage(this.m_thumbnailSize, this.m_thumbnailSize, myCallback, IntPtr.Zero);
+                tumbImage.Save(tumb);
                 if (path.Equals(newPath))
                 {
                     result = false;
@@ -65,7 +65,7 @@ namespace ImageService.Modal
             }
             result = false;
             return path;
-          
+
         }
         public DateTime ExtractDate(string path)
         {
@@ -86,10 +86,12 @@ namespace ImageService.Modal
             if (component.Equals("month"))
             {
                 return dt.Month.ToString;
-            } else if (component.Equals("year"))
+            }
+            else if (component.Equals("year"))
             {
                 return dt.Year.ToString;
-            } else
+            }
+            else
             {
                 return dt.Day.ToString;
             }
@@ -106,6 +108,11 @@ namespace ImageService.Modal
             return newThumbPath;
 
         }
+
+        private bool TumbnailCallback()
+        {
+            return false;
+        }
     }
-    
+
 }
