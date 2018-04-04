@@ -9,7 +9,11 @@ using System.ServiceProcess;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using ImageService.Server;
+using ImageService.Modal;
+using ImageService.Controller;
+using ImageService.Logging;
+using ImageService.Logging.Modal;
 namespace MyService
 {
     public enum ServiceState
@@ -38,6 +42,9 @@ namespace MyService
     public partial class MyNewService : ServiceBase
     {
         private int eventId = 1;
+        private ImageService.Server.ImageServer s_server;
+        private ImageService.Logging.LoggingService s_logger;
+
         public MyNewService(string[] args)
         {
             InitializeComponent();
@@ -73,11 +80,20 @@ namespace MyService
             timer.Interval = 60000; // 60 seconds  
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
             timer.Start();
+            /////
+            IImageServiceModal modal = new ImageServiceModal();
+            IImageController controler = new ImageController(modal);
+            this.s_logger = new LoggingService();
+            this.s_logger.MessageRecieved += this.OnMessage;
+            this.s_server = new ImageServer(modal, this.s_logger);
             // Update the service state to Running.  
             serviceStatus.dwCurrentState = ServiceState.SERVICE_RUNNING;
             SetServiceStatus(this.ServiceHandle, ref serviceStatus);
         }
-
+        public void OnMessage(object sender, MessageRecievedEventArgs e)
+        {
+            eventLog1.WriteEntry(e.Message);
+        }
         protected override void OnStop()
         {
             eventLog1.WriteEntry("In onStop.");
