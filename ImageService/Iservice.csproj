@@ -37,16 +37,21 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".vs\imageService\v14\.suo" />
     <None Include=".vs\Service\v14\.suo" />
-    <None Include="ImageService\App.config" />
+    <None Include="ImageService\App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageService.Infrastructure\Enums\CommandEnum.cs" />
@@ -60,7 +65,9 @@
     <Compile Include="ImageService\Controller\Handlers\IDirectoryHandler.cs" />
     <Compile Include="ImageService\Controller\IImageController.cs" />
     <Compile Include="ImageService\Controller\ImageController.cs" />
-    <Compile Include="ImageService\ImageService.cs" />
+    <Compile Include="ImageService\ImageService.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ImageService\ImageService.Designer.cs">
       <DependentUpon>ImageService.cs</DependentUpon>
     </Compile>
@@ -69,7 +76,9 @@
     <Compile Include="ImageService\Modal\IImageServiceModal.cs" />
     <Compile Include="ImageService\Modal\ImageServiceModal.cs" />
     <Compile Include="ImageService\Program.cs" />
-    <Compile Include="ImageService\ProjectInstaller.cs" />
+    <Compile Include="ImageService\ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ImageService\ProjectInstaller.designer.cs">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>

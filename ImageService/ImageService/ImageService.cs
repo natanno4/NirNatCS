@@ -14,7 +14,7 @@ using ImageService.Modal;
 using ImageService.Controller;
 using ImageService.Logging;
 using ImageService.Logging.Modal;
-namespace MyService
+namespace ImageService
 {
     public enum ServiceState
     {
@@ -39,13 +39,13 @@ namespace MyService
         public int dwCheckPoint;
         public int dwWaitHint;
     };
-    public partial class MyNewService : ServiceBase
+    public partial class ImageService : ServiceBase
     {
         private int eventId = 1;
-        private ImageService.Server.ImageServer s_server;
-        private ImageService.Logging.LoggingService s_logger;
+        private ImageServer s_server;
+        private LoggingService s_logger;
 
-        public MyNewService(string[] args)
+        public ImageService(string[] args)
         {
             InitializeComponent();
             string eventSourceName = "MySource";

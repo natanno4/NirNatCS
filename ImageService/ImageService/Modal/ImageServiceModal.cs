@@ -113,15 +113,15 @@ namespace ImageService.Modal
         {
             if (component.Equals("month"))
             {
-                return dt.Month.ToString;
+                return dt.Month.ToString();
             }
             else if (component.Equals("year"))
             {
-                return dt.Year.ToString;
+                return dt.Year.ToString();
             }
             else
             {
-                return dt.Day.ToString;
+                return dt.Day.ToString();
             }
         }
         /// <summary>
