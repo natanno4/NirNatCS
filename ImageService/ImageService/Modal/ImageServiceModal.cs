@@ -27,6 +27,7 @@ namespace ImageService.Modal
             this.m_OutputFolder = ConfigurationManager.AppSettings["OutputDir"];
             string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
             DirectoryInfo info = Directory.CreateDirectory(this.m_OutputFolder);
+            info.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             Directory.CreateDirectory(tumbnailPath);
             if (!Int32.TryParse(ConfigurationManager.AppSettings["ThumbnailSize"], out this.m_thumbnailSize))
             {
@@ -43,11 +44,16 @@ namespace ImageService.Modal
         /// <returns>return path to new folder</returns>
         public string CreateFolder(string year, string month)
         {
-            string newPath = m_OutputFolder + "/" + year + month;
+            string newPath = m_OutputFolder + "/" + year;
             if (!Directory.Exists(newPath))
             {
-                return Directory.CreateDirectory(newPath).Name;
+                Directory.CreateDirectory(newPath);
+            }
 
+            newPath = newPath + "/" + month;
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
             }
             return newPath;
         }
@@ -59,70 +65,64 @@ namespace ImageService.Modal
         /// <returns> ......</returns>
         public string AddFile(string path, out bool result)
         {
-            Image image = Image.FromFile(path);
-            Image.GetThumbnailImageAbort myCallback = new Image.GetThumbnailImageAbort(TumbnailCallback);
-            Bitmap bitMap = new Bitmap(image);
-            if (File.Exists(path))
+            try
             {
-                DateTime t = this.ExtractDate(path);
-                string newPath = this.CreateFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
-                string fileName = "/" + Path.GetFileName(path);
-                File.Move(path, newPath + fileName);
-                string tumb = this.CreateTumbnailFolder(this.ConvertDate(t, "year"), this.ConvertDate(t, "month"));
-                Image tumbImage = bitMap.GetThumbnailImage(this.m_thumbnailSize, this.m_thumbnailSize, myCallback, IntPtr.Zero);
-                tumbImage.Save(tumb);
-                if (path.Equals(newPath))
+
+                if (File.Exists(path))
                 {
-                    result = false;
-                    return path;
+                    DateTime date = File.GetCreationTime(path);
+                    string newPath = this.CreateFolder(date.Year.ToString(), date.Month.ToString());
+                    string tumb = this.CreateTumbnailFolder(date.Year.ToString(), date.Month.ToString());
+                    string fileName = Path.GetFileName(path);
+                    string newFileName = this.ChangeFileName(fileName, newPath, tumb);
+                    File.Move(path, newFileName);
+                    Image image = Image.FromFile(newFileName);
+                    Image.GetThumbnailImageAbort myCallback = new Image.GetThumbnailImageAbort(TumbnailCallback);
+                    Image tumbImage = image.GetThumbnailImage(this.m_thumbnailSize, this.m_thumbnailSize, myCallback, IntPtr.Zero);
+                    tumbImage.Save(tumb + "/" + Path.GetFileName(newFileName));
+                    if (path.Equals(newPath))
+                    {
+                        result = false;
+                        return "file already exist";
+                    }
+                    result = true;
+                    return "success in moving " + Path.GetFileName(path);
                 }
-                result = true;
-                return newPath;
+                result = false;
+                return "File doesnt exit";
+            } catch (Exception e)
+            {
+                result = false;
+                return e.ToString();
             }
-            result = false;
-            return path;
 
         }
         /// <summary>
-        /// from a given path to a photo, extract the date which the photo has taken.
+        /// changeFileName.
+        /// the function check if there is a file with similar name in the dirs.
+        /// if yes -> change the name by adding 1, else return the original file name.
         /// </summary>
-        /// <param name="path"> path to the photo</param>
-        /// <returns>the full date (in shape of DateTime class) of photo</returns>
-        public DateTime ExtractDate(string path)
+        /// <param name="fileName">file name</param>
+        /// <param name="newPath">the wanted dir</param>
+        /// <param name="tumbPath">tumb path</param>
+        /// <returns></returns>
+        private string ChangeFileName(string fileName, string newPath, string tumbPath)
         {
-            Image myImage = Image.FromFile(path);
-            PropertyItem propItem = myImage.GetPropertyItem(306);
-            DateTime dtaken;
+            bool flag = false;
 
-            //Convert date taken metadata to a DateTime object
-            string sdate = Encoding.UTF8.GetString(propItem.Value).Trim();
-            string secondhalf = sdate.Substring(sdate.IndexOf(" "), (sdate.Length - sdate.IndexOf(" ")));
-            string firsthalf = sdate.Substring(0, 10);
-            firsthalf = firsthalf.Replace(":", "-");
-            sdate = firsthalf + secondhalf;
-            return DateTime.Parse(sdate);
-        }
-        /// <summary>
-        /// extract from a given DateTime the specified component which 
-        /// we want to use.
-        /// </summary>
-        /// <param name="dt">DateTime</param>
-        /// <param name="component"> component of DateTime(day/month/year)</param>
-        /// <returns>a string represent of the component</returns>
-        public string ConvertDate(DateTime dt, string component)
-        {
-            if (component.Equals("month"))
+            while (!flag)
             {
-                return dt.Month.ToString();
+                if (File.Exists(newPath + "/" + fileName) || File.Exists(tumbPath + "/" + fileName))
+                {
+                    fileName = "1" + fileName;
+                    flag = false;
+                }
+                else
+                {
+                    flag = true;
+                }
             }
-            else if (component.Equals("year"))
-            {
-                return dt.Year.ToString();
-            }
-            else
-            {
-                return dt.Day.ToString();
-            }
+            return newPath + "/" + fileName;
         }
         /// <summary>
         /// create a thumbnail folder with year and month.
@@ -133,10 +133,15 @@ namespace ImageService.Modal
         private string CreateTumbnailFolder(string year, string month)
         {
             string tumbnailPath = this.m_OutputFolder + "/Thumbnails";
-            string newThumbPath = tumbnailPath + "/" + year + month;
+            string newThumbPath = tumbnailPath + "/" + year;
             if (!Directory.Exists(newThumbPath))
             {
-                return Directory.CreateDirectory(newThumbPath).Name;
+                Directory.CreateDirectory(newThumbPath);
+            }
+            newThumbPath = newThumbPath + "/" + month;
+            if (!Directory.Exists(newThumbPath))
+            {
+                Directory.CreateDirectory(newThumbPath);
             }
             return newThumbPath;
 

@@ -5,7 +5,7 @@ using ImageService.Logging;
 using ImageService.Modal;
 using System;
 using System.Configuration;
-using ImageService.Infrastructure.Enums;
+
 
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,13 @@ namespace ImageService.Server
         public event EventHandler<CommandRecievedEventArgs> CommandRecieved;          // The event that notifies about a new Command being recieved
         public event EventHandler<DirectoryCloseEventArgs> ServerClose;            // the event that notifies about server closing to relavant handlers
         #endregion
-        
+        /// <summary>
+        /// constructor.
+        /// read the list of folder that should have a handler and create one
+        /// for them.
+        /// </summary>
+        /// <param name="modal">ImageServiceModal</param>
+        /// <param name="logging">LoggingModal</param>
         public ImageServer(IImageServiceModal modal, ILoggingService logging)
         {
             this.m_controller = new ImageController(modal);
@@ -38,20 +44,38 @@ namespace ImageService.Server
             }
 
         }
-
+        /// <summary>
+        /// CreateHandler function.
+        /// create a handler that listen to event of command of newFile
+        /// and an event of of closing server, start to handle the directory
+        /// and update the logger.
+        /// </summary>
+        /// <param name="path"> path of wanted directory</param>
         public void CreateHandler(string path)
         {
             IDirectoryHandler handler = new DirectoyHandler(this.m_controller, this.m_logging);
             this.CommandRecieved += handler.OnCommandRecieved;
             this.ServerClose += handler.OnStopHandle;
             handler.StartHandleDirectory(path);
+            this.m_logging.Log("Handler" + path + "was created successfully", Logging.Modal.MessageTypeEnum.INFO);
         }
-        
+        /// <summary>
+        /// closeServer function.
+        /// raise and event of close server to all active handler, and notify
+        /// the logger if success or failuer.
+        /// </summary>
         public void CloseServer()
         {
-            // ivoke all relevant handlers to being closed
-            this.ServerClose?.Invoke(this, new DirectoryCloseEventArgs("path", "server is close"));
-            this.m_logging.Log("the server was closed successfully", Logging.Modal.MessageTypeEnum.INFO);
+            // invoke all relevant handlers to being closed
+            try
+            {
+                this.m_logging.Log("start to close server", Logging.Modal.MessageTypeEnum.INFO);
+                this.ServerClose?.Invoke(this, new DirectoryCloseEventArgs("path", "server is close"));
+                this.m_logging.Log("the server was closed successfully", Logging.Modal.MessageTypeEnum.INFO);
+            } catch (Exception e)
+            {
+                this.m_logging.Log("Error with closing server", Logging.Modal.MessageTypeEnum.FAIL);
+            }
         } 
        
         // add function of send command

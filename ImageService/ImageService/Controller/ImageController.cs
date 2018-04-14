@@ -14,7 +14,11 @@ namespace ImageService.Controller
     {
         private IImageServiceModal m_modal;                      // The Modal Object
         private Dictionary<int, ICommand> commands;
-
+        /// <summary>
+        /// constructor.
+        /// init a dictionary with key of command of newFile.
+        /// </summary>
+        /// <param name="modal">modal</param>
         public ImageController(IImageServiceModal modal)
         {
             m_modal = modal;                    // Storing the Modal Of The System
@@ -25,6 +29,15 @@ namespace ImageService.Controller
 				// For Now will contain NEW_FILE_COMMAND
             };
         }
+        /// <summary>
+        /// ExecuteCommand function.
+        /// check if the command is valid, and if it is -> execute it by
+        /// interpert the command with the dictionary.
+        /// </summary>
+        /// <param name="commandID">id of command</param>
+        /// <param name="args"> args of command</param>
+        /// <param name="resultSuccesful">boolean to say if success or fail</param>
+        /// <returns></returns>
         public string ExecuteCommand(int commandID, string[] args, out bool resultSuccesful)
         {
             ICommand comm;
