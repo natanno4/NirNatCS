@@ -70,7 +70,7 @@ namespace ImageService.Modal
 
                 if (File.Exists(path))
                 {
-                    DateTime date = File.GetCreationTime(path);
+                    DateTime date = this.ExtractDate(path);
                     string newPath = this.CreateFolder(date.Year.ToString(), date.Month.ToString());
                     string tumb = this.CreateTumbnailFolder(date.Year.ToString(), date.Month.ToString());
                     string fileName = Path.GetFileName(path);
@@ -80,6 +80,8 @@ namespace ImageService.Modal
                     Image.GetThumbnailImageAbort myCallback = new Image.GetThumbnailImageAbort(TumbnailCallback);
                     Image tumbImage = image.GetThumbnailImage(this.m_thumbnailSize, this.m_thumbnailSize, myCallback, IntPtr.Zero);
                     tumbImage.Save(tumb + "/" + Path.GetFileName(newFileName));
+                    image.Dispose();
+                    tumbImage.Dispose();
                     if (path.Equals(newPath))
                     {
                         result = false;
@@ -153,6 +155,32 @@ namespace ImageService.Modal
         private bool TumbnailCallback()
         {
             return false;
+        }
+        /// <summary>
+        /// Extract Date.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private DateTime ExtractDate(string path)
+        {
+            Regex regex = new Regex(":");
+            try
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (Image myImage = Image.FromStream(fs, false, false))
+                {
+                    PropertyItem propItem = myImage.GetPropertyItem(36867);
+                    string dateTaken = regex.Replace(Encoding.UTF8.GetString(propItem.Value), "-", 2);
+                    DateTime dt = DateTime.Parse(dateTaken);
+                    return dt;
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+                return File.GetCreationTime(path);
+
+            }
         }
     }
 

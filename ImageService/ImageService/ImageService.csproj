@@ -54,7 +54,7 @@
     <Compile Include="ImageService.Designer.cs">
       <DependentUpon>ImageService.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageService\Server\ImageService.Infrastructure\Enums\CommandEnum.cs" />
+    <Compile Include="ImageService.Infrastructure\Enums\CommandEnum.cs" />
     <Compile Include="ImageService.Logging\ILoggingService.cs" />
     <Compile Include="ImageService.Logging\LoggingService.cs" />
     <Compile Include="ImageService.Logging\Modal\MessageRecievedEventArgs.cs" />
@@ -80,9 +80,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageService.resx">

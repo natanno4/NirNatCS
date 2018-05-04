@@ -1,2 +1,0 @@
-C:\Users\nir\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\NirNatCS\ImageService\bin\Debug\ConsoleApplication.exe.config
-C:\Users\nir\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\NirNatCS\ImageService\obj\x86\Debug\Service.csprojResolveAssemblyReference.cache

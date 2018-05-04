@@ -53,10 +53,17 @@ namespace ImageService.Server
         /// <param name="path"> path of wanted directory</param>
         public void CreateHandler(string path)
         {
-            IDirectoryHandler handler = new DirectoyHandler(this.m_controller, this.m_logging);
-            this.CommandRecieved += handler.OnCommandRecieved;
-            this.ServerClose += handler.OnStopHandle;
-            handler.StartHandleDirectory(path);
+            try
+            {
+                IDirectoryHandler handler = new DirectoyHandler(this.m_controller, this.m_logging);
+                this.CommandRecieved += handler.OnCommandRecieved;
+                this.ServerClose += handler.OnStopHandle;
+                handler.StartHandleDirectory(path);
+            } catch (Exception e)
+            {
+                this.m_logging.Log(e.ToString(), Logging.Modal.MessageTypeEnum.FAIL);
+                return;
+            }
             this.m_logging.Log("Handler" + path + "was created successfully", Logging.Modal.MessageTypeEnum.INFO);
         }
         /// <summary>
@@ -74,7 +81,7 @@ namespace ImageService.Server
                 this.m_logging.Log("the server was closed successfully", Logging.Modal.MessageTypeEnum.INFO);
             } catch (Exception e)
             {
-                this.m_logging.Log("Error with closing server", Logging.Modal.MessageTypeEnum.FAIL);
+                this.m_logging.Log(e.ToString(), Logging.Modal.MessageTypeEnum.FAIL);
             }
         } 
        

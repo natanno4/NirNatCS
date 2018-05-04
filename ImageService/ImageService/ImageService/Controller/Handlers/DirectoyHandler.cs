@@ -40,7 +40,7 @@ namespace ImageService.Controller.Handlers
         /// </summary>
         /// <param name="dirPath"> name of full path of folder</param>
         public void StartHandleDirectory(string dirPath) {
-            this.m_logging.Log("start to handle directory" + dirPath, MessageTypeEnum.INFO);
+            this.m_logging.Log("start to handle directory " + dirPath, MessageTypeEnum.INFO);
             this.m_path = dirPath;
             this.m_dirWatcher.Path = dirPath;
             this.m_dirWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.FileName |
@@ -114,7 +114,7 @@ namespace ImageService.Controller.Handlers
             this.m_dirWatcher.EnableRaisingEvents = false;
             this.m_dirWatcher.Created -= new FileSystemEventHandler(CreateNewFile);
             this.m_dirWatcher.Dispose();
-            this.m_logging.Log("handler" + this.m_path + "was closed successfully", MessageTypeEnum.INFO);
+            this.m_logging.Log("handler " + this.m_path + " was closed successfully", MessageTypeEnum.INFO);
         } 
 
     }
