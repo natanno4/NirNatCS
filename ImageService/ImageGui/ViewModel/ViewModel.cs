@@ -1,13 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 
-public class ViewModel : INotifypropertyChanged 
+namespace ViewModel
 {
-    public event PropertyChangedEventHandler propertyChanged;
-
-    public void NotifyPropertyChanged (string propname)
+    public class ViewModel : INotifyPropertyChanged
     {
-        this.propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
-    }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        public void NotifyPropertyChanged(string propname)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
+        }
+
+    }
 }
