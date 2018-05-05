@@ -23,6 +23,7 @@ namespace ImageGui
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }

@@ -9,7 +9,10 @@ namespace ViewModel
 
         public void NotifyPropertyChanged(string propname)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
+            }
         }
 
     }
