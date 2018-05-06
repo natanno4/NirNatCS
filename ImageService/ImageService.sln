@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageService", "ImageService\ImageService.csproj", "{2B2E36B8-5CC5-4E9A-8405-A0DB6A5B0B5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServiceGUI", "ImageServiceGUI\ImageServiceGUI.csproj", "{AE643FEA-CB60-4487-929F-D354F9390534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServiceGUI", "ImageServiceGUI\ImageServiceGUI.csproj", "{66C32799-1B9B-4EA8-AFFF-5FDCF13FF0C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{2B2E36B8-5CC5-4E9A-8405-A0DB6A5B0B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B2E36B8-5CC5-4E9A-8405-A0DB6A5B0B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B2E36B8-5CC5-4E9A-8405-A0DB6A5B0B5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE643FEA-CB60-4487-929F-D354F9390534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE643FEA-CB60-4487-929F-D354F9390534}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE643FEA-CB60-4487-929F-D354F9390534}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE643FEA-CB60-4487-929F-D354F9390534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C32799-1B9B-4EA8-AFFF-5FDCF13FF0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C32799-1B9B-4EA8-AFFF-5FDCF13FF0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C32799-1B9B-4EA8-AFFF-5FDCF13FF0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C32799-1B9B-4EA8-AFFF-5FDCF13FF0C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
