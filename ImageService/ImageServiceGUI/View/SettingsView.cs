@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel;
+using ImageServiceGUI;
 
-namespace ImageGui.View
+namespace ImageServiceGUI.View
 {
     class SettingsView : MainWindow
     {
