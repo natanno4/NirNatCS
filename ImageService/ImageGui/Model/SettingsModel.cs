@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Model {
@@ -8,20 +9,21 @@ namespace Model {
         private string saveLogName;
         private string OutPutDir;
         private string saveSourceName;
-        private int tumbNailSize;
+        private string tumbNailSize;
+        private ObservableCollection<string> handlersModel;
         public void NotifyPropertyChanged(string propname)
         {
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
             }
-         }
+        }
 
         public SettingsModel()
         {
         }
 
-       
+
         public string logName
         {
             get
@@ -64,7 +66,7 @@ namespace Model {
             }
         }
 
-        public int thumbNail
+        public string thumbNail
         {
             get
             {
@@ -77,5 +79,19 @@ namespace Model {
                 NotifyPropertyChanged("thumbNail");
             }
         }
+
+        public ObservableCollection<string> handlers
+        {
+            get
+            {
+                return this.handlersModel;
+            }
+            set
+            {
+                this.handlersModel = value;
+                NotifyPropertyChanged("handlers");
+            }
+        }
+   
     }
 }

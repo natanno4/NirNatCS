@@ -1,13 +1,20 @@
-﻿using System;
+﻿using Model;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ViewModel
 {
     public class SettingsVM : ViewModel
     {
         private ISettingsModel  model;
-        public SettingsVM(ISettingsModel modell)
+        public SettingsVM()
         {
-            this.model = modell;
+            this.model = new SettingsModel();
+            model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs p)
+            {
+                NotifyPropertyChanged(p.PropertyName);
+            };  
         }
 
         public string OutPutDir
@@ -36,23 +43,32 @@ namespace ViewModel
             set
             {
                 model.logName = value;
-                NotifyPropertyChanged("LogNmae");
+                NotifyPropertyChanged("LogName");
             }
         }
 
-        public int TumbNail
+        public string TumbNail
         {
             get { return model.thumbNail; }
             set
             {
                 model.thumbNail = value;
-                NotifyPropertyChanged("LogNmae");
+                NotifyPropertyChanged("TumbNail");
             }
         }
 
-        public void SaveChanges()
+        public ObservableCollection<string> handlers
         {
-            //model.SaveSettings();
+            get
+            {
+                return model.handlers;
+            }
+            set
+            {
+                model.handlers = value;
+                NotifyPropertyChanged("handlers");
+            }
         }
+
     }
 }

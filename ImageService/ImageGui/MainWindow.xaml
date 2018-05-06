@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageGui"
+        xmlns:c="clr-namespace:ImageGui.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="ImageService" Height="350" Width="525">
     <Grid>
-        
+        <StackPanel TextBlock.FontSize="20" Margin="4">        </StackPanel>
+
+        <TabControl HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="850" Grid.RowSpan="4">
+            <TabItem Header="Settings">
+            </TabItem>
+            <TabItem Header="Logs">
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
