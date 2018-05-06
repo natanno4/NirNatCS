@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ImageGui
+namespace ImageServiceGUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +23,6 @@ namespace ImageGui
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
         }
     }
 }
