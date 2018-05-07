@@ -6,21 +6,39 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Configuration;
 
 namespace ImageGui.Communication
 {
     class GuiClient : IClient
     {
         private TcpClient TClient;
+        private static GuiClient instance;
         
-        public GuiClient(TcpClient t)
+        public static GuiClient instanceS 
         {
-            this.TClient = t;
+            get {
+
+                if (instance == null)
+                {
+                    instance = new GuiClient();
+                }
+                return instance;
+            }
         }
+        private
         void Connect(IPEndPoint ep)
         {
-            TClient.Connect(ep);
-            Console.WriteLine("connect sucessfully");
+            //may be will be changed
+            try
+            {
+                TClient = new TcpClient();
+                TClient.Connect(ep);
+                Console.WriteLine("connect sucessfully");
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
         void Disconnect()
         {
@@ -29,6 +47,7 @@ namespace ImageGui.Communication
         }
         void Write(string cmd)
         {
+           
             using (NetworkStream stream = TClient.GetStream())
             using (BinaryWriter writer = new BinaryWriter(stream))
             {
