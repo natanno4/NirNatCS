@@ -20,7 +20,7 @@ namespace Communication
         }
         public void Start()
         {
-            IPEndpoint pnt = new IPEndpoint(IPAddress.Parse("127.0.0.0"), port);
+            IPEndPoint pnt = new IPEndPoint(IPAddress.Parse("127.0.0.0"), port);
             listener = new TcpListener(pnt);
             listener.Start();
             // print of connections

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ImageService.Commands;
 using Newtonsoft.Json.Linq.JObject;
 using ImageService.Infrastructure.Enums;
-namespace ImageService.ImageService.Commands
+namespace ImageService.Commands
 {
     class MsgCommand
     {

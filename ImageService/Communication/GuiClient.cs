@@ -7,12 +7,18 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Configuration;
+using System.Threading;
 
 namespace ImageGui.Communication
 {
     class GuiClient : IClient
     {
+        public event EventHandler<string> MessageRecived;
         private TcpClient TClient;
+        private int portNumber;
+        private static Mutex rMutex;
+        private static Mutex wMutex;
+        private IPEndPoint ipEndPoint;
         private static GuiClient instance;
         
         public static GuiClient instanceS 
@@ -26,14 +32,21 @@ namespace ImageGui.Communication
                 return instance;
             }
         }
-        private
-        void Connect(IPEndPoint ep)
+
+
+        private GuiClient()
+        {
+            this.ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.0"), 7000);
+            this.Connect(this.ipEndPoint);
+
+        }
+        private void Connect(IPEndPoint ep)
         {
             //may be will be changed
-            try
+            try 
             {
                 TClient = new TcpClient();
-                TClient.Connect(ep);
+                TClient.Connect(this.ipEndPoint);
                 Console.WriteLine("connect sucessfully");
             } catch (Exception e)
             {
@@ -47,25 +60,46 @@ namespace ImageGui.Communication
         }
         void Write(string cmd)
         {
-           
-            using (NetworkStream stream = TClient.GetStream())
-            using (BinaryWriter writer = new BinaryWriter(stream))
+            new Task(() =>
             {
-                writer.Write(cmd);
-            }
+                using (NetworkStream stream = TClient.GetStream())
+                using (BinaryWriter writer = new BinaryWriter(stream))
+                {
+                    wMutex.WaitOne();
+                    writer.Write(cmd);
+                    wMutex.ReleaseMutex();
+                }
+            });
         }
-        String Read()
+        public void Read()
         {
-            char[] buffer = new char[120];
-            int numberOfBytesRead = 0;
+            string buffer;
             using (NetworkStream stream = TClient.GetStream())
             using (BinaryReader reader = new BinaryReader(stream))
             {
-                while (reader.Read(buffer, 0, 120) != 120)
-                {
-                    // need to complet
+                rMutex.WaitOne();
+                buffer = reader.ReadString();
+                rMutex.ReleaseMutex();
+                if (buffer != null)
+                { 
+                    MessageRecived?.Invoke(this, buffer);
                 }
             }
+        }
+
+        void IClient.Connect(IPEndPoint endP)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IClient.Write(string command)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IClient.Disconnect()
+        {
+            throw new NotImplementedException();
         }
     }
 }
