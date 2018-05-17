@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ViewModel
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class VModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

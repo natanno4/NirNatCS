@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace ViewModel
 {
-    public class SettingsVM : ViewModel
+    public class SettingsVM : VModel
     {
         private ISettingsModel  model;
         public SettingsVM()
