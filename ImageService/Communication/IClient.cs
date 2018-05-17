@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace ImageGui.Communication
+namespace Communication
 {
     interface IClient
     {
         void Connect(IPEndPoint endP);
-        String Read();
+        void Read();
         void Write(String command);
         void Disconnect();
     }

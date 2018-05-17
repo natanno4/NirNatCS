@@ -9,9 +9,9 @@ using System.IO;
 using System.Configuration;
 using System.Threading;
 
-namespace ImageGui.Communication
+namespace Communication
 {
-    class GuiClient : IClient
+    public class GuiClient : IClient
     {
         public event EventHandler<string> MessageRecived;
         private TcpClient TClient;

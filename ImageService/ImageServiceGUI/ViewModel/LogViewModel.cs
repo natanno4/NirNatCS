@@ -12,7 +12,6 @@ namespace ImageServiceGUI.ViewModel
     class LogViewModel : VModel
     {
         private ILogModel LogVM;
-        public event PropertyChangedEventArgs PropertyChanged;
 
         public LogViewModel()
         {
@@ -21,11 +20,6 @@ namespace ImageServiceGUI.ViewModel
             {
                 NotifyPropertyChanged(e.PropertyName);
             };
-        }
-
-        private void NotifyPropertyChanged(string name)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         
         public ObservableCollection<MessageRecievedEventArgs> Logs

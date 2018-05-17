@@ -55,10 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ILogModel.cs" />
     <Compile Include="Model\ISettingsModel.cs" />
+    <Compile Include="Model\LogModel.cs" />
     <Compile Include="Model\SettingsModel.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\SetingsVM.cs" />
-    <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\VModel.cs" />
     <Compile Include="View\LogView.cs" />
     <Compile Include="View\SettingsView.cs" />
     <Page Include="MainWindow.xaml">
