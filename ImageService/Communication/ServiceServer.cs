@@ -8,7 +8,7 @@ using System.Net;
 
 namespace Communication
 {
-    class ServiceServer : IServiceServer
+    public class ServiceServer : IServiceServer
     {
         private int port;
         private TcpListener listener;

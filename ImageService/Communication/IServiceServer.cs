@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Communication
 {
-    interface IServiceServer
+    public interface IServiceServer
     {
     }
 }

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using ImageService.Logging.Modal;
 
 namespace Communication
 {
-    interface IClient
+    public interface IClient
     {
+        event EventHandler<MessageRecievedEventArgs> MessageRecived;
         void Connect(IPEndPoint endP);
         void Read();
         void Write(String command);

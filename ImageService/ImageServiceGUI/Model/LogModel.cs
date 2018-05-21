@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Communication;
+using ImageService.Logging.Modal;
+using ImageService.Commands;
+using ImageService.Infrastructure.Enums;
 
 namespace ImageServiceGUI.Model
 {
@@ -13,6 +16,7 @@ namespace ImageServiceGUI.Model
         public LogModel()
         {
             this.client = GuiClient.instanceS;
+            this.client.MessageRecived += this.OnMessageRecieved;
         }
 
 
@@ -37,6 +41,14 @@ namespace ImageServiceGUI.Model
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
+            }
+        }
+
+        public void OnMessageRecieved(object sender, MessageRecievedEventArgs m)
+        {
+            if ((int)MsgCommand.FromJSON(m.Message).commandID == (int)(CommandEnum.LogCommand))
+            {
+
             }
         }
 
