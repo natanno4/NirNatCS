@@ -4,6 +4,8 @@ using Communication;
 using ImageService.Logging.Modal;
 using ImageService.Commands;
 using ImageService.Infrastructure.Enums;
+using Communication.Event;
+
 
 namespace ImageServiceGUI.Model
 {
@@ -16,8 +18,10 @@ namespace ImageServiceGUI.Model
         public LogModel()
         {
             this.client = GuiClient.instanceS;
-            this.client.MessageRecived += this.OnMessageRecieved;
-           
+            this.client.CommandRecived += this.OnCommandRecieved;
+            string[] args = new string[5];
+            CommandRecievedEventArgs cmd = new CommandRecievedEventArgs((int)CommandEnum.LogCommand, args, null);
+            client.Write(cmd);
 ;        }
 
 
@@ -45,9 +49,9 @@ namespace ImageServiceGUI.Model
             }
         }
 
-        public void OnMessageRecieved(object sender, MessageRecievedEventArgs m)
+        public void OnCommandRecieved(object sender, MsgCommand m)
         {
-            if ((int)MsgCommand.FromJSON(m.Message).commandID == (int)(CommandEnum.LogCommand))
+            if ((int)m.commandID == (int)(CommandEnum.LogCommand))
             {
 
             }

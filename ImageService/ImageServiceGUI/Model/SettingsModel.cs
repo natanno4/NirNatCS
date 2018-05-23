@@ -4,6 +4,7 @@ using System.ComponentModel;
 using Communication;
 using Communication.Event;
 using ImageService.Infrastructure.Enums;
+using ImageService.Commands;
 
 namespace Model {
     public class SettingsModel : ISettingsModel
@@ -30,14 +31,23 @@ namespace Model {
             string[] args = new string[5];
             client.CommandRecived += OnCommandRecived;
             CommandRecievedEventArgs cmd = new CommandRecievedEventArgs((int)CommandEnum.GetConfigCommand, args, null);
-            client.Write(cmd.msg.ToJSON());
-
-
+            client.Write(cmd);
         }
 
 
-        public void OnCommandRecived(object sender, CommandRecievedEventArgs e) {
-
+        public void OnCommandRecived(object sender, MsgCommand msg) {
+            if ((int)msg.commandID == (int) CommandEnum.GetConfigCommand)
+            {
+                this.OutPutDir = msg.args[0];
+                this.saveSourceName = msg.args[1];
+                this.saveLogName = msg.args[2];
+                this.tumbNailSize = msg.args[3];
+                string[] h = msg.args[4].Split(';');
+                foreach (string handler in h)
+                {
+                    handlersModel.Add(handler);
+                }
+            }
         }
 
         public string logName

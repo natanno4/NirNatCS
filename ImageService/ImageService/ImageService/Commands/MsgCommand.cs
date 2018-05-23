@@ -7,7 +7,8 @@ namespace ImageService.Commands
     public class MsgCommand
     {
         public CommandEnum commandID { get; set; }
-        public ICommand command { get; set; }
+        public string[] args { get; set; }
+       
 
         public static MsgCommand FromJSON(string str)
         {

@@ -10,12 +10,15 @@ using System.Configuration;
 using System.Threading;
 using ImageService.Logging.Modal;
 using Communication.Event;
+using ImageService.Commands;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Communication
 {
     public class GuiClient : IClient
     {
-        public event EventHandler<CommandRecievedEventArgs> CommandRecived;
+        public event EventHandler<MsgCommand> CommandRecived;
         private TcpClient TClient;
         private int portNumber;
         private static Mutex rMutex;
@@ -39,10 +42,10 @@ namespace Communication
         private GuiClient()
         {
             this.ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.0"), 7000);
-            this.Connect(this.ipEndPoint);
+            this.Connect();
 
         }
-        private void Connect(IPEndPoint ep)
+        public void Connect()
         {
             //may be will be changed
             try 
@@ -55,12 +58,14 @@ namespace Communication
                 Console.WriteLine(e.ToString());
             }
         }
-        void Disconnect()
+        public void Disconnect()
         {
             TClient.Close();
             Console.WriteLine("disconnect successfully");
         }
-        void Write(string cmd)
+
+
+        public void Write(CommandRecievedEventArgs e)
         {
             new Task(() =>
             {
@@ -68,7 +73,8 @@ namespace Communication
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
                     wMutex.WaitOne();
-                    writer.Write(cmd);
+                    string send = JsonConvert.SerializeObject(e);
+                    writer.Write(send);
                     wMutex.ReleaseMutex();
                 }
             });
@@ -83,25 +89,12 @@ namespace Communication
                 buffer = reader.ReadString();
                 rMutex.ReleaseMutex();
                 if (buffer != null)
-                { 
-                    MessageRecived?.Invoke(this, buffer);
+                {
+                   MsgCommand msg = MsgCommand.FromJSON(buffer);
+                   CommandRecived?.Invoke(this, msg);
                 }
             }
         }
 
-        void IClient.Connect(IPEndPoint endP)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IClient.Write(string command)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IClient.Disconnect()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
