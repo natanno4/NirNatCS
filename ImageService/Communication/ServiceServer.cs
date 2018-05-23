@@ -14,6 +14,7 @@ namespace Communication
         private TcpListener listener;
         private IHandler handler;
 
+
         public ServiceServer(int prt, IHandler hand)
         {
             this.port = prt;
