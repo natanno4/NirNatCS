@@ -14,7 +14,7 @@ namespace ImageService.Commands
             //צריך לשנות
             MsgCommand commandMess = new MsgCommand();
             JObject obj = JObject.Parse(str);
-            commandMess.commandID = (int)obj["commandID"];
+            commandMess.commandID = (CommandEnum)obj["commandID"];
             commandMess.command = (ICommand)obj["command"];
             return commandMess;
         }
