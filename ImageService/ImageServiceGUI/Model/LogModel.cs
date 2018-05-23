@@ -12,7 +12,7 @@ namespace ImageServiceGUI.Model
     class LogModel : ILogModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private IClient client;
+        private TcpClient client;
         private ObservableCollection<MessageRecievedEventArgs> m_Logs;
 
         public LogModel()

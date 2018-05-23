@@ -13,7 +13,7 @@ namespace Model {
         private string saveLogName;
         private string OutPutDir;
         private string saveSourceName;
-        private IClient client;
+        private TcpClient client;
         private string tumbNailSize;
         private ObservableCollection<string> handlersModel;
         public void NotifyPropertyChanged(string propname)

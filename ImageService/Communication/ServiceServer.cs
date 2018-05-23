@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
+using ImageService.Controller;
+using ImageService.Logging;
 
 namespace Communication
 {
@@ -12,13 +14,16 @@ namespace Communication
     {
         private int port;
         private TcpListener listener;
-        private IHandler handler;
+        private IClientHandler handler;
+        private List<TcpClient> clients;
+        private ILoggingService logging;
 
-
-        public ServiceServer(int prt, IHandler hand)
+        public ServiceServer(int prt, ImageController controller, ILoggingService logService)
         {
+            this.logging = logService;
             this.port = prt;
-            this.handler = hand;
+            this.handler = new ClientHandler(clients, controller);
+            clients = new List<TcpClient>();
         }
         public void Start()
         {
@@ -34,7 +39,8 @@ namespace Communication
                     {
                         TcpClient client = listener.AcceptTcpClient();
                         // success in recieve
-                        handler.handle(client);
+                        clients.Add(client);
+                        handler.HandleClient(client);
                     }
                     catch (Exception e)
                     {
@@ -49,5 +55,6 @@ namespace Communication
         {
             listener.Stop();
         }
+
     }
 }

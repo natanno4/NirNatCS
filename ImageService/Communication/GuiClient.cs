@@ -16,10 +16,10 @@ using Newtonsoft.Json;
 
 namespace Communication
 {
-    public class GuiClient : IClient
+    public class GuiClient : TcpClient
     {
         public event EventHandler<MsgCommand> CommandRecived;
-        private TcpClient TClient;
+        private System.Net.Sockets.TcpClient TClient;
         private int portNumber;
         private static Mutex rMutex;
         private static Mutex wMutex;
@@ -50,7 +50,7 @@ namespace Communication
             //may be will be changed
             try 
             {
-                TClient = new TcpClient();
+                TClient = new System.Net.Sockets.TcpClient();
                 TClient.Connect(this.ipEndPoint);
                 Console.WriteLine("connect sucessfully");
             } catch (Exception e)
@@ -77,7 +77,7 @@ namespace Communication
                     writer.Write(send);
                     wMutex.ReleaseMutex();
                 }
-            });
+            }).Start();
         }
         public void Read()
         {
