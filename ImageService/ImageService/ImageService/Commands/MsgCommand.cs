@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ImageService.Commands;
-using Newtonsoft.Json.Linq.JObject;
-using ImageService.Infrastructure.Enums;
+﻿using ImageService.Infrastructure.Enums;
+using Newtonsoft.Json.Linq;
+
 namespace ImageService.Commands
+
 {
-    class MsgCommand
+    public class MsgCommand
     {
         public CommandEnum commandID { get; set; }
         public ICommand command { get; set; }
@@ -22,7 +18,7 @@ namespace ImageService.Commands
             commandMess.command = (ICommand)obj["command"];
             return commandMess;
         }
-        public string ToJSON(ICommand cmd)
+        public string ToJSON()
         {
             //צריך לשנות
             MsgCommand cmnd = new MsgCommand();

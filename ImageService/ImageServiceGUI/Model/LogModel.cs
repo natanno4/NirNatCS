@@ -17,7 +17,8 @@ namespace ImageServiceGUI.Model
         {
             this.client = GuiClient.instanceS;
             this.client.MessageRecived += this.OnMessageRecieved;
-        }
+           
+;        }
 
 
         public ObservableCollection<MessageRecievedEventArgs> Logs

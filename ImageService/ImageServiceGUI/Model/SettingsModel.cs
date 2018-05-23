@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Communication;
+using Communication.Event;
+using ImageService.Infrastructure.Enums;
 
 namespace Model {
     public class SettingsModel : ISettingsModel
@@ -9,6 +12,7 @@ namespace Model {
         private string saveLogName;
         private string OutPutDir;
         private string saveSourceName;
+        private IClient client;
         private string tumbNailSize;
         private ObservableCollection<string> handlersModel;
         public void NotifyPropertyChanged(string propname)
@@ -21,8 +25,20 @@ namespace Model {
 
         public SettingsModel()
         {
+            handlers = new ObservableCollection<string>();
+            this.client = GuiClient.instanceS;
+            string[] args = new string[5];
+            client.CommandRecived += OnCommandRecived;
+            CommandRecievedEventArgs cmd = new CommandRecievedEventArgs((int)CommandEnum.GetConfigCommand, args, null);
+            client.Write(cmd.msg.ToJSON());
+
+
         }
 
+
+        public void OnCommandRecived(object sender, CommandRecievedEventArgs e) {
+
+        }
 
         public string logName
         {

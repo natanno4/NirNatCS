@@ -8,12 +8,14 @@ using System.Net.Sockets;
 using System.IO;
 using System.Configuration;
 using System.Threading;
+using ImageService.Logging.Modal;
+using Communication.Event;
 
 namespace Communication
 {
     public class GuiClient : IClient
     {
-        public event EventHandler<string> MessageRecived;
+        public event EventHandler<CommandRecievedEventArgs> CommandRecived;
         private TcpClient TClient;
         private int portNumber;
         private static Mutex rMutex;
