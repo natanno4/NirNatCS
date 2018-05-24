@@ -9,7 +9,11 @@ namespace ImageService.Commands
         public CommandEnum commandID { get; set; }
         public string[] args { get; set; }
        
-
+        public MsgCommand(CommandEnum id, string[] arg)
+        {
+            this.commandID = id;
+            this.args = arg;
+        }
         public static MsgCommand FromJSON(string str)
         {
             //צריך לשנות

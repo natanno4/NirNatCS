@@ -22,7 +22,7 @@ namespace Communication
         {
             this.logging = logService;
             this.port = prt;
-            this.handler = new ClientHandler(clients, controller);
+            this.handler = new ClientHandler(clients, controller, logService);
             clients = new List<TcpClient>();
         }
         public void Start()
