@@ -19,7 +19,7 @@ namespace ImageService.Commands
             strConfig[2] = ConfigurationManager.AppSettings.Get("LogName");
             strConfig[3] = ConfigurationManager.AppSettings.Get("ThumbnailSize");
 
-            MsgCommand cmnd = new MsgCommand(CommandEnum.GetConfigCommand, strConfig);
+            MsgCommand cmnd = new MsgCommand((int)CommandEnum.GetConfigCommand, strConfig);
             string jsonFormat = JsonConvert.SerializeObject(cmnd);
             result = true;
             return jsonFormat;

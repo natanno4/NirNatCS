@@ -6,7 +6,7 @@ using ImageService.Commands;
 using ImageService.Infrastructure.Enums;
 using Communication.Event;
 using Newtonsoft.Json;
-
+using System;
 
 namespace ImageServiceGUI.Model
 {
@@ -14,7 +14,7 @@ namespace ImageServiceGUI.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IClient client;
-        private ObservableCollection<string> m_Logs;
+        private ObservableCollection<MessageRecievedEventArgs> m_Logs;
 
         public LogModel()
         {
@@ -58,9 +58,11 @@ namespace ImageServiceGUI.Model
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
                 foreach (string log in collection)
                 {
-                    m_Logs.Add(log);
+                    string[] logInfo = log.Split(';');
+                    int type = Int32.Parse(logInfo[1]);
+                    m_Logs.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[2]));
                 }
-            
+
             }
         }
 
