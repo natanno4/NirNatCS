@@ -1,1 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿
+<Window x:Class="ImageServiceGUI.View.SettingsView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:testXML"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Label Content="Settings" HorizontalAlignment="Center" FontWeight="ExtraBlack" FontSize="30" Foreground="Red" FontStyle="Oblique" Padding="8"></Label>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" MinWidth="150"/>
+            <ColumnDefinition Width="Auto" MinWidth="150"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="-15" FontStyle="Italic" FontSize="16" FontWeight="Bold" Padding="20" Text="Output Directory:"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="15" FontWeight="Bold" Padding="20" Text="{Binding OutPutDir}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="-15" FontStyle="Italic" FontSize="17" FontWeight="Bold" Padding="20" Text="Source Name:"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" FontWeight="Bold" Padding="20" Text="{Binding SourceName}"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="-15" FontStyle="Italic" FontSize="17" FontWeight="Bold" Padding="20" Text="Log Name:"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="15" FontWeight="Bold" Padding="20" Text="{Binding LogName}"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="-15" FontStyle="Italic" FontSize="17" FontWeight="Bold" Padding="20" Text="Thumbnail Size:"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" FontSize="15" FontWeight="Bold" Padding="20" Text="{Binding TumbNail}"></TextBlock>
+        </Grid>
+        <StackPanel>
+            <Button x:Name="Remove" Margin="5" Content="Remove" Command="{Binding RemoveHandler}">
+                
+            </Button>
+            <ListBox x:Name ="Handlers" Margin="5" ItemsSource="{Binding handlers}" SelectedItem="{Binding SelectedHandler}">
+            </ListBox> 
+        </StackPanel>
+    </StackPanel>
+</Window>
