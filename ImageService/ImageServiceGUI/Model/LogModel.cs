@@ -21,7 +21,7 @@ namespace ImageServiceGUI.Model
             this.client = GuiClient.instanceS;
             this.client.CommandRecived += this.OnCommandRecieved;
             string[] args = new string[5];
-            CommandRecievedEventArgs cmd = new CommandRecievedEventArgs((int)CommandEnum.LogCommand, args, null);
+            MsgCommand cmd = new MsgCommand((int)CommandEnum.LogCommand, args);
             client.Write(cmd);
 ;        }
 

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Communication;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Communication.Event;
+using ImageService.Commands;
 
 public interface ISettingsModel : INotifyPropertyChanged
 {
@@ -8,8 +11,9 @@ public interface ISettingsModel : INotifyPropertyChanged
     string sourceNmae { get; set; }
     string logName { get; set; }
     string thumbNail { get; set; }
+    string selectedHandler { get; set; }
     ObservableCollection<string> handlers { get; set; }
-
-    //void SaveSettings();
-
+    void sendCommand(MsgCommand msg);
 }
+
+

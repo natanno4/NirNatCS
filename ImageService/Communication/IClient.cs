@@ -15,7 +15,7 @@ namespace Communication
         event EventHandler<MsgCommand> CommandRecived;
         void Connect();
         void Disconnect();
-        void Write(CommandRecievedEventArgs e);
+        void Write(MsgCommand msg);
         void Read();
     }
 }

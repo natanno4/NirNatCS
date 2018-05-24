@@ -65,7 +65,7 @@ namespace Communication
         }
 
 
-        public void Write(CommandRecievedEventArgs e)
+        public void Write(MsgCommand msg)
         {
             new Task(() =>
             {
@@ -73,7 +73,7 @@ namespace Communication
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
                     wMutex.WaitOne();
-                    string send = JsonConvert.SerializeObject(e);
+                    string send = JsonConvert.SerializeObject(msg);
                     writer.Write(send);
                     wMutex.ReleaseMutex();
                 }

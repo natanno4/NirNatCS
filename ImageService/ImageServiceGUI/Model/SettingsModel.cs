@@ -6,6 +6,7 @@ using Communication.Event;
 using ImageService.Infrastructure.Enums;
 using ImageService.Commands;
 
+
 namespace Model {
     public class SettingsModel : ISettingsModel
     {
@@ -13,8 +14,9 @@ namespace Model {
         private string saveLogName;
         private string OutPutDir;
         private string saveSourceName;
-        private IClient client;
         private string tumbNailSize;
+        private IClient client;
+        private string m_SelectedHandler;
         private ObservableCollection<string> handlersModel;
         public void NotifyPropertyChanged(string propname)
         {
@@ -30,13 +32,13 @@ namespace Model {
             this.client = GuiClient.instanceS;
             string[] args = new string[5];
             client.CommandRecived += OnCommandRecived;
-            CommandRecievedEventArgs cmd = new CommandRecievedEventArgs((int)CommandEnum.GetConfigCommand, args, null);
-            client.Write(cmd);
+            MsgCommand cmd = new MsgCommand((int)CommandEnum.GetConfigCommand, args);
+            this.sendCommand(cmd);
         }
 
 
         public void OnCommandRecived(object sender, MsgCommand msg) {
-            if ((int)msg.commandID == (int) CommandEnum.GetConfigCommand)
+            if ((int)msg.commandID == (int)CommandEnum.GetConfigCommand)
             {
                 this.OutPutDir = msg.args[0];
                 this.saveSourceName = msg.args[1];
@@ -48,6 +50,12 @@ namespace Model {
                     handlersModel.Add(handler);
                 }
             }
+            else
+            {
+                if((int)msg.commandID == (int)CommandEnum.RemoveHandlerCommand) {
+                    this.removeHandler(msg);
+                }
+            }    
         }
 
         public string logName
@@ -118,6 +126,33 @@ namespace Model {
                 NotifyPropertyChanged("handlers");
             }
         }
-   
+
+        public string selectedHandler
+        {
+            get
+            {
+                return this.m_SelectedHandler;
+            }
+            set
+            {
+                this.m_SelectedHandler = value;
+                NotifyPropertyChanged("selectedHandler");
+            }
+
+        }
+       
+
+        public void sendCommand(MsgCommand msg)
+        {
+            this.client.Write(msg);
+        }
+
+
+        public void removeHandler(MsgCommand msg)
+        {
+            string handler = msg.args[0];
+            this.handlers.Remove(handler);
+        }
+
     }
 }
