@@ -10,7 +10,7 @@ namespace ImageServiceGUI.Model
 {
     interface ILogModel : INotifyPropertyChanged
     {
-        ObservableCollection<MessageRecievedEventArgs> Logs {get; set;}
+        ObservableCollection<string> Logs {get; set;}
 
     }
 }

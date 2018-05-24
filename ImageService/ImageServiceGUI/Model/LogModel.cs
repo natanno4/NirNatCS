@@ -5,6 +5,7 @@ using ImageService.Logging.Modal;
 using ImageService.Commands;
 using ImageService.Infrastructure.Enums;
 using Communication.Event;
+using Newtonsoft.Json;
 
 
 namespace ImageServiceGUI.Model
@@ -12,8 +13,8 @@ namespace ImageServiceGUI.Model
     class LogModel : ILogModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private TcpClient client;
-        private ObservableCollection<MessageRecievedEventArgs> m_Logs;
+        private IClient client;
+        private ObservableCollection<string> m_Logs;
 
         public LogModel()
         {
@@ -25,7 +26,7 @@ namespace ImageServiceGUI.Model
 ;        }
 
 
-        public ObservableCollection<MessageRecievedEventArgs> Logs
+        public ObservableCollection<string> Logs
         {
             get
             {
@@ -53,7 +54,13 @@ namespace ImageServiceGUI.Model
         {
             if ((int)m.commandID == (int)(CommandEnum.LogCommand))
             {
-
+                ObservableCollection<string> collection = JsonConvert.
+                    DeserializeObject<ObservableCollection<string>>(m.args[0]);
+                foreach (string log in collection)
+                {
+                    m_Logs.Add(log);
+                }
+            
             }
         }
 

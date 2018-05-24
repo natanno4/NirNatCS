@@ -6,31 +6,30 @@ namespace ImageService.Commands
 {
     public class MsgCommand
     {
-        public CommandEnum commandID { get; set; }
+        public int commandID { get; set; }
         public string[] args { get; set; }
        
-        public MsgCommand(CommandEnum id, string[] arg)
+        public MsgCommand(int id, string[] arg)
         {
             this.commandID = id;
             this.args = arg;
         }
+
+       
         public static MsgCommand FromJSON(string str)
         {
-            //צריך לשנות
-            MsgCommand commandMess = new MsgCommand();
-            JObject obj = JObject.Parse(str);
-            commandMess.commandID = (CommandEnum)obj["commandID"];
-            commandMess.command = (ICommand)obj["command"];
-            return commandMess;
+            JObject jObject = JObject.Parse(str);
+            int command = (int)jObject["CommandId"];
+            JArray arr = (JArray)jObject["Args"];
+            string[] commandArgs = arr.ToObject<string[]>();
+            return new MsgCommand(command, commandArgs);
         }
         public string ToJSON()
         {
-            //צריך לשנות
-            MsgCommand cmnd = new MsgCommand();
-            JObject obj = new JObject();
-            obj["commandID"] = cmnd.commandID;
-            obj["command"] = cmnd.command;
-            return obj.ToString();
+            JObject jObject = new JObject();
+            jObject["CommandId"] = commandID;
+            jObject["Args"] = new JArray(args);
+            return jObject.ToString();
         }
     } 
 }

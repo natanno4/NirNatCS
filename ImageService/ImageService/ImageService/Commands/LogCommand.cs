@@ -24,7 +24,7 @@ namespace ImageService.Commands
 
             string jsonFormat = JsonConvert.SerializeObject(obs);
             string[] arg = { jsonFormat };
-            MsgCommand msg = new MsgCommand(CommandEnum.LogCommand, arg);
+            MsgCommand msg = new MsgCommand((int)CommandEnum.LogCommand, arg);
             string newCommand = JsonConvert.SerializeObject(msg);
             result = true;
             return newCommand;

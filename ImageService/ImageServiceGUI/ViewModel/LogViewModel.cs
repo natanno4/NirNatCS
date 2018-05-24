@@ -1,6 +1,8 @@
-﻿using ImageServiceGUI.Model;
+﻿using ImageService.Logging.Modal;
+using ImageServiceGUI.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -23,7 +25,7 @@ namespace ImageServiceGUI.ViewModel
             };
         }
         
-        public ObservableCollection<MessageRecievedEventArgs> Logs
+        public ObservableCollection<string> Logs
         {
             get
             {

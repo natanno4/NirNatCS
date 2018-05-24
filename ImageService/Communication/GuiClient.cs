@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 namespace Communication
 {
-    public class GuiClient : TcpClient
+    public class GuiClient : IClient
     {
         public event EventHandler<MsgCommand> CommandRecived;
         private System.Net.Sockets.TcpClient TClient;
