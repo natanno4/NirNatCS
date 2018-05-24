@@ -1,6 +1,8 @@
-﻿using ImageService.Logging.Modal;
+﻿using ImageService.Commands;
+using ImageService.Logging.Modal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace ImageService.Logging
     {
         event EventHandler<MessageRecievedEventArgs> MessageRecieved;
         void Log(string message, MessageTypeEnum type);           // Logging the Message
-        ObservableCollection<string> list { get; set; }
+        event EventHandler<MsgCommand> LogAdded;
+        ObservableCollection<string> listOfLogs { get; set; }
     }
 }

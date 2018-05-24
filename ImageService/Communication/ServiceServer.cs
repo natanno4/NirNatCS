@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Net;
 using ImageService.Controller;
 using ImageService.Logging;
+using Communication.Event;
+using ImageService.Commands;
 
 namespace Communication
 {
@@ -27,6 +29,7 @@ namespace Communication
         }
         public void Start()
         {
+            this.logging.LogAdded += this.onNotifyClients;
             IPEndPoint pnt = new IPEndPoint(IPAddress.Parse("127.0.0.0"), port);
             listener = new TcpListener(pnt);
             listener.Start();
@@ -54,6 +57,19 @@ namespace Communication
         public void Stop()
         {
             listener.Stop();
+        }
+
+
+        public void onNotifyClients(object sender, MsgCommand msg)
+        {
+            new Task(() =>
+            {
+                foreach (TcpClient C in clients)
+                {
+                    this.handler.notifyClient(C, msg);
+                }
+            }).Start();
+
         }
 
     }

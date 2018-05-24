@@ -60,10 +60,23 @@ namespace ImageServiceGUI.Model
                 {
                     string[] logInfo = log.Split(';');
                     int type = Int32.Parse(logInfo[1]);
-                    m_Logs.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[2]));
+                    this.m_Logs.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[2]));
                 }
-
+            } else
+            {
+                if((int)m.commandID == (int)CommandEnum.AddLogCommand)
+                {
+                    this.addNewLog(m);
+                }
             }
+
+       
+        }
+
+        private void addNewLog(MsgCommand msg)
+        {
+            MessageRecievedEventArgs m = MessageRecievedEventArgs.FromJSON(msg.args[0]);
+            this.m_Logs.Add(m);
         }
 
 

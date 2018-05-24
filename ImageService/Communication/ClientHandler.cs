@@ -65,5 +65,17 @@ namespace Communication
                 }
             }).Start();
         }
+
+
+        public void notifyClient(TcpClient client, MsgCommand msg)
+        {
+            NetworkStream stream = client.GetStream();
+            BinaryWriter writer = new BinaryWriter(stream);
+            string writeCommand = msg.ToJSON();
+            wMutex.WaitOne();
+            writer.Write(writeCommand);
+            wMutex.ReleaseMutex();
+
+        }
     }
 }

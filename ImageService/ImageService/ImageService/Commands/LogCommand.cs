@@ -20,7 +20,7 @@ namespace ImageService.Commands
         }
         public string Execute(string[] args, out bool result)
         {
-            ObservableCollection<string> obs = logService.list;
+            ObservableCollection<string> obs = logService.listOfLogs;
 
             string jsonFormat = JsonConvert.SerializeObject(obs);
             string[] arg = { jsonFormat };
