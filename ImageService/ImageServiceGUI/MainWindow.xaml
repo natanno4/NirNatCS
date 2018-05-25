@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
          xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:ImageServiceGUI.View"
+        xmlns:view="clr-namespace:ImageServiceGUI.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <i:Interaction.Triggers>
@@ -13,7 +13,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Window.Resources>
-        <views:ConvertColorMainWindow x:Key="ConvertColorMainWindow"/>
+        <view:ConvertColorMainWindow x:Key="ConvertColorMainWindow"/>
     </Window.Resources>
     <Grid Background="{Binding Path=IsConnected, Converter={StaticResource ConvertColorMainWindow}}">
         <Grid.RowDefinitions>
@@ -21,14 +21,14 @@
         </Grid.RowDefinitions>
         <TabControl Background="{Binding Path=IsConnected, Converter={StaticResource ConvertColorMainWindow}}">
             <TabItem Header="Settings">
-                <views:SettingsView Grid.Row="1"
+                <view:SettingsView Grid.Row="1"
                                      DataContext="{Binding SettingViewModel}" Height="220" VerticalAlignment="Top">
-                </views:SettingsView>
+                </view:SettingsView>
             </TabItem>
             <TabItem Header="Log">
-                <views:LogView Grid.Row="1"
+                <view:LogView Grid.Row="1"
                                      DataContext="{Binding LogViewModel}" Height="220" VerticalAlignment="Top">
-                </views:LogView>
+                </view:LogView>
             </TabItem>
         </TabControl>
     </Grid>

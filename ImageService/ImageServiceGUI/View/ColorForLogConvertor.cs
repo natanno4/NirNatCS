@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace ImageServiceGUI.View
 {
-    public class ColorForLogConvertor : IValueConverter
+    class ColorForLogConvertor : IValueConverter
     {
         public object Convert(Object value, Type target, object param, CultureInfo info)
         {

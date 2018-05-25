@@ -4,7 +4,7 @@ using System.ComponentModel;
 using Communication;
 using Communication.Event;
 using ImageService.Infrastructure.Enums;
-using ImageService.Commands;
+using Infrastructure;
 
 
 namespace Model {

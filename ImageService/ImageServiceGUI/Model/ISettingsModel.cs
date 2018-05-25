@@ -3,7 +3,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Communication.Event;
-using ImageService.Commands;
+using Infrastructure;
 
 public interface ISettingsModel : INotifyPropertyChanged
 {

@@ -6,7 +6,9 @@ using Prism.Commands;
 using Communication.Event;
 using ImageService.Infrastructure.Enums;
 using System.Windows.Input;
-using ImageService.Commands;
+using Infrastructure;
+
+
 
 namespace ViewModel
 {

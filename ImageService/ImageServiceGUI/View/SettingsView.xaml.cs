@@ -1,5 +1,4 @@
-﻿using ImageServiceGUI.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
-namespace ImageServiceGUI
+namespace ImageServiceGUI.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingsView : UserControl
     {
+        private SettingsVM vModel;
 
-        private MainWindowViewModel mvm;
-        public MainWindow()
+        public SettingsView()
         {
             InitializeComponent();
-            this.mvm = new MainWindowViewModel();
-            this.DataContext = mvm;
+            this.vModel = new SettingsVM();
+            this.DataContext = vModel;
         }
     }
 }

@@ -14,20 +14,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ImageServiceGUI
+namespace ImageServiceGUI.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LogView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogView : UserControl
     {
+        private LogViewModel vModel;
 
-        private MainWindowViewModel mvm;
-        public MainWindow()
+        public LogView()
         {
             InitializeComponent();
-            this.mvm = new MainWindowViewModel();
-            this.DataContext = mvm;
+            this.vModel = new LogViewModel();
+            this.DataContext = vModel;
         }
     }
 }

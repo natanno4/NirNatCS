@@ -2,9 +2,8 @@
 using System.ComponentModel;
 using Communication;
 using ImageService.Logging.Modal;
-using ImageService.Commands;
+using Infrastructure;
 using ImageService.Infrastructure.Enums;
-using Communication.Event;
 using Newtonsoft.Json;
 using System;
 
