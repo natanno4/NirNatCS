@@ -1,10 +1,12 @@
-﻿using ImageService.Commands;
+﻿
 using Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Prism.Commands;
 using Communication.Event;
 using ImageService.Infrastructure.Enums;
+using System.Windows.Input;
+using ImageService.Commands;
 
 namespace ViewModel
 {
@@ -85,7 +87,7 @@ namespace ViewModel
             set
             {
                 this.model.selectedHandler = value;
-                var command = remove as DelegateCommand<object>;
+                var command = this.remove as DelegateCommand<object>;
                 command.RaiseCanExecuteChanged();
                 NotifyPropertyChanged("selectedHandler");
             }
@@ -106,8 +108,8 @@ namespace ViewModel
         private void onRemove(object obj)
         {
             string[] arr = { this.selectedHandler };
-            this.model.sendCommand(new CommandRecievedEventArgs((int)CommandEnum.RemoveHandlerCommand, arr,
-                null));
+            this.model.sendCommand(new MsgCommand((int)CommandEnum.RemoveHandlerCommand, arr
+                ));
         }
 
 

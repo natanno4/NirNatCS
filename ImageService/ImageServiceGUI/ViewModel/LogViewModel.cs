@@ -14,12 +14,12 @@ namespace ImageServiceGUI.ViewModel
 {
     class LogViewModel : VModel
     {
-        private ILogModel LogVM;
+        private ILogModel LogM;
 
         public LogViewModel()
         {
-            LogVM = new LogModel();
-            this.LogVM.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            LogM = new LogModel();
+            this.LogM.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged(e.PropertyName);
             };
@@ -29,7 +29,7 @@ namespace ImageServiceGUI.ViewModel
         {
             get
             {
-                return this.LogVM.Logs;
+                return this.LogM.Logs;
             }
         }
     }

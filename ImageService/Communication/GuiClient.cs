@@ -96,5 +96,10 @@ namespace Communication
             }
         }
 
+        public bool IsConnected()
+        {
+            return this.TClient.Connected;
+        }
+
     }
 }

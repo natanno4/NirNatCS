@@ -17,5 +17,6 @@ namespace Communication
         void Disconnect();
         void Write(MsgCommand msg);
         void Read();
+        bool IsConnected();
     }
 }
