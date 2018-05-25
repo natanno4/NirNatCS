@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using ImageService.Logging.Modal;
 using Communication.Event;
-using ImageService.Commands;
+using Infrastructure;
 
 namespace Communication
 {

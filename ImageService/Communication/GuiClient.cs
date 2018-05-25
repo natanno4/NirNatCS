@@ -10,7 +10,7 @@ using System.Configuration;
 using System.Threading;
 using ImageService.Logging.Modal;
 using Communication.Event;
-using ImageService.Commands;
+using Infrastructure;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
