@@ -19,7 +19,7 @@ namespace Communication.Event
             CommandID = id;
             Args = args;
             RequestDirPath = path;
-            msg = new MsgCommand();
+            
         }
     }
 }

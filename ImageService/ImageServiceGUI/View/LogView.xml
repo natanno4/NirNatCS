@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:convert="clr-namespace:ImageServiceGUI.view"
         xmlns:local="clr-namespace:ImageServiceGUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
   <UserControl.Resources>
-    <convertors:ColorForLogConvertor x:Key="ColorForLogConvertor"/>
+    <convert:ColorForLogConvertor x:Key="ColorForLogConvertor"/>
   </UserControl.Resources>
   <StackPanel>
     <Label HorizontalAlignment="Center" Content="Logs" FontWeight="Bold" FontSize="25"  Foreground="Blue" FontStyle="italic" Padding="10"/>

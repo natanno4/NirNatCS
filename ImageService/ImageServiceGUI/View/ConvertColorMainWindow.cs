@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace ImageServiceGUI.View
 {
-    public class ColorForLogConvertor : IValueConverter
+    public class ConvertColorMainWindow :IValueConverter 
     {
         public object Convert(Object value, Type target, object param, CultureInfo info)
         {
@@ -17,21 +17,20 @@ namespace ImageServiceGUI.View
             {
                 throw new Exception("Error - should be a brush");
             }
-            MessageTypeEnum msg = (MessageTypeEnum)value;
-            if (msg == MessageTypeEnum.WARNING)
+            bool isConnect = (bool)value;
+            if (isConnect)
             {
-                return "Yellow";
-            } else if (msg == MessageTypeEnum.INFO)
+                return "Transparent";
+            }
+            else
             {
-                return "Green";
-            } else
-            {
-                return "Red";
+                return "Gray";
             }
         }
-        public object ConvertBack(object value, Type target, object param, CultureInfo info)
+           public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
     }
+    
 }
