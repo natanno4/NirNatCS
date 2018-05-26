@@ -18,5 +18,7 @@ namespace Communication
         void Write(MsgCommand msg);
         void Read();
         bool IsConnected();
+        void HandleRecived();
+        void SendAndRecived(MsgCommand msg);
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServiceGUI", "ImageSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{4E2003E4-1B14-429E-A575-3CBE5679983E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F1A9F9EE-BF0D-4094-BFF1-5A52150A3BF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4E2003E4-1B14-429E-A575-3CBE5679983E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E2003E4-1B14-429E-A575-3CBE5679983E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E2003E4-1B14-429E-A575-3CBE5679983E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A9F9EE-BF0D-4094-BFF1-5A52150A3BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A9F9EE-BF0D-4094-BFF1-5A52150A3BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A9F9EE-BF0D-4094-BFF1-5A52150A3BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A9F9EE-BF0D-4094-BFF1-5A52150A3BF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

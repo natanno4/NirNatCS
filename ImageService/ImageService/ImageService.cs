@@ -14,6 +14,7 @@ using ImageService.Logging;
 using ImageService.Logging.Modal;
 using ImageService.Modal;
 using ImageService.Controller;
+using ImageService.ServiceCommunication;
 
 
 
@@ -24,6 +25,7 @@ namespace ImageService
         private int eventId = 1;
         private ImageServer s_server;
         private LoggingService s_logger;
+        private IServiceServer serviceServer;
 
         public enum ServiceState
         {
@@ -88,11 +90,13 @@ namespace ImageService
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
             timer.Start();
 
-            IImageServiceModal modal = new ImageServiceModal();
-            IImageController controler = new ImageController(modal);
             this.s_logger = new LoggingService();
+            IImageServiceModal modal = new ImageServiceModal();
+            IImageController controler = new ImageController(modal, this.s_logger);
             this.s_logger.MessageRecieved += this.OnMessage;
             this.s_server = new ImageServer(modal, this.s_logger);
+            this.serviceServer = new ServiceServer(9020, controler, this.s_logger);
+            this.serviceServer.Start();
 
             // Update the service state to Running.  
             serviceStatus.dwCurrentState = ServiceState.SERVICE_RUNNING;

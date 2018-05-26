@@ -7,10 +7,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure;
 
 namespace ImageService.Commands
 {
-    class LogCommand
+    public class LogCommand : ICommand
     {
         private ILoggingService logService;
 

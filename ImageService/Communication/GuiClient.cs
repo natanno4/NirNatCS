@@ -21,8 +21,8 @@ namespace Communication
         public event EventHandler<MsgCommand> CommandRecived;
         private System.Net.Sockets.TcpClient TClient;
         private int portNumber;
-        private static Mutex rMutex;
-        private static Mutex wMutex;
+        private static Mutex rMutex = new Mutex();
+        private static Mutex wMutex = new Mutex();
         private IPEndPoint ipEndPoint;
         private static GuiClient instance;
         
@@ -41,7 +41,9 @@ namespace Communication
 
         private GuiClient()
         {
-            this.ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.0"), 7000);
+            
+            this.portNumber = 9020;
+            this.ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9020);
             this.Connect();
 
         }
@@ -67,46 +69,87 @@ namespace Communication
 
         public void Write(MsgCommand msg)
         {
-            new Task(() =>
+            Task t = new Task(() =>
             {
-                if (this.IsConnected())
+                try
                 {
-                    NetworkStream stream = TClient.GetStream();
-                    BinaryWriter writer = new BinaryWriter(stream);
+                    if (this.IsConnected())
                     {
+                        NetworkStream stream = TClient.GetStream();
+                        BinaryWriter writer = new BinaryWriter(stream);
                         wMutex.WaitOne();
                         string send = JsonConvert.SerializeObject(msg);
                         writer.Write(send);
                         wMutex.ReleaseMutex();
+
                     }
                 }
-            }).Start();
+                catch (Exception writeExp)
+                {
+                    Console.WriteLine(writeExp.ToString());
+                }
+            });
+            t.Start();
+            t.Wait();
         }
         public void Read()
         {
-            new Task(() =>
-            {
-                string buffer;
-                NetworkStream stream = TClient.GetStream();
-                BinaryReader reader = new BinaryReader(stream);
+            Task t = new Task(() =>
+             {
+                 try
+                 {
 
-                if (this.IsConnected())
-                {
-                    rMutex.WaitOne();
-                    buffer = reader.ReadString();
-                    rMutex.ReleaseMutex();
-                    if (buffer != null)
-                    {
-                        MsgCommand msg = MsgCommand.FromJSON(buffer);
-                        CommandRecived?.Invoke(this, msg);
-                    }
-                }
-            }).Start();
+
+                     if (this.IsConnected())
+                     {
+                         string buffer;
+                         NetworkStream stream = TClient.GetStream();
+                         BinaryReader reader = new BinaryReader(stream);
+                         rMutex.WaitOne();
+                         buffer = reader.ReadString();
+                         rMutex.ReleaseMutex();
+                         if (buffer != null)
+                         {
+                             MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(buffer);
+                             CommandRecived?.Invoke(this, msg);
+                         }
+                     }
+                 }
+                 catch (Exception readExp)
+                 {
+                     Console.WriteLine(readExp.ToString());
+
+                 }
+
+             });
+            t.Start();
+            t.Wait();
+            
         }
 
         public bool IsConnected()
         {
             return this.TClient.Connected;
+        }
+
+        public void SendAndRecived(MsgCommand msg)
+        {
+            
+            this.Write(msg);
+            this.Read();
+        }
+
+        public void HandleRecived()
+        {
+            new Task(() =>
+            {
+                while (this.IsConnected())
+                {
+                    this.Read();
+                }
+
+
+            }).Start();
         }
 
     }

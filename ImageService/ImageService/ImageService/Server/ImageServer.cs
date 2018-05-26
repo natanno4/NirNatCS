@@ -35,7 +35,7 @@ namespace ImageService.Server
         /// <param name="logging">LoggingModal</param>
         public ImageServer(IImageServiceModal modal, ILoggingService logging)
         {
-            this.m_controller = new ImageController(modal);
+            this.m_controller = new ImageController(modal, logging);
             this.m_logging = logging;
             string[] pathes = (ConfigurationManager.AppSettings["handler"]).Split(';');
             foreach (string path in pathes)

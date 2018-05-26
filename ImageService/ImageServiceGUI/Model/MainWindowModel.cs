@@ -18,6 +18,7 @@ namespace ImageServiceGUI.Model
         {
             this.client = GuiClient.instanceS;
             this.IsConnected = client.IsConnected();
+            this.client.HandleRecived();
             
         }
 

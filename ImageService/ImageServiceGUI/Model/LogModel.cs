@@ -18,11 +18,12 @@ namespace ImageServiceGUI.Model
         public LogModel()
         {
             this.client = GuiClient.instanceS;
+            this.m_Logs = new ObservableCollection<MessageRecievedEventArgs>();
             this.client.CommandRecived += this.OnCommandRecieved;
             string[] args = new string[5];
             MsgCommand cmd = new MsgCommand((int)CommandEnum.LogCommand, args);
-            client.Write(cmd);
-            this.m_Logs = new ObservableCollection<MessageRecievedEventArgs>();
+            client.SendAndRecived(cmd);
+            
         }
 
 
@@ -54,16 +55,15 @@ namespace ImageServiceGUI.Model
         {
             if ((int)m.commandID == (int)(CommandEnum.LogCommand))
             {
-                ObservableCollection<MessageRecievedEventArgs> temp = new ObservableCollection<MessageRecievedEventArgs>(); 
                 ObservableCollection<string> collection = JsonConvert.
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
                 foreach (string log in collection)
                 {
                     string[] logInfo = log.Split(';');
-                    int type = Int32.Parse(logInfo[1]);
-                    temp.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[0]));
+                    this.m_Logs.Add(new MessageRecievedEventArgs(this.ConvertType(logInfo[1]), logInfo[0]));
                 }
-                this.Logs = temp;
+                
+                
             } else
             {
                 if((int)m.commandID == (int)CommandEnum.AddLogCommand)
@@ -81,6 +81,21 @@ namespace ImageServiceGUI.Model
             this.m_Logs.Add(m);
         }
 
+        private MessageTypeEnum ConvertType(string type)
+        {
+            if (type.Equals("INFO")) {
+                return MessageTypeEnum.INFO;
+            }
+            if (type.Equals("FAIL")) {
+                return MessageTypeEnum.FAIL;
+            }
+            else 
+            {
+                return MessageTypeEnum.WARNING;
+            }
+            
+
+        }
 
     }
 }

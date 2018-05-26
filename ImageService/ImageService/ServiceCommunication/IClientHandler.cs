@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-using ImageService.Commands;
+using Infrastructure;
 
-namespace Communication
+namespace ImageService.ServiceCommunication
 {
     public interface IClientHandler
     {

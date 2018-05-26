@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageService.Commands;
 using ImageService.Infrastructure.Enums;
+using Infrastructure;
 using Newtonsoft.Json;
 
 namespace ImageService.Logging

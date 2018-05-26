@@ -33,8 +33,12 @@ namespace Model {
             string[] args = new string[5];
             client.CommandRecived += OnCommandRecived;
             MsgCommand cmd = new MsgCommand((int)CommandEnum.GetConfigCommand, args);
-            this.sendCommand(cmd);
-            this.defaultConfig();
+            this.client.SendAndRecived(cmd);
+            if(!this.client.IsConnected())
+            {
+                this.defaultConfig();
+            }
+            
         }
 
 
@@ -46,10 +50,12 @@ namespace Model {
                 LogName = msg.args[2];
                 TumbNail = msg.args[3];
                 string[] h = msg.args[4].Split(';');
+                ObservableCollection<string> temp = new ObservableCollection<string>(h);
                 foreach (string handler in h)
                 {
-                    handlersModel.Add(handler);
+                    temp.Add(handler);
                 }
+                handlers = temp;
             }
             else
             {

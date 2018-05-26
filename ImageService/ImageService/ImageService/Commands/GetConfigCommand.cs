@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageService.Infrastructure.Enums;
+using Infrastructure;
 
 namespace ImageService.Commands
 {
-    class GetConfigCommand
+    public class GetConfigCommand : ICommand
     {
         public string Execute(string[] args, out bool result)
         {
@@ -18,6 +19,7 @@ namespace ImageService.Commands
             strConfig[1] = ConfigurationManager.AppSettings.Get("SourceName");
             strConfig[2] = ConfigurationManager.AppSettings.Get("LogName");
             strConfig[3] = ConfigurationManager.AppSettings.Get("ThumbnailSize");
+            strConfig[4] = ConfigurationManager.AppSettings.Get("Handler");
 
             MsgCommand cmnd = new MsgCommand((int)CommandEnum.GetConfigCommand, strConfig);
             string jsonFormat = JsonConvert.SerializeObject(cmnd);

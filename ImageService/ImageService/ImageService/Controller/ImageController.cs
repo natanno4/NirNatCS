@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImageService.Logging;
 
 namespace ImageService.Controller
 {
@@ -19,13 +20,15 @@ namespace ImageService.Controller
         /// init a dictionary with key of command of newFile.
         /// </summary>
         /// <param name="modal">modal</param>
-        public ImageController(IImageServiceModal modal)
+        public ImageController(IImageServiceModal modal, ILoggingService logging)
         {
             m_modal = modal;                    // Storing the Modal Of The System
             commands = new Dictionary<int, ICommand>()
             {
 
-                {(int) CommandEnum.NewFileCommand, new NewFileCommand(modal) } 
+                {(int) CommandEnum.NewFileCommand, new NewFileCommand(modal) },
+                {(int) CommandEnum.GetConfigCommand, new GetConfigCommand() },
+                {(int) CommandEnum.LogCommand, new LogCommand(logging)}  
 				// For Now will contain NEW_FILE_COMMAND
             };
         }

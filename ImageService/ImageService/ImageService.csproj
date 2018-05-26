@@ -67,7 +67,6 @@
     <Compile Include="ImageService\Commands\GetConfigCommand.cs" />
     <Compile Include="ImageService\Commands\ICommand.cs" />
     <Compile Include="ImageService\Commands\LogCommand.cs" />
-    <Compile Include="ImageService\Commands\MsgCommand.cs" />
     <Compile Include="ImageService\Commands\NewFileCommand.cs" />
     <Compile Include="ImageService\Controller\Handlers\DirectoyHandler.cs" />
     <Compile Include="ImageService\Controller\Handlers\IDirectoryHandler.cs" />
@@ -86,6 +85,10 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCommunication\ClientHandler.cs" />
+    <Compile Include="ServiceCommunication\IClientHandler.cs" />
+    <Compile Include="ServiceCommunication\IServiceServer.cs" />
+    <Compile Include="ServiceCommunication\ServiceServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -11,18 +11,19 @@ using ImageService.Infrastructure.Enums;
 using ImageService.Controller;
 using System.Threading;
 using ImageService.Logging;
+using Infrastructure;
 
-namespace Communication
+namespace ImageService.ServiceCommunication
 {
     public class ClientHandler : IClientHandler
     {
         private List<TcpClient> clientList;
-        private ImageController controller;
+        private IImageController controller;
         public static Mutex rMutex;
         public static Mutex wMutex;
         private ILoggingService logging;
 
-        public ClientHandler(List<TcpClient> c, ImageController ic, ILoggingService logs)
+        public ClientHandler(List<TcpClient> c, IImageController ic, ILoggingService logs)
         {
             this.clientList = c;
             this.controller = ic;

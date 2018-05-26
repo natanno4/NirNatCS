@@ -7,10 +7,9 @@ using System.Net.Sockets;
 using System.Net;
 using ImageService.Controller;
 using ImageService.Logging;
-using Communication.Event;
-using ImageService.Commands;
+using Infrastructure;
 
-namespace Communication
+namespace ImageService.ServiceCommunication
 {
     public class ServiceServer : IServiceServer
     {
@@ -20,7 +19,7 @@ namespace Communication
         private List<TcpClient> clients;
         private ILoggingService logging;
 
-        public ServiceServer(int prt, ImageController controller, ILoggingService logService)
+        public ServiceServer(int prt, IImageController controller, ILoggingService logService)
         {
             this.logging = logService;
             this.port = prt;
@@ -29,30 +28,38 @@ namespace Communication
         }
         public void Start()
         {
-            this.logging.LogAdded += this.onNotifyClients;
-            IPEndPoint pnt = new IPEndPoint(IPAddress.Parse("127.0.0.0"), port);
-            listener = new TcpListener(pnt);
-            listener.Start();
-            // print of connections
-            Task tsk = new Task(() =>
+            try
             {
-                while (true)
+                this.logging.LogAdded += this.onNotifyClients;
+                IPEndPoint pnt = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+                listener = new TcpListener(pnt);
+                listener.Start();
+                // print of connections
+                Task tsk = new Task(() =>
                 {
-                    try
+                    while (true)
                     {
-                        TcpClient client = listener.AcceptTcpClient();
+                        try
+                        {
+                            TcpClient client = listener.AcceptTcpClient();
+                            
                         // success in recieve
                         clients.Add(client);
-                        handler.HandleClient(client);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                            handler.HandleClient(client);
+                        }
+                        catch (Exception e)
+                        {
+                           
+                            Console.WriteLine(e.ToString());
+                        }
 
-                }
-            });
-            tsk.Start();
+                    } 
+                });
+                tsk.Start();
+            } catch(Exception t)
+            {
+               
+            }
         }
         public void Stop()
         {

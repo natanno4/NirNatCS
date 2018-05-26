@@ -189,3 +189,168 @@ Affected parameters are:
    logtoconsole = 
    logfile = C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex1final\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
    assemblypath = C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex1final\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Uninstalling assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Removing EventLog source ImageService.
+An exception occurred during the uninstallation of the System.Diagnostics.EventLogInstaller installer.
+System.Security.SecurityException: Requested registry access is not allowed.
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Creating EventLog source ImageService in log Application...
+Rolling back assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Restoring event log to previous state for source ImageService.
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Creating EventLog source ImageService in log Application...
+Rolling back assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Restoring event log to previous state for source ImageService.
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe

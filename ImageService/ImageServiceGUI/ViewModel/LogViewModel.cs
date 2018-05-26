@@ -27,7 +27,7 @@ namespace ImageServiceGUI.ViewModel
                 NotifyPropertyChanged(e.PropertyName);
             };
             
-            this.LogM = new LogModel();
+            
            
         }
         

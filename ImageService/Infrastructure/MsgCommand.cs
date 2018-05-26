@@ -19,16 +19,16 @@ namespace Infrastructure
         public static MsgCommand FromJSON(string str)
         {
             JObject jObject = JObject.Parse(str);
-            int command = (int)jObject["CommandId"];
-            JArray arr = (JArray)jObject["Args"];
+            int command = (int)jObject["commandId"];
+            JArray arr = (JArray)jObject["args"];
             string[] commandArgs = arr.ToObject<string[]>();
             return new MsgCommand(command, commandArgs);
         }
         public string ToJSON()
         {
             JObject jObject = new JObject();
-            jObject["CommandId"] = commandID;
-            jObject["Args"] = new JArray(args);
+            jObject["commandId"] = commandID;
+            jObject["args"] = new JArray(args);
             return jObject.ToString();
         }
     } 
