@@ -84,7 +84,7 @@
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\SetingsVM.cs" />
+    <Compile Include="ViewModel\SettingsVM.cs" />
     <Compile Include="ViewModel\VModel.cs" />
     <Compile Include="View\ColorForLogConvertor.cs" />
     <Compile Include="View\ConvertColorMainWindow.cs" />

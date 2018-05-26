@@ -11,10 +11,10 @@ namespace Model {
     public class SettingsModel : ISettingsModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string saveLogName;
-        private string OutPutDir;
-        private string saveSourceName;
-        private string tumbNailSize;
+        private string m_LogName;
+        private string m_OutPutDir;
+        private string m_SourceName;
+        private string m_tumbNailSize;
         private IClient client;
         private string m_SelectedHandler;
         private ObservableCollection<string> handlersModel;
@@ -41,10 +41,10 @@ namespace Model {
         public void OnCommandRecived(object sender, MsgCommand msg) {
             if ((int)msg.commandID == (int)CommandEnum.GetConfigCommand)
             {
-                this.OutPutDir = msg.args[0];
-                this.saveSourceName = msg.args[1];
-                this.saveLogName = msg.args[2];
-                this.tumbNailSize = msg.args[3];
+                OutPutDir = msg.args[0];
+                SourceName = msg.args[1];
+                LogName = msg.args[2];
+                TumbNail = msg.args[3];
                 string[] h = msg.args[4].Split(';');
                 foreach (string handler in h)
                 {
@@ -59,59 +59,59 @@ namespace Model {
             }    
         }
 
-        public string logName
+        public string LogName
         {
             get
             {
-                return this.saveLogName;
+                return this.m_LogName;
             }
 
             set
             {
-                saveLogName = value;
-                NotifyPropertyChanged("logName");
+                this.m_LogName = value;
+                NotifyPropertyChanged("LogName");
             }
         }
 
-        public string outPut
+        public string OutPutDir
         {
             get
             {
-                return this.OutPutDir;
+                return this.m_OutPutDir;
             }
 
             set
             {
-                OutPutDir = value;
-                NotifyPropertyChanged("outPut");
+                this.m_OutPutDir = value;
+                NotifyPropertyChanged("OutPutDir");
             }
         }
 
-        public string sourceNmae
+        public string SourceName
         {
             get
             {
-                return this.saveSourceName;
+                return this.m_SourceName;
             }
 
             set
             {
-                this.saveSourceName = value;
-                NotifyPropertyChanged("sourceNmae");
+                this.m_SourceName = value;
+                NotifyPropertyChanged("SourceName");
             }
         }
 
-        public string thumbNail
+        public string TumbNail
         {
             get
             {
-                return this.tumbNailSize;
+                return this.m_tumbNailSize;
             }
 
             set
             {
-                this.tumbNailSize = value;
-                NotifyPropertyChanged("thumbNail");
+                this.m_tumbNailSize = value;
+                NotifyPropertyChanged("TumbNail");
             }
         }
 
@@ -128,7 +128,7 @@ namespace Model {
             }
         }
 
-        public string selectedHandler
+        public string SelectedHandler
         {
             get
             {
@@ -137,7 +137,7 @@ namespace Model {
             set
             {
                 this.m_SelectedHandler = value;
-                NotifyPropertyChanged("selectedHandler");
+                NotifyPropertyChanged("SelectedHandler");
             }
 
         }
@@ -159,9 +159,9 @@ namespace Model {
         private void defaultConfig()
         {
             this.OutPutDir = "NO connection";
-            this.saveLogName = "NO connection";
-            this.saveSourceName = "NO connection";
-            this.tumbNailSize = "NO connection";
+            this.SourceName = "NO connection";
+            this.LogName = "NO connection";
+            this.TumbNail = "NO connection";
            
     }
 

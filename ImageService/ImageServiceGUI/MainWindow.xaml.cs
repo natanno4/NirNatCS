@@ -25,16 +25,10 @@ namespace ImageServiceGUI
         private MainWindowViewModel mvm;
         public MainWindow()
         {
-            try
-            {
+            
                 InitializeComponent();
                 this.mvm = new MainWindowViewModel();
                 this.DataContext = mvm;
-            }
-            catch (Exception e)
-            {
-                int t = 5;
-            }
 
         }
     }

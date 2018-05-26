@@ -25,16 +25,17 @@ namespace ViewModel
                 NotifyPropertyChanged(p.PropertyName);
             };
             this.Remove = new DelegateCommand<object>(this.onRemove, this.canBeRemoved);
+            
         }
 
         public string OutPutDir
         {
             get {
-                return model.outPut;
+                return model.OutPutDir;
             }
             set
             {
-                model.outPut = value;
+                model.OutPutDir = value;
                 NotifyPropertyChanged("OutPutDir");
             }
         }
@@ -42,11 +43,11 @@ namespace ViewModel
         public string SourceName
         {
             get {
-                return model.sourceNmae;
+                return model.SourceName;
             }
             set
             {
-                model.sourceNmae = value;
+                model.SourceName = value;
                 NotifyPropertyChanged("SourceName");
             }
         }
@@ -54,11 +55,11 @@ namespace ViewModel
         public string LogName
         {
             get {
-                return model.logName;
+                return model.LogName;
             }
             set
             {
-                model.logName = value;
+                model.LogName = value;
                 NotifyPropertyChanged("LogName");
             }
         }
@@ -66,11 +67,11 @@ namespace ViewModel
         public string TumbNail
         {
             get {
-                return model.thumbNail;
+                return model.TumbNail;
             }
             set
             {
-                model.thumbNail = value;
+                model.TumbNail = value;
                 NotifyPropertyChanged("TumbNail");
             }
         }
@@ -88,15 +89,15 @@ namespace ViewModel
             }
         }
 
-        public string selectedHandler
+        public string SelectedHandler
         {
             get
             {
-                return this.model.selectedHandler;
+                return this.model.SelectedHandler;
             }
             set
             {
-                this.model.selectedHandler = value;
+                this.model.SelectedHandler = value;
                 var command = this.Remove as DelegateCommand<object>;
                 command.RaiseCanExecuteChanged();
                 NotifyPropertyChanged("selectedHandler");
@@ -108,7 +109,7 @@ namespace ViewModel
 
         private bool canBeRemoved(object obj)
         {
-            if (this.model.selectedHandler != null)
+            if (this.model.SelectedHandler != null)
             {
                 return true;
             }
@@ -117,16 +118,10 @@ namespace ViewModel
 
         private void onRemove(object obj)
         {
-            string[] arr = { this.selectedHandler };
+            string[] arr = { this.SelectedHandler };
             this.model.sendCommand(new MsgCommand((int)CommandEnum.RemoveHandlerCommand, arr
                 ));
         }
-
-
-
-
-
-
 
     }
 }

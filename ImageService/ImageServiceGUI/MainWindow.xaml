@@ -19,15 +19,15 @@
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TabControl Background="{Binding Path=IsConnected, Converter={StaticResource ConvertColorMainWindow}}">
+        <TabControl >
             <TabItem Header="Settings">
                 <view:SettingsView Grid.Row="1"
-                                     DataContext="{Binding SettingViewModel}" Height="220" VerticalAlignment="Top">
+                                      Height="220" VerticalAlignment="Top">
                 </view:SettingsView>
             </TabItem>
             <TabItem Header="Log">
                 <view:LogView Grid.Row="1"
-                                     DataContext="{Binding LogViewModel}" Height="220" VerticalAlignment="Top">
+                                     Height="220" VerticalAlignment="Top">
                 </view:LogView>
             </TabItem>
         </TabControl>

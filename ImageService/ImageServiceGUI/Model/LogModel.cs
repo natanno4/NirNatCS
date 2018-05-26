@@ -30,12 +30,12 @@ namespace ImageServiceGUI.Model
         {
             get
             {
-                return Logs;
+                return this.m_Logs;
             }
 
             set
             {
-                Logs = value;
+                this.m_Logs = value;
                 NotifyPropertyChanged("Logs");
             }
         }
@@ -54,14 +54,16 @@ namespace ImageServiceGUI.Model
         {
             if ((int)m.commandID == (int)(CommandEnum.LogCommand))
             {
+                ObservableCollection<MessageRecievedEventArgs> temp = new ObservableCollection<MessageRecievedEventArgs>(); 
                 ObservableCollection<string> collection = JsonConvert.
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
                 foreach (string log in collection)
                 {
                     string[] logInfo = log.Split(';');
                     int type = Int32.Parse(logInfo[1]);
-                    this.m_Logs.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[2]));
+                    temp.Add(new MessageRecievedEventArgs((MessageTypeEnum)type, logInfo[0]));
                 }
+                this.Logs = temp;
             } else
             {
                 if((int)m.commandID == (int)CommandEnum.AddLogCommand)

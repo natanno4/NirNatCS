@@ -7,11 +7,11 @@ using Infrastructure;
 
 public interface ISettingsModel : INotifyPropertyChanged
 {
-    string outPut { get; set; }
-    string sourceNmae { get; set; }
-    string logName { get; set; }
-    string thumbNail { get; set; }
-    string selectedHandler { get; set; }
+    string OutPutDir { get; set; }
+    string SourceName { get; set; }
+    string LogName { get; set; }
+    string TumbNail { get; set; }
+    string SelectedHandler { get; set; }
     ObservableCollection<string> handlers { get; set; }
     void sendCommand(MsgCommand msg);
 }

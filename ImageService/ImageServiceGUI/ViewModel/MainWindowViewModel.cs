@@ -16,12 +16,13 @@ namespace ImageServiceGUI.ViewModel
     {
         private MainWindowModel model;
         public ICommand Close { get; private set; }
+        private ICommand closeCommand;
 
 
         public MainWindowViewModel()
         {
             this.model = new MainWindowModel();
-            this.Close = new DelegateCommand<object>(this.OnClose, this.canBeClosed);
+            this.closeCommand = new DelegateCommand<object>(this.OnClose, this.canBeClosed);
             this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged(e.PropertyName);
