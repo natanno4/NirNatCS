@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <Label HorizontalAlignment="Center" Content="Settings" FontSize="25" FontWeight="Bold" Foreground="Blue" Padding="10"/>
+        <Label HorizontalAlignment="Center" Content="Settings" FontWeight="Bold" FontSize="25"  Foreground="Blue" FontStyle="italic" Padding="10"/>
         <Grid TextBlock.FontSize="14">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -19,21 +19,18 @@
                 <ColumnDefinition Width="Auto" MinWidth="164"/>
                 <ColumnDefinition Width="Auto" MinWidth="91"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Padding ="3" Margin ="3" FontWeight="Bold" Text="Output Directory:"></TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0" Padding ="3" Margin ="3" FontWeight="Bold" Text="Source Name:"></TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="0" Padding ="3" Margin ="3" FontWeight="Bold" Text="Log Name:"></TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="0" Padding ="3" Margin ="3" FontWeight="Bold" Text="Tumbnail Size:"></TextBlock>
-            <TextBlock Grid.Row="0" Grid.Column="1" Padding ="3" Margin ="3" FontWeight="Bold" Text="{Binding OutPutDir}"></TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="1" Padding ="3" Margin ="3" FontWeight="Bold" Text="{Binding SourceName}"></TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="1" Padding ="3" Margin ="3" FontWeight="Bold" Text="{Binding LogName}"></TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="1" Padding ="3" Margin ="3" FontWeight="Bold" Text="{Binding TumbNail}"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin ="3" Padding ="5"  FontStyle="Italic"  FontWeight="Bold" Text="Output Directory:"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin ="3" Padding ="5"  FontWeight="Bold" Text="{Binding OutPutDir}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin ="3" Padding ="5"  FontStyle="Italic" FontWeight="Bold" Text="Source Name:"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin ="3" Padding ="5"  FontWeight="Bold" Text="{Binding SourceName}"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin ="3" Padding ="5"  FontStyle="Italic" FontWeight="Bold" Text="Log Name:"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" Margin ="3" Padding ="5"  FontWeight="Bold" Text="{Binding LogName}"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin ="3" Padding ="5"  FontStyle="Italic" FontWeight="Bold" Text="Tumbnail Size:"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" Margin ="3" Padding ="5"  FontWeight="Bold" Text="{Binding TumbNail}"></TextBlock>
         </Grid>
         <StackPanel>
-            <Button x:Name="Remove"
-                    Content="Remove" 
-                    Width="Auto" 
-                    Height="Auto"
-                    Command="{Binding Remove}">
+            <Button x:Name="Remove" Height="Auto" Width="Auto" Command="{Binding Remove}">
+                Remove
             </Button>
             <ListBox x:Name="HandlerList" Width="Auto"
                      ItemsSource="{Binding handlers, Mode=TwoWay}"
