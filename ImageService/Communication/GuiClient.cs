@@ -69,31 +69,39 @@ namespace Communication
         {
             new Task(() =>
             {
-                using (NetworkStream stream = TClient.GetStream())
-                using (BinaryWriter writer = new BinaryWriter(stream))
+                if (this.IsConnected())
                 {
-                    wMutex.WaitOne();
-                    string send = JsonConvert.SerializeObject(msg);
-                    writer.Write(send);
-                    wMutex.ReleaseMutex();
+                    NetworkStream stream = TClient.GetStream();
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    {
+                        wMutex.WaitOne();
+                        string send = JsonConvert.SerializeObject(msg);
+                        writer.Write(send);
+                        wMutex.ReleaseMutex();
+                    }
                 }
             }).Start();
         }
         public void Read()
         {
-            string buffer;
-            using (NetworkStream stream = TClient.GetStream())
-            using (BinaryReader reader = new BinaryReader(stream))
+            new Task(() =>
             {
-                rMutex.WaitOne();
-                buffer = reader.ReadString();
-                rMutex.ReleaseMutex();
-                if (buffer != null)
+                string buffer;
+                NetworkStream stream = TClient.GetStream();
+                BinaryReader reader = new BinaryReader(stream);
+
+                if (this.IsConnected())
                 {
-                   MsgCommand msg = MsgCommand.FromJSON(buffer);
-                   CommandRecived?.Invoke(this, msg);
+                    rMutex.WaitOne();
+                    buffer = reader.ReadString();
+                    rMutex.ReleaseMutex();
+                    if (buffer != null)
+                    {
+                        MsgCommand msg = MsgCommand.FromJSON(buffer);
+                        CommandRecived?.Invoke(this, msg);
+                    }
                 }
-            }
+            }).Start();
         }
 
         public bool IsConnected()

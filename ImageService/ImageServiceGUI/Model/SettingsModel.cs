@@ -34,6 +34,7 @@ namespace Model {
             client.CommandRecived += OnCommandRecived;
             MsgCommand cmd = new MsgCommand((int)CommandEnum.GetConfigCommand, args);
             this.sendCommand(cmd);
+            this.defaultConfig();
         }
 
 
@@ -153,6 +154,16 @@ namespace Model {
             string handler = msg.args[0];
             this.handlers.Remove(handler);
         }
+
+
+        private void defaultConfig()
+        {
+            this.OutPutDir = "NO connection";
+            this.saveLogName = "NO connection";
+            this.saveSourceName = "NO connection";
+            this.tumbNailSize = "NO connection";
+           
+    }
 
     }
 }

@@ -37,5 +37,20 @@ namespace ImageServiceGUI.ViewModel
         {
             this.model.OnClose();
         }
+
+
+        public bool IsConnected
+        {
+            get
+            {
+                return this.model.IsConnected;
+            }
+
+            set
+            {
+                this.model.IsConnected = value;
+                NotifyPropertyChanged("IsConnected");
+            }
+        }
     }
 }
