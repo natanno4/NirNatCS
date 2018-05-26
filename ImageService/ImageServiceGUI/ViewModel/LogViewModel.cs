@@ -18,18 +18,30 @@ namespace ImageServiceGUI.ViewModel
 
         public LogViewModel()
         {
+
+
+
             LogM = new LogModel();
             this.LogM.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged(e.PropertyName);
             };
+            
+            this.LogM = new LogModel();
+           
         }
         
-        public ObservableCollection<string> Logs
+        public ObservableCollection<MessageRecievedEventArgs> Logs
         {
             get
             {
                 return this.LogM.Logs;
+            }
+
+            set
+            {
+                this.LogM.Logs = value;
+                NotifyPropertyChanged("Logs");
             }
         }
     }

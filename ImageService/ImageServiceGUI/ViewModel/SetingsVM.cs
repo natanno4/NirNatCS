@@ -24,12 +24,14 @@ namespace ViewModel
             {
                 NotifyPropertyChanged(p.PropertyName);
             };
-            this.remove = new DelegateCommand<object>(this.onRemove, this.canBeRemoved);
+            this.Remove = new DelegateCommand<object>(this.onRemove, this.canBeRemoved);
         }
 
         public string OutPutDir
         {
-            get { return model.outPut; }
+            get {
+                return model.outPut;
+            }
             set
             {
                 model.outPut = value;
@@ -39,7 +41,9 @@ namespace ViewModel
 
         public string SourceName
         {
-            get { return model.sourceNmae; }
+            get {
+                return model.sourceNmae;
+            }
             set
             {
                 model.sourceNmae = value;
@@ -49,7 +53,9 @@ namespace ViewModel
 
         public string LogName
         {
-            get { return model.logName; }
+            get {
+                return model.logName;
+            }
             set
             {
                 model.logName = value;
@@ -59,7 +65,9 @@ namespace ViewModel
 
         public string TumbNail
         {
-            get { return model.thumbNail; }
+            get {
+                return model.thumbNail;
+            }
             set
             {
                 model.thumbNail = value;
@@ -89,12 +97,12 @@ namespace ViewModel
             set
             {
                 this.model.selectedHandler = value;
-                var command = this.remove as DelegateCommand<object>;
+                var command = this.Remove as DelegateCommand<object>;
                 command.RaiseCanExecuteChanged();
                 NotifyPropertyChanged("selectedHandler");
             }
         }
-        public ICommand remove { get; private set; }
+        public ICommand Remove { get; private set; }
 
 
 

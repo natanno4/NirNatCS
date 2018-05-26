@@ -22,10 +22,11 @@ namespace ImageServiceGUI.Model
             string[] args = new string[5];
             MsgCommand cmd = new MsgCommand((int)CommandEnum.LogCommand, args);
             client.Write(cmd);
-;        }
+            this.m_Logs = new ObservableCollection<MessageRecievedEventArgs>();
+        }
 
 
-        public ObservableCollection<string> Logs
+        public ObservableCollection<MessageRecievedEventArgs> Logs
         {
             get
             {

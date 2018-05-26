@@ -31,7 +31,7 @@
             <TextBlock Grid.Row="3" Grid.Column="1" FontSize="15" FontWeight="Bold" Padding="20" Text="{Binding TumbNail}"></TextBlock>
         </Grid>
         <StackPanel>
-            <Button x:Name="Remove" Margin="5" Content="Remove" Command="{Binding RemoveHandler}">
+            <Button x:Name="Remove" Margin="5" Content="Remove" Command="{Binding Remove}">
                 
             </Button>
             <ListBox x:Name ="Handlers" Margin="5" ItemsSource="{Binding handlers}" SelectedItem="{Binding SelectedHandler}">
