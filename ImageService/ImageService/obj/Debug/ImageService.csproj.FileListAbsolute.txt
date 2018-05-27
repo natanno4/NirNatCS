@@ -38,3 +38,5 @@ C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\ob
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.csproj.GenerateResource.Cache
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.exe
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.pdb
+C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\Communication.exe
+C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\Communication.pdb

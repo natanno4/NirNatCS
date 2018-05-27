@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Configuration;
 using System.Threading;
-using ImageService.Logging.Modal;
+
 using Communication.Event;
 using Infrastructure;
 using Newtonsoft.Json.Linq;
@@ -41,9 +41,9 @@ namespace Communication
 
         private GuiClient()
         {
-            
-            this.portNumber = 9020;
-            this.ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9020);
+            CommunicationInfo com = new CommunicationInfo();
+            this.portNumber = com.port;
+            this.ipEndPoint = new IPEndPoint(IPAddress.Parse(com.IPNumber), this.portNumber);
             this.Connect();
 
         }

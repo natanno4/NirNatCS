@@ -56,7 +56,6 @@ namespace ImageService.ServiceCommunication
                         {
                             clientList.Remove(client);
                             client.Close();
-                            this.logging.Log("close client", MessageTypeEnum.INFO);
                             break;
                         }
                         else
@@ -69,10 +68,9 @@ namespace ImageService.ServiceCommunication
                         }
                     } catch (Exception e)
                     {
-                        Console.WriteLine(e.ToString());
-                        this.logging.Log("faild handle client", MessageTypeEnum.FAIL);
-                        client.Close();
-                        this.logging.Log("close client", MessageTypeEnum.INFO);
+                       Console.WriteLine(e.ToString());
+                        clientList.Remove(client); 
+                       client.Close();
                     }
                       
                 }

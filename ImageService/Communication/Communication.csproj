@@ -38,6 +38,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommunicationInfo.cs" />
     <Compile Include="Event\CommandRecievedEventArgs.cs" />
     <Compile Include="GuiClient.cs" />
     <Compile Include="IClient.cs" />
@@ -58,10 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageService\ImageService.csproj">
-      <Project>{2b2e36b8-5cc5-4e9a-8405-a0db6a5b0b5f}</Project>
-      <Name>ImageService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{f1a9f9ee-bf0d-4094-bff1-5a52150a3bf1}</Project>
       <Name>Infrastructure</Name>

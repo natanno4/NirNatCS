@@ -95,7 +95,7 @@ namespace ImageService
             IImageController controler = new ImageController(modal, this.s_logger);
             this.s_logger.MessageRecieved += this.OnMessage;
             this.s_server = new ImageServer(modal, this.s_logger);
-            this.serviceServer = new ServiceServer(9020, controler, this.s_logger);
+            this.serviceServer = new ServiceServer(controler, this.s_logger);
             this.serviceServer.Start();
 
             // Update the service state to Running.  

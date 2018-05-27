@@ -104,6 +104,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Communication\Communication.csproj">
+      <Project>{4e2003e4-1b14-429e-a575-3cbe5679983e}</Project>
+      <Name>Communication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{f1a9f9ee-bf0d-4094-bff1-5a52150a3bf1}</Project>
       <Name>Infrastructure</Name>

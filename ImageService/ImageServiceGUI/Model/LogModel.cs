@@ -58,14 +58,14 @@ namespace ImageServiceGUI.Model
             {
                 ObservableCollection<string> collection = JsonConvert.
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
-                Application.Current.Dispatcher.Invoke(new Action(() =>
+                
+                
+                foreach (string log in collection)
                 {
-                    foreach (string log in collection)
-                    {
-                        string[] logInfo = log.Split(';');
-                        this.m_Logs.Add(new MessageRecievedEventArgs(this.ConvertType(logInfo[1]), logInfo[0]));
-                    }
-                }));
+                    string[] logInfo = log.Split(';');
+                    this.m_Logs.Add(new MessageRecievedEventArgs(this.ConvertType(logInfo[1]), logInfo[0]));
+                }
+                
                 
                 
             } else

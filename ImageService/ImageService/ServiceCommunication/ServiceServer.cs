@@ -9,21 +9,25 @@ using ImageService.Controller;
 using ImageService.Logging;
 using ImageService.Logging.Modal;
 using Infrastructure;
+using Communication;
 
 namespace ImageService.ServiceCommunication
 {
     public class ServiceServer : IServiceServer
     {
         private int port;
+        private string IP;
         private TcpListener listener;
         private IClientHandler handler;
         private List<TcpClient> clients;
         private ILoggingService logging;
 
-        public ServiceServer(int prt, IImageController controller, ILoggingService logService)
+        public ServiceServer(IImageController controller, ILoggingService logService)
         {
+            CommunicationInfo com = new CommunicationInfo(); 
             this.logging = logService;
-            this.port = prt;
+            this.port = com.port;
+            this.IP = com.IPNumber;
             this.handler = new ClientHandler(clients, controller, logService);
             clients = new List<TcpClient>();
         }
@@ -32,7 +36,7 @@ namespace ImageService.ServiceCommunication
             try
             {
                 this.logging.LogAdded += this.onNotifyClients;
-                IPEndPoint pnt = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+                IPEndPoint pnt = new IPEndPoint(IPAddress.Parse(this.IP), this.port);
                 listener = new TcpListener(pnt);
                 listener.Start();
                 // print of connections
@@ -50,7 +54,6 @@ namespace ImageService.ServiceCommunication
                         catch (Exception e)
                         {  
                             Console.WriteLine(e.ToString());
-                            this.logging.Log("error in tcp server", MessageTypeEnum.FAIL);
                             break;
                         }
 
@@ -80,10 +83,10 @@ namespace ImageService.ServiceCommunication
                     } catch (Exception e)
                     {
                         Console.WriteLine(e.ToString());
-                        this.logging.Log("error in tcp server", MessageTypeEnum.FAIL);
+                        
                         C.Close();
                         this.clients.Remove(C);
-                        this.logging.Log("close client", MessageTypeEnum.INFO);
+                        
                     }
                 }
             }).Start();
