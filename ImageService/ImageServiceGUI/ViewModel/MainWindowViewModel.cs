@@ -29,11 +29,17 @@ namespace ImageServiceGUI.ViewModel
             };
         }
 
+        /// <summary>
+        /// can be closed
+        /// </summary>
         public bool canBeClosed(Object obj)
         {
             return true;
         }
 
+        /// <summary>
+        /// close the model
+        /// </summary>
         public void OnClose(Object obj)
         {
             this.model.OnClose();

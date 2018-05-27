@@ -22,19 +22,28 @@ namespace ImageService.ServiceCommunication
         private List<TcpClient> clients;
         private ILoggingService logging;
 
+        /// <summary>
+        /// create a service server.
+        /// </summary>
         public ServiceServer(IImageController controller, ILoggingService logService)
         {
+            //get connection information
             CommunicationInfo com = new CommunicationInfo(); 
             this.logging = logService;
             this.port = com.port;
             this.IP = com.IPNumber;
-            this.handler = new ClientHandler(clients, controller, logService);
             clients = new List<TcpClient>();
+            this.handler = new ClientHandler(clients, controller, logService);
         }
+
+        /// <summary>
+        /// start the server.listens to clients and handle them.
+        /// </summary>
         public void Start()
         {
             try
             {
+                //event for loggs adding
                 this.logging.LogAdded += this.onNotifyClients;
                 IPEndPoint pnt = new IPEndPoint(IPAddress.Parse(this.IP), this.port);
                 listener = new TcpListener(pnt);
@@ -53,7 +62,9 @@ namespace ImageService.ServiceCommunication
                         }
                         catch (Exception e)
                         {  
+                            //end server.
                             Console.WriteLine(e.ToString());
+                            this.Stop();
                             break;
                         }
 
@@ -65,12 +76,18 @@ namespace ImageService.ServiceCommunication
                 Console.WriteLine(t.ToString());
             }
         }
+
+        /// <summary>
+        /// stop listeninig
+        /// </summary>
         public void Stop()
         {
             listener.Stop();
         }
 
-
+        /// <summary>
+        /// send the message to all the clients in the list.
+        /// </summary>
         public void onNotifyClients(object sender, MsgCommand msg)
         {
             new Task(() =>
@@ -82,10 +99,13 @@ namespace ImageService.ServiceCommunication
                         this.handler.notifyClient(C, msg);
                     } catch (Exception e)
                     {
+                        //close client
                         Console.WriteLine(e.ToString());
-                        
                         C.Close();
-                        this.clients.Remove(C);
+                        if (this.clients.Contains(C))
+                        {
+                            this.clients.Remove(C);
+                        }
                         
                     }
                 }

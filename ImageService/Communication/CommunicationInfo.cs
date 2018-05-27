@@ -13,6 +13,9 @@ namespace Communication
         public string IPNumber { get; private set; }
         public int port { get; private set; }
 
+        /// <summary>
+        /// create CommunicationInfo object.
+        /// </summary>
         public CommunicationInfo()
         {
             try

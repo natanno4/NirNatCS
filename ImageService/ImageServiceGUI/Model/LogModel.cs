@@ -28,6 +28,7 @@ namespace ImageServiceGUI.Model
             this.client.CommandRecived += this.OnCommandRecieved;
             string[] args = new string[5];
             MsgCommand cmd = new MsgCommand((int)CommandEnum.LogCommand, args);
+            //get the logs
             client.SendAndRecived(cmd);
             
         }
@@ -71,12 +72,13 @@ namespace ImageServiceGUI.Model
         /// <param name="m"></param>
         public void OnCommandRecieved(object sender, MsgCommand m)
         {
+            //get the list of logs
             if ((int)m.commandID == (int)(CommandEnum.LogCommand))
             {
                 ObservableCollection<string> collection = JsonConvert.
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
-                
-                
+
+                //add logs
                 foreach (string log in collection)
                 {
                     string[] logInfo = log.Split(';');
@@ -87,6 +89,7 @@ namespace ImageServiceGUI.Model
                 
             } else
             {
+                //log added after creation.
                 if((int)m.commandID == (int)CommandEnum.AddLogCommand)
                 {
                     Application.Current.Dispatcher.Invoke(new Action(() =>

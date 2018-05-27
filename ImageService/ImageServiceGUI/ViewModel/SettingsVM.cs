@@ -106,7 +106,9 @@ namespace ViewModel
         public ICommand Remove { get; private set; }
 
 
-
+        /// <summary>
+        /// check if can be removed
+        /// </summary>
         private bool canBeRemoved(object obj)
         {
             if (this.model.SelectedHandler != null)
@@ -116,6 +118,9 @@ namespace ViewModel
             return false;
         }
 
+        /// <summary>
+        /// remove handler
+        /// </summary>
         private void onRemove(object obj)
         {
             string[] arr = { this.SelectedHandler };

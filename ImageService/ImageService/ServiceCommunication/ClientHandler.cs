@@ -25,6 +25,9 @@ namespace ImageService.ServiceCommunication
         public static Mutex wMutex;
         private ILoggingService logging;
 
+        /// <summary>
+        /// create client handler
+        /// </summary>
         public ClientHandler(List<TcpClient> c, IImageController ic, ILoggingService logs)
         {
             this.clientList = c;
@@ -34,7 +37,9 @@ namespace ImageService.ServiceCommunication
             this.logging = logs;
            
         }
-
+        /// <summary>
+        /// handle client until the client disconnect.
+        /// </summary>
         public void HandleClient(TcpClient client)
         {
 
@@ -48,28 +53,26 @@ namespace ImageService.ServiceCommunication
                         BinaryWriter writer = new BinaryWriter(stream);
                         BinaryReader reader = new BinaryReader(stream);
                         rMutex.WaitOne();
+                        //get command from client
                         string recived = reader.ReadString();
                         rMutex.ReleaseMutex();
                         MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(recived);
-                        //להוסיף command.enum.closeCleintHandler
-                        if ((int)msg.commandID == (int)CommandEnum.CloseCommand)
-                        {
-                            clientList.Remove(client);
-                            client.Close();
-                            break;
-                        }
-                        else
-                        {
-                            bool res;
-                            string result = this.controller.ExecuteCommand((int)msg.commandID, msg.args, out res);
-                            wMutex.WaitOne();
-                            writer.Write(result);
-                            wMutex.ReleaseMutex();
-                        }
+                         bool res;
+                        //execute the command and get the result.
+                         string result = this.controller.ExecuteCommand((int)msg.commandID, msg.args, out res);
+                         wMutex.WaitOne();
+                        //write back the result to client
+                         writer.Write(result);
+                         wMutex.ReleaseMutex();
+                        
                     } catch (Exception e)
                     {
+                        //close client
                        Console.WriteLine(e.ToString());
-                        clientList.Remove(client); 
+                        if (clientList.Contains(client)) {
+                            clientList.Remove(client);
+                        }
+                         
                        client.Close();
                     }
                       
@@ -77,7 +80,9 @@ namespace ImageService.ServiceCommunication
             }).Start();
         }
 
-
+        /// <summary>
+        /// send the messgae command msg to the given client.
+        /// </summary>
         public void notifyClient(TcpClient client, MsgCommand msg)
         {
             NetworkStream stream = client.GetStream();

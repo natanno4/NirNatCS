@@ -38,9 +38,11 @@ namespace Model {
             string[] args = new string[5];
             client.CommandRecived += OnCommandRecived;
             MsgCommand cmd = new MsgCommand((int)CommandEnum.GetConfigCommand, args);
+            //get config information
             this.client.SendAndRecived(cmd);
             if(!this.client.IsConnected())
             {
+                //no connection
                 this.defaultConfig();
             }
             
@@ -55,6 +57,7 @@ namespace Model {
         /// <param name="sender">sender</param>
         /// <param name="msg">command</param>
         public void OnCommandRecived(object sender, MsgCommand msg) {
+            //add information
             if ((int)msg.commandID == (int)CommandEnum.GetConfigCommand)
             {
                 OutPutDir = msg.args[0];
@@ -74,6 +77,7 @@ namespace Model {
             }
             else
             {
+                //removes the give handler
                 if((int)msg.commandID == (int)CommandEnum.RemoveHandlerCommand) {
                     this.removeHandler(msg);
                 }

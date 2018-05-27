@@ -25,7 +25,10 @@ namespace Communication
         private static Mutex wMutex = new Mutex();
         private IPEndPoint ipEndPoint;
         private static GuiClient instance;
-        
+
+        /// <summary>
+        /// create GuiClient singelton.
+        /// </summary>
         public static GuiClient instanceS 
         {
             get {
@@ -38,7 +41,9 @@ namespace Communication
             }
         }
 
-
+        /// <summary>
+        /// GuiClient Constructor.
+        /// </summary>
         private GuiClient()
         {
             CommunicationInfo com = new CommunicationInfo();
@@ -47,6 +52,10 @@ namespace Communication
             this.Connect();
 
         }
+
+        /// <summary>
+        /// connect to the server.
+        /// </summary>
         public void Connect()
         {
             //may be will be changed
@@ -60,6 +69,11 @@ namespace Communication
                 Console.WriteLine(e.ToString());
             }
         }
+
+
+        /// <summary>
+        /// disconnect from server.
+        /// </summary>
         public void Disconnect()
         {
             try
@@ -73,6 +87,9 @@ namespace Communication
         }
 
 
+        /// <summary>
+        /// write message to the server.
+        /// </summary>
         public void Write(MsgCommand msg)
         {
             Task t = new Task(() =>
@@ -84,6 +101,7 @@ namespace Communication
                         NetworkStream stream = TClient.GetStream();
                         BinaryWriter writer = new BinaryWriter(stream);
                         wMutex.WaitOne();
+                        //conver from message format to string.
                         string send = JsonConvert.SerializeObject(msg);
                         writer.Write(send);
                         wMutex.ReleaseMutex();
@@ -98,6 +116,11 @@ namespace Communication
             t.Start();
             t.Wait();
         }
+
+
+        /// <summary>
+        /// read string from server.
+        /// </summary>
         public void Read()
         {
             Task t = new Task(() =>
@@ -116,7 +139,9 @@ namespace Communication
                          rMutex.ReleaseMutex();
                          if (buffer != null)
                          {
+                             //conver message from string to messag format
                              MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(buffer);
+                             //invoke the message.
                              CommandRecived?.Invoke(this, msg);
                          }
                      }
@@ -133,11 +158,19 @@ namespace Communication
             
         }
 
+
+        /// <summary>
+        /// check if client is connected.
+        /// </summary>
         public bool IsConnected()
         {
             return this.TClient.Connected;
         }
 
+
+        /// <summary>
+        /// send a message to the server and wait to a respond.
+        /// </summary>
         public void SendAndRecived(MsgCommand msg)
         {
             
@@ -145,6 +178,10 @@ namespace Communication
             this.Read();
         }
 
+
+        /// <summary>
+        /// get new informatin from server while the client is connected.
+        /// </summary>
         public void HandleRecived()
         {
             new Task(() =>

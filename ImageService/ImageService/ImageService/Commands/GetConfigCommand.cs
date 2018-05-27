@@ -12,6 +12,9 @@ namespace ImageService.Commands
 {
     public class GetConfigCommand : ICommand
     {
+        /// <summary>
+        /// get the App Config information and returns it as a command format converted to string. 
+        /// </summary>
         public string Execute(string[] args, out bool result)
         {
             string[] strConfig = new string[5];
@@ -22,6 +25,7 @@ namespace ImageService.Commands
             strConfig[4] = ConfigurationManager.AppSettings.Get("Handler");
 
             MsgCommand cmnd = new MsgCommand((int)CommandEnum.GetConfigCommand, strConfig);
+            //conver command to string.
             string jsonFormat = JsonConvert.SerializeObject(cmnd);
             result = true;
             return jsonFormat;
