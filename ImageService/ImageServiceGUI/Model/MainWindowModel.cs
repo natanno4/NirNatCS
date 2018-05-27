@@ -14,6 +14,9 @@ namespace ImageServiceGUI.Model
         private bool m_IsConnected;
         private IClient client;
 
+        /// <summary>
+        /// constructor.
+        /// </summary>
         public MainWindowModel()
         {
             this.client = GuiClient.instanceS;
@@ -22,6 +25,10 @@ namespace ImageServiceGUI.Model
             
         }
 
+        /// <summary>
+        /// notifyPropertyChanged.
+        /// </summary>
+        /// <param name="propname"></param>
         public void NotifyPropertyChanged(string propname)
         {
             if (this.PropertyChanged != null)
@@ -30,6 +37,9 @@ namespace ImageServiceGUI.Model
             }
         }
 
+        /// <summary>
+        ///property to check ifConnected.
+        /// </summary>
         public bool IsConnected
         {
             get
@@ -43,7 +53,11 @@ namespace ImageServiceGUI.Model
                 this.NotifyPropertyChanged("IsConnected");
             }
         }
-         public void OnClose()
+
+        /// <summary>
+        /// OnClose function, is called when an event of close client is raised
+        /// </summary>
+        public void OnClose()
         {
             this.client.Disconnect();
         }

@@ -26,6 +26,11 @@ namespace Model {
             }
         }
 
+        /// <summary>
+        /// constructor.
+        /// create list of handlers in OCollection, get instance of client,
+        /// sign to event of commandRecieved and ask for config from server.
+        /// </summary>
         public SettingsModel()
         {
             handlers = new ObservableCollection<string>();
@@ -41,7 +46,14 @@ namespace Model {
             
         }
 
-
+        /// <summary>
+        /// OnCommandReceived.
+        /// the function that is called when a command is recieved.
+        /// check if is is from type ConfigCommand. if it is -> than get
+        /// the config from server.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="msg">command</param>
         public void OnCommandRecived(object sender, MsgCommand msg) {
             if ((int)msg.commandID == (int)CommandEnum.GetConfigCommand)
             {
@@ -67,7 +79,9 @@ namespace Model {
                 }
             }    
         }
-
+        /// <summary>
+        /// propert of LogName.
+        /// </summary>
         public string LogName
         {
             get
@@ -81,7 +95,9 @@ namespace Model {
                 NotifyPropertyChanged("LogName");
             }
         }
-
+        /// <summary>
+        /// property of outputdir.
+        /// </summary>
         public string OutPutDir
         {
             get
@@ -95,7 +111,9 @@ namespace Model {
                 NotifyPropertyChanged("OutPutDir");
             }
         }
-
+        /// <summary>
+        /// property of SourceName.
+        /// </summary>
         public string SourceName
         {
             get
@@ -110,6 +128,9 @@ namespace Model {
             }
         }
 
+        /// <summary>
+        /// property of TumbNail.
+        /// </summary>
         public string TumbNail
         {
             get
@@ -123,6 +144,9 @@ namespace Model {
                 NotifyPropertyChanged("TumbNail");
             }
         }
+        /// <summary>
+        /// property of Handlers.
+        /// </summary>
 
         public ObservableCollection<string> handlers
         {
@@ -136,7 +160,9 @@ namespace Model {
                 NotifyPropertyChanged("handlers");
             }
         }
-
+        /// <summary>
+        /// property of SelectEDHandler.
+        /// </summary>
         public string SelectedHandler
         {
             get
@@ -150,13 +176,21 @@ namespace Model {
             }
 
         }
-       
 
+        /// <summary>
+        /// sendCommand.
+        /// send command to the server
+        /// </summary>
+        /// <param name="msg"></param>
         public void sendCommand(MsgCommand msg)
         {
             this.client.Write(msg);
         }
 
+        /// <summary>
+        /// remove handler from list
+        /// </summary>
+        /// <param name="msg"> msg</param>
 
         public void removeHandler(MsgCommand msg)
         {
@@ -172,7 +206,9 @@ namespace Model {
             
         }
 
-
+        /// <summary>
+        /// defaultConfig, in case there is no connection.
+        /// </summary>
         private void defaultConfig()
         {
             this.OutPutDir = "NO connection";
