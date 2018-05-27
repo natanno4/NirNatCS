@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <convert:ColorForLogConvertor x:Key="ColorForLogConvertor"/>
     </UserControl.Resources>
-    <StackPanel>
-        <Label HorizontalAlignment="Center" Content="Logs" FontWeight="Bold" FontSize="15"  Foreground="Blue" FontStyle="italic" Padding="10"/>
+    <DockPanel>
+        <Label HorizontalAlignment="Center" Content="Logs" FontWeight="Bold" FontSize="15" DockPanel.Dock="Top" Padding="10" Foreground="Blue" FontStyle="italic" />
         <DataGrid ItemsSource="{Binding Logs}" MaxHeight="250"  CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" CanUserDeleteRows="False" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" IsReadOnly="True" Width="Auto" Binding="{Binding Path=Status}">
@@ -27,6 +27,6 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-       
-    </StackPanel>
+
+    </DockPanel>
 </UserControl>
