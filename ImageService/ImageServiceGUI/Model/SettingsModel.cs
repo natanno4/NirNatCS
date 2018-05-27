@@ -5,7 +5,7 @@ using Communication;
 using Communication.Event;
 using ImageService.Infrastructure.Enums;
 using Infrastructure;
-
+using System.Windows;
 
 namespace Model {
     public class SettingsModel : ISettingsModel
@@ -50,12 +50,15 @@ namespace Model {
                 LogName = msg.args[2];
                 TumbNail = msg.args[3];
                 string[] h = msg.args[4].Split(';');
-                ObservableCollection<string> temp = new ObservableCollection<string>(h);
                 foreach (string handler in h)
                 {
-                    temp.Add(handler);
+                    if (!handlers.Contains(handler))
+                    {
+                        handlers.Add(handler);
+                    }
+                    
                 }
-                handlers = temp;
+                
             }
             else
             {
@@ -157,8 +160,16 @@ namespace Model {
 
         public void removeHandler(MsgCommand msg)
         {
-            string handler = msg.args[0];
-            this.handlers.Remove(handler);
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                string handler = msg.args[0];
+                if (handlers.Contains(handler))
+                {
+                    handlers.Remove(handler);
+
+                }
+            }));
+            
         }
 
 

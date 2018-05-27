@@ -8,7 +8,7 @@
              d:DesignHeight="350" d:DesignWidth="525">
     <StackPanel>
         <StackPanel Background="LightGray"></StackPanel>
-        <Label x:Name="Settings" HorizontalAlignment="Center" Content="Settings" FontSize="15" FontWeight="Bold" Foreground="Blue" ></Label>
+        <Label x:Name="Settings" HorizontalAlignment="Center" Content="Settings" FontSize="15" FontWeight="Bold" Foreground="Blue" FontStyle="italic" ></Label>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -22,16 +22,19 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0"  x:Name="textBlock"  HorizontalAlignment="Left"  Text="Output Directory:" Margin="1"  FontWeight="Bold" VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Margin="1"   Text="{Binding OutPutDir}"></TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0"  x:Name="textBlock1" HorizontalAlignment="Left" Margin="1" FontWeight="Bold" TextWrapping="Wrap" Text="Source Name:"  VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Margin="1" Text="{Binding LogName}"></TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="0"  x:Name="textBlock2" HorizontalAlignment="Left" Margin="1" FontWeight="Bold" TextWrapping="Wrap" Text="Log Name:"  VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Margin="1"  Text="{Binding SourceName}"></TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="0"  x:Name="textBlock3" HorizontalAlignment="Left" Margin="1" FontWeight="Bold" TextWrapping="Wrap" Text="Thumbnail Size:"  VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Margin="1" Text="{Binding TumbNail}"></TextBlock>
+            <TextBlock Grid.Row="0"  x:Name="textBlock"  HorizontalAlignment="Left"  Text="Output Directory:"   FontWeight="Bold" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="0"  x:Name="textBlock1" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" Text="Source Name:"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="2" Grid.Column="0"  x:Name="textBlock2" HorizontalAlignment="Left"  FontWeight="Bold" TextWrapping="Wrap" Text="Log Name:"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="3" Grid.Column="0"  x:Name="textBlock3" HorizontalAlignment="Left"  FontWeight="Bold" TextWrapping="Wrap" Text="Thumbnail Size:"  VerticalAlignment="Top"/>
+            
+
+            <TextBlock Grid.Row="0" Grid.Column="1"  Text="{Binding OutPutDir}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding LogName}"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1"   Text="{Binding SourceName}"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1"  Text="{Binding TumbNail}"></TextBlock>
+            
         </Grid>
-        <Button x:Name="remove" Command="{Binding Close}" Margin="5" FontWeight="Bold" Height="25" HorizontalAlignment="Stretch">Remove</Button>
-        <ListBox Height="Auto" ItemsSource="{Binding handlers}"/>
+        <Button x:Name="remove" Command="{Binding Remove}"  FontWeight="Bold" Height="25" AutomationProperties.AutomationId="Remove" HorizontalAlignment="Stretch">Remove</Button>
+        <ListBox Height="Auto" ItemsSource="{Binding handlers}" SelectedItem="{Binding SelectedHandler, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" />
     </StackPanel>
 </UserControl>

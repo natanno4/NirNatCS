@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net;
 using ImageService.Controller;
 using ImageService.Logging;
+using ImageService.Logging.Modal;
 using Infrastructure;
 
 namespace ImageService.ServiceCommunication
@@ -42,15 +43,15 @@ namespace ImageService.ServiceCommunication
                         try
                         {
                             TcpClient client = listener.AcceptTcpClient();
-                            
-                        // success in recieve
-                        clients.Add(client);
+                            // success in recieve
+                            clients.Add(client);
                             handler.HandleClient(client);
                         }
                         catch (Exception e)
-                        {
-                           
+                        {  
                             Console.WriteLine(e.ToString());
+                            this.logging.Log("error in tcp server", MessageTypeEnum.FAIL);
+                            break;
                         }
 
                     } 
@@ -58,7 +59,7 @@ namespace ImageService.ServiceCommunication
                 tsk.Start();
             } catch(Exception t)
             {
-               
+                Console.WriteLine(t.ToString());
             }
         }
         public void Stop()
@@ -73,7 +74,17 @@ namespace ImageService.ServiceCommunication
             {
                 foreach (TcpClient C in clients)
                 {
-                    this.handler.notifyClient(C, msg);
+                    try
+                    {
+                        this.handler.notifyClient(C, msg);
+                    } catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        this.logging.Log("error in tcp server", MessageTypeEnum.FAIL);
+                        C.Close();
+                        this.clients.Remove(C);
+                        this.logging.Log("close client", MessageTypeEnum.INFO);
+                    }
                 }
             }).Start();
 

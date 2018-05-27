@@ -62,8 +62,14 @@ namespace Communication
         }
         public void Disconnect()
         {
-            TClient.Close();
-            Console.WriteLine("disconnect successfully");
+            try
+            {
+                TClient.Close();
+                Console.WriteLine("disconnect successfully");
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
 

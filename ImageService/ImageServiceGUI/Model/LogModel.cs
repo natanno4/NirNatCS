@@ -6,6 +6,7 @@ using Infrastructure;
 using ImageService.Infrastructure.Enums;
 using Newtonsoft.Json;
 using System;
+using System.Windows;
 
 namespace ImageServiceGUI.Model
 {
@@ -57,18 +58,24 @@ namespace ImageServiceGUI.Model
             {
                 ObservableCollection<string> collection = JsonConvert.
                     DeserializeObject<ObservableCollection<string>>(m.args[0]);
-                foreach (string log in collection)
+                Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    string[] logInfo = log.Split(';');
-                    this.m_Logs.Add(new MessageRecievedEventArgs(this.ConvertType(logInfo[1]), logInfo[0]));
-                }
+                    foreach (string log in collection)
+                    {
+                        string[] logInfo = log.Split(';');
+                        this.m_Logs.Add(new MessageRecievedEventArgs(this.ConvertType(logInfo[1]), logInfo[0]));
+                    }
+                }));
                 
                 
             } else
             {
                 if((int)m.commandID == (int)CommandEnum.AddLogCommand)
                 {
-                    this.addNewLog(m);
+                    Application.Current.Dispatcher.Invoke(new Action(() =>
+                    {
+                        this.addNewLog(m);
+                    }));
                 }
             }
 

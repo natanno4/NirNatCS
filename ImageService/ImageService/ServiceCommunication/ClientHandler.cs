@@ -11,7 +11,9 @@ using ImageService.Infrastructure.Enums;
 using ImageService.Controller;
 using System.Threading;
 using ImageService.Logging;
+using ImageService.Logging.Modal;
 using Infrastructure;
+
 
 namespace ImageService.ServiceCommunication
 {
@@ -38,29 +40,39 @@ namespace ImageService.ServiceCommunication
 
             new Task(() =>
             {
-                while (true)
+                while (client.Connected)
                 {
-                    NetworkStream stream = client.GetStream();
-                    BinaryWriter writer = new BinaryWriter(stream);
-                    BinaryReader reader = new BinaryReader(stream);
-                    rMutex.WaitOne();
-                    string recived = reader.ReadString();
-                    rMutex.ReleaseMutex();
-                    MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(recived);
-                    //להוסיף command.enum.closeCleintHandler
-                    if ((int)msg.commandID == (int)CommandEnum.CloseCommand)
+                    try
                     {
-                        clientList.Remove(client);
+                        NetworkStream stream = client.GetStream();
+                        BinaryWriter writer = new BinaryWriter(stream);
+                        BinaryReader reader = new BinaryReader(stream);
+                        rMutex.WaitOne();
+                        string recived = reader.ReadString();
+                        rMutex.ReleaseMutex();
+                        MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(recived);
+                        //להוסיף command.enum.closeCleintHandler
+                        if ((int)msg.commandID == (int)CommandEnum.CloseCommand)
+                        {
+                            clientList.Remove(client);
+                            client.Close();
+                            this.logging.Log("close client", MessageTypeEnum.INFO);
+                            break;
+                        }
+                        else
+                        {
+                            bool res;
+                            string result = this.controller.ExecuteCommand((int)msg.commandID, msg.args, out res);
+                            wMutex.WaitOne();
+                            writer.Write(result);
+                            wMutex.ReleaseMutex();
+                        }
+                    } catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        this.logging.Log("faild handle client", MessageTypeEnum.FAIL);
                         client.Close();
-                        break;
-                    }
-                    else
-                    {
-                        bool res;
-                        string result = this.controller.ExecuteCommand((int)msg.commandID, msg.args, out res);
-                        wMutex.WaitOne();
-                        writer.Write(result);
-                        wMutex.ReleaseMutex();
+                        this.logging.Log("close client", MessageTypeEnum.INFO);
                     }
                       
                 }

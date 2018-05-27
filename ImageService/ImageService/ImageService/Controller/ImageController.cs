@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageService.Logging;
 
+
 namespace ImageService.Controller
 {
     public class ImageController : IImageController
@@ -28,7 +29,8 @@ namespace ImageService.Controller
 
                 {(int) CommandEnum.NewFileCommand, new NewFileCommand(modal) },
                 {(int) CommandEnum.GetConfigCommand, new GetConfigCommand() },
-                {(int) CommandEnum.LogCommand, new LogCommand(logging)}  
+                {(int) CommandEnum.LogCommand, new LogCommand(logging)},
+                {(int) CommandEnum.RemoveHandlerCommand, new RemoveHandlerCommand()} 
 				// For Now will contain NEW_FILE_COMMAND
             };
         }

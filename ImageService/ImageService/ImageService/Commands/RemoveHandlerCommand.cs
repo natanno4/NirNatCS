@@ -6,8 +6,9 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure;
 
-namespace ImageService.ImageService.Commands
+namespace ImageService.Commands
 {
     class RemoveHandlerCommand : ICommand
     {
@@ -59,7 +60,11 @@ namespace ImageService.ImageService.Commands
                 }
                 handler = handler + ";" + h;
             }
-            ConfigurationManager.AppSettings["Handler"] = handler;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings.Remove("Handler");
+            config.AppSettings.Settings.Add("Handler", handler);
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
     }
