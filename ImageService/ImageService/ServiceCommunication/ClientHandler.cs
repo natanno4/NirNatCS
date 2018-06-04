@@ -21,7 +21,6 @@ namespace ImageService.ServiceCommunication
     {
         private List<TcpClient> clientList;
         private IImageController controller;
-        public static Mutex rMutex;
         public static Mutex wMutex;
         private ILoggingService logging;
 
@@ -32,7 +31,6 @@ namespace ImageService.ServiceCommunication
         {
             this.clientList = c;
             this.controller = ic;
-            rMutex = new Mutex();
             wMutex = new Mutex();
             this.logging = logs;
            
@@ -52,10 +50,8 @@ namespace ImageService.ServiceCommunication
                         NetworkStream stream = client.GetStream();
                         BinaryWriter writer = new BinaryWriter(stream);
                         BinaryReader reader = new BinaryReader(stream);
-                        rMutex.WaitOne();
                         //get command from client
                         string recived = reader.ReadString();
-                        rMutex.ReleaseMutex();
                         MsgCommand msg = JsonConvert.DeserializeObject<MsgCommand>(recived);
                          bool res;
                         //execute the command and get the result.

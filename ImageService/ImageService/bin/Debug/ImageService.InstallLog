@@ -700,3 +700,16 @@ Affected parameters are:
    logtoconsole = 
    logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
    assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
+Installing service ImageService...
+Service ImageService has been successfully installed.
+Creating EventLog source ImageService in log Application...
+Committing assembly 'C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.InstallLog
+   assemblypath = C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\bin\Debug\ImageService.exe
