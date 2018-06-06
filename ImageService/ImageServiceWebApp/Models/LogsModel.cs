@@ -11,8 +11,14 @@ namespace ImageServiceWebApp.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "logs:")]
-        public List<MessageRecievedEventArgs> Logs { get; set; }
+        [Display(Name = "Type")]
+        public string Type { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Message")]
+        public string Message { get; set; }
+
 
     }
 }

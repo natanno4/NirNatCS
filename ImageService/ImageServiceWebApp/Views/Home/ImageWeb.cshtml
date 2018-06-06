@@ -1,0 +1,18 @@
+﻿@model ImageServiceWebApp.Models.ImageWebModel
+@{
+    ViewBag.Title = "ImageWeb";
+}
+
+<h2>Image Web</h2>
+
+@{ 
+    var txt = "";
+    if (Model.IsConnected)
+    {
+        txt = "on";
+    } else
+    {
+        txt = "off";
+    }
+}
+ <text > service is @txt</text>
