@@ -14,7 +14,6 @@ namespace ImageServiceWebApp.Controllers
         public ActionResult ImageWeb()
         {
             ImageWebModel imgwModel = new ImageWebModel(); 
-            ViewBag.IsConnected = true; 
             return View(imgwModel);
         }
     }
