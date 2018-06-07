@@ -15,6 +15,25 @@
         txt = "off";
     }
 }
- <h3 > service is @txt</h3>
 
-<h4> @Model.StudentsInfo[0].FirstName</h4>
+<h3 > service is @txt</h3>
+
+<h4> @Html.DisplayNameFor(model=> model.NumberOfPhotos) @Model.NumberOfPhotos</h4>
+
+<h5>students info:</h5>
+<table class="table" border="1" style="border:1px dashed blue">
+    <tr>
+        <th><p style="font-weight:bold">Student ID</p></th>
+        <th><p style="font-weight:bold">FirstName</p></th>
+        <th><p style="font-weight:bold">LastName</p></th>
+    </tr>
+    @foreach (var student in Model.StudentsInfo)
+    {
+        <tr>
+        <th>@Html.DisplayName(student.ID)</th>
+        <th>@Html.DisplayName(student.FirstName)</th>
+        <th>@Html.DisplayName(student.LastName)</th>
+          </tr>
+    }
+
+</table>

@@ -14,6 +14,5 @@ namespace ImageService.Infrastructure.Enums
         CloseCommand,
         AddLogCommand,
         RemoveHandlerCommand
-
     }
 }

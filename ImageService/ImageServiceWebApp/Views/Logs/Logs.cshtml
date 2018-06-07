@@ -1,0 +1,31 @@
+﻿@model ImageServiceWebApp.Models.LogsModel
+@{
+    ViewBag.Title = "Logs";
+}
+
+<div>
+    <h2>
+        please enter your Log type:
+    </h2>
+    <input type="text" id="type" size="20"/> 
+    <input type="button" id="ShowLogs" value="OK" size="8"/>
+</div>
+
+
+
+<h2>Logs:</h2>
+<table class="table" id="tableLogs">
+
+   
+</table>
+
+
+<script>
+    $("#ShowLogs").click(function () {
+        $("#tableLogs").append("<tr><th>Type</th> <th>Messgae</th></tr>");
+
+    });
+</script>      
+       
+
+   

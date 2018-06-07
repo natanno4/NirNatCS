@@ -61,9 +61,10 @@ namespace Communication
             //may be will be changed
             try 
             {
-                TClient = new System.Net.Sockets.TcpClient();
-                TClient.Connect(this.ipEndPoint);
-                Console.WriteLine("connect sucessfully");
+                  TClient = new System.Net.Sockets.TcpClient();
+                  TClient.Connect(this.ipEndPoint);
+                  Console.WriteLine("connect sucessfully");
+             
             } catch (Exception e)
             {
                 Console.WriteLine(e.ToString());

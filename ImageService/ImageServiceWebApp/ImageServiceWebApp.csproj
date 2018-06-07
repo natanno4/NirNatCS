@@ -134,15 +134,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Config\Config.cshtml" />
+    <Content Include="Views\Logs\Logs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\configInfoModel.cs" />
+    <Compile Include="Models\ConfigInfoModel.cs" />
     <Compile Include="Models\ImageWebModel.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\LogsModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,9 +177,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">
       <Project>{4e2003e4-1b14-429e-a575-3cbe5679983e}</Project>
@@ -183,6 +186,10 @@
     <ProjectReference Include="..\ImageService\ImageService.csproj">
       <Project>{2b2e36b8-5cc5-4e9a-8405-a0db6a5b0b5f}</Project>
       <Name>ImageService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{f1a9f9ee-bf0d-4094-bff1-5a52150a3bf1}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

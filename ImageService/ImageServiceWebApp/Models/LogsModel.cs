@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using ImageService.Logging.Modal;
+using Communication;
 
 namespace ImageServiceWebApp.Models
 {
     public class LogsModel
     {
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "Type")]
-        public string Type { get; set; }
+
+        private IClient client;
+
+        public LogsModel()
+        {
+            client = GuiClient.instanceS;
+            client.Connect();
+        }
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Message")]
-        public string Message { get; set; }
-
-
+        public List<Log> Logs { get; set; }
     }
 }

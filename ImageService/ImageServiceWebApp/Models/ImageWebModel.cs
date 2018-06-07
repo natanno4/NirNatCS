@@ -18,7 +18,8 @@ namespace ImageServiceWebApp.Models
             this.client.Connect();
             this.IsConnected = this.client.IsConnected();
             this.StudentsInfo = new List<Student>();
-            this.updateStudentList();
+            this.UpdateStudentList();
+            this.NumberOfPhotos = this.UpdateNumberOFphotos();
         }
 
         [Required]
@@ -29,8 +30,8 @@ namespace ImageServiceWebApp.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "IsConnected")]
-        public bool NumberOfPhotos { get; set; }
+        [Display(Name = "Number Of Photos:")]
+        public int NumberOfPhotos { get; set; }
 
 
         [Required]
@@ -38,7 +39,7 @@ namespace ImageServiceWebApp.Models
         [Display(Name = "StudentsInfo")]
         public List<Student> StudentsInfo { get; set; }
 
-        private void updateStudentList()
+        private void UpdateStudentList()
         {
             string line;
             StreamReader file = new StreamReader(HttpContext.Current.Server.MapPath("~/App_Data/StudentsInfo.txt"));
@@ -49,7 +50,32 @@ namespace ImageServiceWebApp.Models
             }
             file.Close();
         }
+
+
+        private int UpdateNumberOFphotos()
+        {
+            if(!client.IsConnected())
+            {
+                return 0;
+            }
+            ConfigInfoModel config = ConfigInfoModel.SingeltonConfig;
+            string path = config.OutPutDir;
+            int count = 0;
+            try
+            {
+                count += (int)(from file in Directory.EnumerateFiles(path, "*bmp", SearchOption.AllDirectories) select file).Count();
+                count += (int)(from file in Directory.EnumerateFiles(path, "*jpg", SearchOption.AllDirectories) select file).Count();
+                count += (int)(from file in Directory.EnumerateFiles(path, "*png", SearchOption.AllDirectories) select file).Count();
+                count += (int)(from file in Directory.EnumerateFiles(path, "*gif", SearchOption.AllDirectories) select file).Count();
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Data.ToString());
+                return 0;
+            }
+            return count;
+        }
     }
+
 
 
 
