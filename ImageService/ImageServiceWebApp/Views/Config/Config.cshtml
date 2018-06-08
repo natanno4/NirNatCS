@@ -25,15 +25,23 @@
 
 
 <h2>@Html.DisplayNameFor(model => @Model.Handlers)</h2>
-<h3>Click on the handler to remove</h3>
 <div>
     <ul>
         @foreach (var handler in Model.Handlers)
         {
-            <li> @Html.ActionLink(@handler, "RemoveHandler", new {h = @handler})</li>
+            <li> @Html.ActionLink(@handler, "RemoveHandler", new {remove = @handler})</li>
         }
     
         </ul>
+    @{
+        if (Model.Handlers.Count != 0)
+        {
+            <h5> Click on the handler to remove</h5>
+        }
+    }
  </div>
+
+    
+
 
 

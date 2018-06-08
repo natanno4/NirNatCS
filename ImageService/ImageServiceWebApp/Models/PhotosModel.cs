@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ImageServiceWebApp.Models
 {
-    public class PhotosList
+    public class PhotosModel
     {
         [Required]
         [DataType(DataType.Text)]
@@ -16,7 +16,7 @@ namespace ImageServiceWebApp.Models
 
         [Required]
         [Display(Name = "ListPhotos")]
-        private List<Photo> ListPhotos = new List<Photo>();
+        public List<Photo> ListPhotos = new List<Photo>();
 
       
         public int NumOfPhotos()

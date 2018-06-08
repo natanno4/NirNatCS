@@ -19,8 +19,9 @@ namespace ImageServiceWebApp.Controllers
         }
 
         // GET: Remove
-        public ActionResult RemoveHandler()
+        public ActionResult RemoveHandler(string remove)
         {
+            configModel.HandlerRemove = remove;
             return View(configModel);
         }
 
@@ -34,10 +35,7 @@ namespace ImageServiceWebApp.Controllers
         public ActionResult OK()
         {
             string handler = configModel.HandlerRemove;
-            //configModel.RemoveAction();
-            string[] args = new string[2];
-            args[0] = handler;
-            Infrastructure.MsgCommand cmd = new Infrastructure.MsgCommand((int)ImageService.Infrastructure.Enums.CommandEnum.RemoveHandlerCommand, args);        
+            configModel.RemoveAction();
             return RedirectToAction("Config");
         }
 

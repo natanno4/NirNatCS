@@ -8,7 +8,8 @@
 
 <script>
     $("#CancelBt").click(function () {
-        $.post("@Url.Action("Config/Cancel")",function () {
+        var url = "/config/Cancel";
+        $.post(url,function () {
             window.location.href = "Config";
         })
     });
@@ -16,7 +17,8 @@
     $("#OKBt").click(function () {
         $("#OKBt").prop('disabled', true);
         $("#CancelBt").prop('disabled', true);
-        $.post("@Url.Action("Config/OK")",function () {
+        var url = "/config/OK";
+        $.post(url,function () {
             window.location.href = "Config";
         })
     });

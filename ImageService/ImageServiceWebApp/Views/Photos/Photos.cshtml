@@ -1,0 +1,22 @@
+﻿@model ImageServiceWebApp.Models.PhotosModel
+@{
+    ViewBag.Title = "Photos";
+}
+
+<h2>Photos</h2>
+
+
+<div class="container">
+    <div class="row">
+        @{
+            foreach(var photo in Model.ListPhotos)
+            {
+                <div class="col-md-4 col-sm-6 col-lg-2" >
+                    
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
