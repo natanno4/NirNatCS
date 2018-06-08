@@ -7,33 +7,33 @@
 
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.OutPutDir)</th><th>@Model.OutPutDir</th> 
+        <th>@Html.DisplayNameFor(model => model.OutPutDir)</th><th>@Html.DisplayFor(m => m.OutPutDir)</th> 
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.SourceName)</th> <th>@Model.SourceName</th>
+        <th>@Html.DisplayNameFor(model => model.SourceName)</th> <th>@Html.DisplayFor(m => m.SourceName)</th>
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.LogName)</th> <th>@Model.LogName</th>
+        <th>@Html.DisplayNameFor(model => model.LogName)</th> <th>@Html.DisplayFor(m => m.LogName)</th>
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Thumbnail)</th> <th>@Model.Thumbnail</th>
+        <th>@Html.DisplayNameFor(model => model.Thumbnail)</th> <th>@Html.DisplayFor(m => m.Thumbnail)</th>
     </tr>
 </table>
 
 
 <h2>@Html.DisplayNameFor(model => @Model.Handlers)</h2>
-
-
-<tr>
+<h3>Click on the handler to remove</h3>
+<div>
     <ul>
         @foreach (var handler in Model.Handlers)
         {
-            
+            <li> @Html.ActionLink(@handler, "RemoveHandler", new {h = @handler})</li>
         }
-    </ul>
-</tr>
+    
+        </ul>
+ </div>
 
 

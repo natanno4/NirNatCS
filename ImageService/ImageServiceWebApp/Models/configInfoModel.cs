@@ -36,6 +36,9 @@ namespace ImageServiceWebApp.Models
         [Display(Name = "Handlers:")]
         public List<string> Handlers { get; set; }
 
+        [Required]
+        public string HandlerRemove { get; set; }
+
         private IClient m_client;
         private static ConfigInfoModel instance;
 
@@ -53,6 +56,7 @@ namespace ImageServiceWebApp.Models
         private ConfigInfoModel()
         {
             Handlers = new List<string>();
+            Handlers.Add("check");
             this.m_client = GuiClient.instanceS;
             m_client.CommandRecived += InfoFromServer;
             string[] args = new string[3];

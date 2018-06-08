@@ -1,0 +1,15 @@
+﻿@model ImageServiceWebApp.Models.ConfigInfoModel
+
+<h2>handler "@Html.DisplayFor(m => m.HandlerRemove)" will be removed. are you sure?</h2>
+
+<input type="button" value="OK" id="OKBt" size="8"/> <input type="button" value="CANCEL" id="CancelBt" size="8"/>
+
+
+
+<script>
+    $("#CancelBt").click(function () {
+        $.post("@Url.Action("Config/Cancel")", input = {value:false},function () {
+            window.location.href = "Config";
+        })
+    });
+</script>

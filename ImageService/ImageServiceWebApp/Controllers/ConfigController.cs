@@ -15,5 +15,22 @@ namespace ImageServiceWebApp.Controllers
         {
             return View(configModel);
         }
+
+        // GET: Remove
+        public ActionResult RemoveHandler()
+        {
+            return View(configModel);
+        }
+
+        [HttpPost]
+        public ActionResult Cancel(bool choice)
+        {
+            if (!choice)
+            {
+                return RedirectToAction("Config");
+            } 
+            return RedirectToAction("Config");
+        }
+
     }
 }

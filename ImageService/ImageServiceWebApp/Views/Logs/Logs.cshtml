@@ -1,31 +1,49 @@
-﻿@model ImageServiceWebApp.Models.LogsModel
+﻿      
+@model ImageServiceWebApp.Models.LogsModel
+
 @{
     ViewBag.Title = "Logs";
 }
 
 <div>
-    <h2>
-        please enter your Log type:
-    </h2>
-    <input type="text" id="type" size="20"/> 
-    <input type="button" id="ShowLogs" value="OK" size="8"/>
+    @using (Html.BeginForm("Logs", "Logs", FormMethod.Post))
+    {
+
+        <div>
+            <h2>
+                please enter your Log type:
+            </h2>
+            @Html.TextBoxFor(m => m.TypeChose, new { @class = "form-control" })
+            <input type="submit" id="show" value="Submit"/>
+        </div>
+
+    }
+
 </div>
 
+`<h2>Logs list:</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Message
+        </th>
+    </tr>
 
-<h2>Logs:</h2>
-<table class="table" id="tableLogs">
+    @foreach (var item in Model.LogsFilter)
+            {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.Type)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Message)
+            </th>
 
-   
+        </tr>}
+
 </table>
-
-
-<script>
-    $("#ShowLogs").click(function () {
-        $("#tableLogs").append("<tr><th>Type</th> <th>Messgae</th></tr>");
-
-    });
-</script>      
-       
-
    

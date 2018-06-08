@@ -12,22 +12,7 @@ namespace ImageServiceWebApp.Models
         public Log(int type, string message)
         {
             Message = message;
-            if(type == (int)MessageTypeEnum.FAIL)
-            {
-                Type = "Fail";
-                return;
-            } 
-            if(type == (int)MessageTypeEnum.INFO)
-            {
-                Type = "INFO";
-                return;
-            }
-
-            if(type == (int)MessageTypeEnum.WARNING)
-            {
-                Type = "WARNING";
-                return;
-            }
+            Type = ConverToString(type);
         }
 
         [Required]
@@ -39,5 +24,26 @@ namespace ImageServiceWebApp.Models
         [DataType(DataType.Text)]
         [Display(Name = "Message")]
         public string Message { get; set; }
+
+
+        public static string ConverToString(int type)
+        {
+            if (type == (int)MessageTypeEnum.FAIL)
+            {
+                return "FAIL";
+
+            }
+            if (type == (int)MessageTypeEnum.INFO)
+            {
+                return "INFO";
+
+            }
+
+            if (type == (int)MessageTypeEnum.WARNING)
+            {
+                return "WARNING";
+            }
+            return null;
+        }
     }
 }
