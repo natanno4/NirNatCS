@@ -1,4 +1,6 @@
-﻿using ImageServiceWebApp.Models;
+﻿
+using ImageServiceWebApp.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +25,19 @@ namespace ImageServiceWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cancel(bool choice)
+        public ActionResult Cancel()
         {
-            if (!choice)
-            {
-                return RedirectToAction("Config");
-            } 
+            return RedirectToAction("Config");
+        }
+
+        [HttpPost]
+        public ActionResult OK()
+        {
+            string handler = configModel.HandlerRemove;
+            //configModel.RemoveAction();
+            string[] args = new string[2];
+            args[0] = handler;
+            Infrastructure.MsgCommand cmd = new Infrastructure.MsgCommand((int)ImageService.Infrastructure.Enums.CommandEnum.RemoveHandlerCommand, args);        
             return RedirectToAction("Config");
         }
 

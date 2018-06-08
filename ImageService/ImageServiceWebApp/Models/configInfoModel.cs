@@ -57,6 +57,8 @@ namespace ImageServiceWebApp.Models
         {
             Handlers = new List<string>();
             Handlers.Add("check");
+            this.canBeRemoved = false;
+            this.HandlerRemove = "";
             this.m_client = GuiClient.instanceS;
             m_client.CommandRecived += InfoFromServer;
             string[] args = new string[3];
@@ -80,11 +82,11 @@ namespace ImageServiceWebApp.Models
             int id = msg.commandID;
             if (msg.commandID == (int)CommandEnum.GetConfigCommand)
             {
-
+                this.SetConfig(msg);
             }
             else if (msg.commandID == (int)CommandEnum.RemoveHandlerCommand)
             {
-                RemoveHandler(msg);
+                this.canBeRemoved = RemoveHandler(msg);
             }
         }
         public void SetConfig(MsgCommand mesg)
@@ -104,18 +106,38 @@ namespace ImageServiceWebApp.Models
 
             }
         }
-        public void RemoveHandler(MsgCommand mesg)
+
+        public bool canBeRemoved { get; set; }
+
+        public void RemoveAction()
+        {
+            string[] args = new string[2];
+            args[0] = this.HandlerRemove;
+            MsgCommand cmd = new MsgCommand((int)CommandEnum.RemoveHandlerCommand, args);
+            this.m_client.SendAndRecived(cmd);
+        }
+
+        public bool RemoveHandler(MsgCommand mesg)
         {
             string[] args = mesg.args;
             string rem = args[0];
+            if(rem == null)
+            {
+                this.HandlerRemove = "";
+                return false;
+            }
             foreach (string s in Handlers)
             {
                 if (s.Equals(rem))
                 {
                     Handlers.Remove(s);
+                    this.HandlerRemove = "";
+                    return true;
                 }
             }
+            return false;
         }
+
         private void defaultConfig()
         {
             this.OutPutDir = "NO connection";
