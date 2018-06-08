@@ -9,10 +9,9 @@ namespace ImageServiceWebApp.Models
 {
     public class Photo
     {
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "PhotoPath")]
+
         public string PhotoPath { get; }
+        public string PhotoThumbPath { get; }
 
         [Required]
         [DataType(DataType.Text)]
