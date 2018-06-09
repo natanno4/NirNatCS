@@ -20,18 +20,13 @@ namespace ImageServiceWebApp.Models
         public LogsModel()
         {
             Logs = new List<Log>();
-            Logs.Add(new Log(0, "0000"));
-            Logs.Add(new Log(1, "00000"));
-            Logs.Add(new Log(2, "0000"));
-            Logs.Add(new Log(0, "111"));
             LogsFilter = new List<Log>();
             m_client = GuiClient.instanceS;
             m_client.CommandRecived += GetInfoFromServer;
             string[] args = new string[5];
-            MsgCommand cmd = new MsgCommand((int)CommandEnum.GetConfigCommand, args);
+            MsgCommand cmd = new MsgCommand((int)CommandEnum.LogCommand, args);
             //get config information
-            this.m_client.SendAndRecived(cmd);
-
+            this.m_client.Write(cmd);
         }
 
 
@@ -56,7 +51,7 @@ namespace ImageServiceWebApp.Models
                 foreach (string log in collection)
                 {
                     string[] logInfo = log.Split(';');
-                    this.Logs.Add(new Log(Int32.Parse(logInfo[1]), logInfo[0]));
+                    this.Logs.Add(new Log((logInfo[1]), logInfo[0]));
                 }
             }
             else if (msg.commandID == (int)CommandEnum.AddLogCommand)
@@ -66,10 +61,16 @@ namespace ImageServiceWebApp.Models
         }
         public void addLog(MsgCommand m)
         {
-
-            MessageRecievedEventArgs ms = MessageRecievedEventArgs.FromJSON(m.args[0]);
-            Log lg = new Log((int)ms.Status, ms.Message);
+            MessageRecievedEventArgs cmd = MessageRecievedEventArgs.FromJSON(m.args[0]);
+            Log lg = new Log(Log.ConverToString((int) cmd.Status), cmd.Message);
             Logs.Add(lg);
+            if(TypeChose != null)
+            {
+                if(TypeChose.Equals(lg.Type))
+                {
+                    LogsFilter.Add(lg);
+                }
+            }
         }
     }
 }

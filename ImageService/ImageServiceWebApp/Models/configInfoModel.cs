@@ -56,7 +56,6 @@ namespace ImageServiceWebApp.Models
         private ConfigInfoModel()
         {
             Handlers = new List<string>();
-            Handlers.Add("check");
             this.canBeRemoved = false;
             this.HandlerRemove = "";
             this.m_client = GuiClient.instanceS;
@@ -69,7 +68,7 @@ namespace ImageServiceWebApp.Models
             {
                 //no connection
                 this.defaultConfig();
-            }
+            } 
         }
 
         public void addHandler(string handler)
@@ -114,7 +113,9 @@ namespace ImageServiceWebApp.Models
             string[] args = new string[2];
             args[0] = this.HandlerRemove;
             MsgCommand cmd = new MsgCommand((int)CommandEnum.RemoveHandlerCommand, args);
-            this.m_client.SendAndRecived(cmd);
+            //this.m_client.SendAndRecived(cmd);
+            this.m_client.Write(cmd);
+            System.Threading.Thread.Sleep(5);
         }
 
         public bool RemoveHandler(MsgCommand mesg)

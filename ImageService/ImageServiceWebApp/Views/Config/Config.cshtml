@@ -27,11 +27,12 @@
 <h2>@Html.DisplayNameFor(model => @Model.Handlers)</h2>
 <div>
     <ul>
+         
         @foreach (var handler in Model.Handlers)
         {
-            <li> @Html.ActionLink(@handler, "RemoveHandler", new {remove = @handler})</li>
+            <li> @Html.ActionLink(@handler, "RemoveHandler", new { remove = @handler })</li>
         }
-    
+        
         </ul>
     @{
         if (Model.Handlers.Count != 0)

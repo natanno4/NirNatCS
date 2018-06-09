@@ -22,13 +22,18 @@ namespace ImageServiceWebApp.Models
 
         public bool DeleteFromView { get; set; }
 
+        public Photo viewPhoto { get; set; }
+        public Photo photoToDelete { get; set; }
+
         public PhotosModel()
         {
              string outputdir = conModel.OutPutDir;
             
             DeleteFromView = false;
-
-            InitiliazeList(outputdir);
+            viewPhoto = null;
+            photoToDelete = null;
+ 
+            //InitiliazeList(outputdir);
         }
         public int NumOfPhotos()
         {

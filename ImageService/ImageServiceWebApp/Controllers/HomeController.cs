@@ -9,11 +9,12 @@ namespace ImageServiceWebApp.Controllers
 {
     public class HomeController : Controller
     {
-
+        private static ImageWebModel imgwModel = new ImageWebModel();
         // GET: ImageWeb
         public ActionResult ImageWeb()
         {
-            ImageWebModel imgwModel = new ImageWebModel(); 
+            imgwModel.NumberOfPhotos = imgwModel.UpdateNumberOFphotos();
+            
             return View(imgwModel);
         }
     }

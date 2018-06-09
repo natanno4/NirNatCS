@@ -11,6 +11,7 @@ namespace ImageServiceWebApp.Models
     public class ImageWebModel
     {
         private IClient client;
+       
 
         public ImageWebModel()
         {
@@ -19,8 +20,16 @@ namespace ImageServiceWebApp.Models
             this.IsConnected = this.client.IsConnected();
             this.StudentsInfo = new List<Student>();
             this.UpdateStudentList();
-            this.NumberOfPhotos = this.UpdateNumberOFphotos();
+            ConfigInfoModel model = ConfigInfoModel.SingeltonConfig;
+            OutPutDir = model.OutPutDir;
+            if (this.IsConnected)
+            {
+                System.Threading.Thread.Sleep(5);
+                client.HandleRecived();
+            }
         }
+
+        private string OutPutDir { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
@@ -52,14 +61,14 @@ namespace ImageServiceWebApp.Models
         }
 
 
-        private int UpdateNumberOFphotos()
+        public int UpdateNumberOFphotos()
         {
             if(!client.IsConnected())
             {
                 return 0;
             }
-            ConfigInfoModel config = ConfigInfoModel.SingeltonConfig;
-            string path = config.OutPutDir;
+            
+            string path = OutPutDir;
             int count = 0;
             try
             {
@@ -67,6 +76,7 @@ namespace ImageServiceWebApp.Models
                 count += (int)(from file in Directory.EnumerateFiles(path, "*jpg", SearchOption.AllDirectories) select file).Count();
                 count += (int)(from file in Directory.EnumerateFiles(path, "*png", SearchOption.AllDirectories) select file).Count();
                 count += (int)(from file in Directory.EnumerateFiles(path, "*gif", SearchOption.AllDirectories) select file).Count();
+                count = count / 2;
             }catch(Exception e)
             {
                 Console.WriteLine(e.Data.ToString());

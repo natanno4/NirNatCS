@@ -18,15 +18,20 @@ namespace ImageServiceWebApp.Controllers
         }
 
         // GET: PhotoViewer
-        public ActionResult PhotoViewer(string showThumbPath)
+        public ActionResult PhotoViewer(Photo showThumbPath)
         {
             model.DeleteFromView = true;
+            model.viewPhoto = showThumbPath;
             return View();
         }
 
         // GET: DeletePhoto
-        public ActionResult DeletePhoto(string showThumbPath)
+        public ActionResult DeletePhoto(Photo showThumbPath)
         {
+            if(model.viewPhoto == null)
+            {
+                model.photoToDelete = showThumbPath;
+            }
             return View();
         }
 
@@ -34,12 +39,17 @@ namespace ImageServiceWebApp.Controllers
         public ActionResult Back()
         {
             model.DeleteFromView = false;
+            model.viewPhoto = null;
             return RedirectToAction("Photos");
         }
 
         [HttpGet]
         public JObject Cancel()
         {
+            if(model.photoToDelete != null)
+            {
+                model.photoToDelete = null;
+            }
             JObject data = new JObject();
             if (model.DeleteFromView)
             {
@@ -57,7 +67,20 @@ namespace ImageServiceWebApp.Controllers
         [HttpPost]
         public ActionResult OkDelete()
         {
+            if(model.photoToDelete == null)
+            {
+                
+
+            } else
+            {
+                if(model.viewPhoto == null)
+                {
+
+                }
+            }
             model.DeleteFromView = false;
+            model.viewPhoto = null;
+            model.photoToDelete = null;
             return RedirectToAction("Photos");
         }
 

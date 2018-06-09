@@ -12,41 +12,13 @@ namespace ImageServiceWebApp.Controllers
 {
     public class LogsController : Controller
     {
-        static LogsModel model = new LogsModel();
+        private static LogsModel model = new LogsModel();
         // GET: Logs
         public ActionResult Logs()
         {
+            model.LogsFilter.Clear();
             return View(model);
         }
-        /*
-        [HttpPost]
-        public JArray GetList(string type)
-        {
-            JArray list = new JArray();
-            if(string.IsNullOrEmpty(type) || (type != "INFO" && type != "WARNING" && type != "FAIL"))
-            {
-                foreach(Log log in model.Logs)
-                {
-                    JObject data = new JObject();
-                    data["Message"] = log.Message;
-                    data["Type"] = log.Type;
-                    list.Add(data);
-                }
-            } else
-            {
-                foreach (Log log in model.Logs)
-                {
-                    if (log.Type == type)
-                    {
-                        JObject data = new JObject();
-                        data["Message"] = log.Message;
-                        data["Type"] = log.Type;
-                        list.Add(data);
-                    }
-                }
-            }
-            return list;
-        }*/
 
         [HttpPost]
         public ActionResult Logs(LogsModel LModel)

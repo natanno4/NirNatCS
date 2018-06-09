@@ -9,10 +9,11 @@ namespace ImageServiceWebApp.Models
 {
     public class Log
     {
-        public Log(int type, string message)
+        public Log(string type, string message)
         {
             Message = message;
-            Type = ConverToString(type);
+            Type = type;
+            //Type = ConverToString(type);
         }
 
         [Required]
@@ -45,5 +46,6 @@ namespace ImageServiceWebApp.Models
             }
             return null;
         }
+        
     }
 }
