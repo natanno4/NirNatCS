@@ -40,3 +40,9 @@ C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\ob
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.csproj.GenerateResource.Cache
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.exe
 C:\Users\natan\Desktop\adv prog 2\NirNatCS\NirNatCS\ImageService\ImageService\obj\Debug\ImageService.pdb
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Communication.exe
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Infrastructure.exe
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Communication.pdb
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Infrastructure.pdb
+C:\Users\nir\Documents\Visual Studio 2015\Projects\Advanced2\ex2\NirNatCS\ImageService\ImageService\bin\Debug\Newtonsoft.Json.xml

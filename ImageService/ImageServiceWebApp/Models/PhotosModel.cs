@@ -24,10 +24,11 @@ namespace ImageServiceWebApp.Models
 
         public PhotosModel()
         {
-            string outputdir = conModel.OutPutDir;
+             string outputdir = conModel.OutPutDir;
+            
             DeleteFromView = false;
 
-           // InitiliazeList(outputdir);
+            InitiliazeList(outputdir);
         }
         public int NumOfPhotos()
         {
@@ -35,7 +36,7 @@ namespace ImageServiceWebApp.Models
         }
         public void InitiliazeList(string outputPath)
         {
-            string thumbnail = outputPath + "//Thumbnails";
+            string thumbnail = outputPath + @"\\Thumbnails";
             DirectoryInfo dirThumb = new DirectoryInfo(thumbnail);
             foreach (DirectoryInfo dir in dirThumb.GetDirectories())
             {

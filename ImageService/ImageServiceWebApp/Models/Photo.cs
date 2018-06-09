@@ -32,11 +32,15 @@ namespace ImageServiceWebApp.Models
 
         public Photo(string path, string thumbPath)
         {
+            
             Name = Path.GetFileName(path);
             Month = Path.GetDirectoryName(path);
             Month = new DirectoryInfo(Month).Name;
             Year = Path.GetDirectoryName(Path.GetDirectoryName(path));
             Year = new DirectoryInfo(Year).Name;
+            PhotoPath = path;
+            PhotoThumbPath = thumbPath;
+            
         }
     }
 }

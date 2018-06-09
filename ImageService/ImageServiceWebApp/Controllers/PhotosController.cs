@@ -14,7 +14,7 @@ namespace ImageServiceWebApp.Controllers
         // GET: Photos
         public ActionResult Photos()
         {
-            return View();
+            return View(model);
         }
 
         // GET: PhotoViewer

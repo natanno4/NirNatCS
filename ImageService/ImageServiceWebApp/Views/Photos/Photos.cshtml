@@ -9,10 +9,10 @@
 <div class="container">
     <div class="row">
         @{
-            for (var i = 0; i < 10; i++)
+            foreach (var item in Model.ListPhotos)
             {
                 <div class="col-md-4 col-sm-5 col-lg-3"  style="border:1px solid lightblue; margin:5px ; padding:10px;max-width:300px" >
-                    <img src="@Url.Content(@"~\C:\Users\natan\Desktop\a\test.jpg")" class="img-circle" style="max-width:200px; max-width:240px; border:0.5px solid blue; border-radius:50%" />
+                    <img src="@Url.Content(item.PhotoThumbPath)" class="img-circle" style="max-width:200px; max-width:240px; border:0.5px solid blue; border-radius:50%" />
                     <h6>Name: </h6>
                     <h6>Date: </h6>
 
