@@ -9,10 +9,15 @@
 <div class="container">
     <div class="row">
         @{
-            foreach(var photo in Model.ListPhotos)
+            for (var i = 0; i < 10; i++)
             {
-                <div class="col-md-4 col-sm-6 col-lg-2" >
-                    
+                <div class="col-md-4 col-sm-5 col-lg-3"  style="border:1px solid lightblue; margin:5px ; padding:10px;max-width:300px" >
+                    <img src="@Url.Content(@"~\C:\Users\natan\Desktop\a\test.jpg")" class="img-circle" style="max-width:200px; max-width:240px; border:0.5px solid blue; border-radius:50%" />
+                    <h6>Name: </h6>
+                    <h6>Date: </h6>
+
+                    <a href="@Url.Action("PhotoViewer", new {showThumbPath = "check"})" class="butten btn-info"  style="border:solid blue 1px; font-size:15px"  role="button">View</a> <a href="@Url.Action("DeletePhoto", new {showThumbPath = "check"})" class="butten btn-danger" style="border:blue solid 1px; font-size:15px" role="button">Delete</a> 
+                   
                 </div>
             }
         }

@@ -20,11 +20,14 @@ namespace ImageServiceWebApp.Models
 
         private ConfigInfoModel conModel = ConfigInfoModel.SingeltonConfig;
 
+        public bool DeleteFromView { get; set; }
+
         public PhotosModel()
         {
             string outputdir = conModel.OutPutDir;
+            DeleteFromView = false;
 
-            InitiliazeList(outputdir);
+           // InitiliazeList(outputdir);
         }
         public int NumOfPhotos()
         {

@@ -1,0 +1,35 @@
+﻿@model ImageServiceWebApp.Models.PhotosModel
+
+@{
+    ViewBag.Title = "DeletePhoto";
+}
+
+<h2>DeletePhoto</h2>
+
+
+<h4>deleting the photo, are you sure?</h4>
+
+
+
+<h6>Name:</h6>
+
+<input type="button" value="OK" id="Delete" class="butten btn-success" size="8" /> <input type="button" value="Cancel" class="butten btn-danger" id="NoDelte" size="8" />
+
+
+<script>
+    $("#NoDelte").click(function () {
+        var url = "/Photos/Cancel";
+        $.get(url, function (data) {
+            debugger
+            window.location.href = data.backTo;
+        }, "Json");
+        
+    });
+
+    $("#Delete").click(function () {
+        var url = "/Photos/OkDelete"
+        $.post(url, function () {
+            window.location.href = "Photos";
+        });
+    });
+</script>

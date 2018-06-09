@@ -11,6 +11,8 @@ namespace ImageServiceWebApp.Models
     {
 
         public string PhotoPath { get; }
+
+        [Required]
         public string PhotoThumbPath { get; }
 
         [Required]
