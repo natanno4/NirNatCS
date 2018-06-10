@@ -47,7 +47,9 @@ namespace ImageServiceWebApp.Models
         [DataType(DataType.Text)]
         [Display(Name = "StudentsInfo")]
         public List<Student> StudentsInfo { get; set; }
-
+        /// <summary>
+        /// Update the student list.
+        /// </summary>
         private void UpdateStudentList()
         {
             string line;
@@ -60,7 +62,10 @@ namespace ImageServiceWebApp.Models
             file.Close();
         }
 
-
+        /// <summary>
+        /// update the number of photos in current outputdir.
+        /// </summary>
+        /// <returns>0 if there isnt connectin, else the number of photos</returns>
         public int UpdateNumberOFphotos()
         {
             if(!client.IsConnected())
@@ -85,12 +90,4 @@ namespace ImageServiceWebApp.Models
             return count;
         }
     }
-
-
-
-
-
- 
-
-    
 }

@@ -29,7 +29,11 @@ namespace ImageServiceWebApp.Models
         [DataType(DataType.Text)]
         [Display(Name = "Name")]
         public string Name { get; }
-
+        /// <summary>
+        /// constructor.
+        /// </summary>
+        /// <param name="path">path to outputdir</param>
+        /// <param name="thumbPath">path to outputdir/thumbnails</param>
         public Photo(string path, string thumbPath)
         {
             

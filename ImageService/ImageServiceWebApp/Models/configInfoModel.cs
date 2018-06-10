@@ -41,7 +41,7 @@ namespace ImageServiceWebApp.Models
 
         private IClient m_client;
         private static ConfigInfoModel instance;
-
+        // singelton
         public static ConfigInfoModel SingeltonConfig
         {
             get
@@ -70,12 +70,23 @@ namespace ImageServiceWebApp.Models
                 this.defaultConfig();
             } 
         }
-
+        /// <summary>
+        /// add handler to the list.
+        /// </summary>
+        /// <param name="handler">handler</param>
         public void addHandler(string handler)
         {
             Handlers.Add(handler);
         }
 
+        /// <summary>
+        /// InfoFromServer.
+        /// a function that is called by an event, and contains
+        /// info from server. check if is a config command or remove
+        /// handler command and act accorindgly.
+        /// </summary>
+        /// <param name="sender">server</param>
+        /// <param name="msg">contains command type and args</param>
         public void InfoFromServer(object sender, MsgCommand msg)
         {
             int id = msg.commandID;
@@ -88,6 +99,11 @@ namespace ImageServiceWebApp.Models
                 this.canBeRemoved = RemoveHandler(msg);
             }
         }
+        /// <summary>
+        /// SetConfig.
+        /// set the configuration info that are in msg Command
+        /// </summary>
+        /// <param name="mesg">MsgCommand</param>
         public void SetConfig(MsgCommand mesg)
         {
             string[] arg = mesg.args;
@@ -108,6 +124,11 @@ namespace ImageServiceWebApp.Models
 
         public bool canBeRemoved { get; set; }
 
+        /// <summary>
+        /// RemoveAction.
+        /// a function that send to server MsgCOmmand that say to remove
+        /// handler
+        /// </summary>
         public void RemoveAction()
         {
             string[] args = new string[2];
@@ -118,6 +139,13 @@ namespace ImageServiceWebApp.Models
             System.Threading.Thread.Sleep(5);
         }
 
+        /// <summary>
+        /// RemoveHandler.
+        /// recevieng MsgCommand that include which handler is need
+        /// to be remove and does is it.
+        /// </summary>
+        /// <param name="mesg">MsgCommand</param>
+        /// <returns>true if was deleted, false if not appeard</returns>
         public bool RemoveHandler(MsgCommand mesg)
         {
             string[] args = mesg.args;
@@ -138,7 +166,11 @@ namespace ImageServiceWebApp.Models
             }
             return false;
         }
-
+        /// <summary>
+        /// defaultConfig.
+        /// in case that there isnt connection with server, display
+        /// "no connection" in every property of config.
+        /// </summary>
         private void defaultConfig()
         {
             this.OutPutDir = "NO connection";

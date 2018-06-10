@@ -26,7 +26,12 @@ namespace ImageServiceWebApp.Models
         [Display(Name = "Message")]
         public string Message { get; set; }
 
-
+        /// <summary>
+        /// receieve a type of message by his enum representaion and
+        /// convert it to actual string
+        /// </summary>
+        /// <param name="type">enum type</param>
+        /// <returns>string</returns>
         public static string ConverToString(int type)
         {
             if (type == (int)MessageTypeEnum.FAIL)

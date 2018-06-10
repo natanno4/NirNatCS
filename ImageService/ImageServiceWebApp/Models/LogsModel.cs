@@ -40,6 +40,13 @@ namespace ImageServiceWebApp.Models
 
         public List<Log> Logs { get; set; }
 
+        /// <summary>
+        /// GetInfoFromServer.
+        /// a function that is called by an event, and contains
+        /// info from server. check if is a Log command or AddLog and act accorindgly.
+        /// </summary>
+        /// <param name="sender">server</param>
+        /// <param name="msg">contains command type and args</param>
         public void GetInfoFromServer(object sender, MsgCommand msg)
         {
             if (msg.commandID == (int)CommandEnum.LogCommand)
@@ -59,6 +66,12 @@ namespace ImageServiceWebApp.Models
                 this.addLog(msg);
             }
         }
+        /// <summary>
+        /// addLog.
+        /// receive a MsgCommand, extract from it all the info about 
+        /// the message, create appropriate log and add it to list.
+        /// </summary>
+        /// <param name="m"></param>
         public void addLog(MsgCommand m)
         {
             MessageRecievedEventArgs cmd = MessageRecievedEventArgs.FromJSON(m.args[0]);
