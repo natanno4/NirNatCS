@@ -57,22 +57,32 @@ namespace ImageServiceWebApp.Models
         /// <param name="outputPath">outputdir path</param>
         public void InitiliazeList(string outputPath)
         {
-            string thumbnail = outputPath + @"\\Thumbnails";
-            DirectoryInfo dirThumb = new DirectoryInfo(thumbnail);
-            DirectoryInfo dirFolder = new DirectoryInfo(outputPath);
-            string folderName = dirFolder.Name; 
-            foreach (DirectoryInfo dir in dirThumb.GetDirectories())
+            if(!conModel.IsConnected())
             {
-                foreach (DirectoryInfo sub_dir in dir.GetDirectories())
+                return;
+            }
+            try
+            {
+                string thumbnail = outputPath + @"\\Thumbnails";
+                DirectoryInfo dirThumb = new DirectoryInfo(thumbnail);
+                DirectoryInfo dirFolder = new DirectoryInfo(outputPath);
+                string folderName = dirFolder.Name;
+                foreach (DirectoryInfo dir in dirThumb.GetDirectories())
                 {
-                    foreach (FileInfo file in sub_dir.GetFiles())
+                    foreach (DirectoryInfo sub_dir in dir.GetDirectories())
                     {
-                        if (CheckIfValidPhoto(file.Extension.ToLower()))
+                        foreach (FileInfo file in sub_dir.GetFiles())
                         {
-                            ListPhotos.Add(new Photo(file.FullName , folderName));
+                            if (CheckIfValidPhoto(file.Extension.ToLower()))
+                            {
+                                ListPhotos.Add(new Photo(file.FullName, folderName));
+                            }
                         }
                     }
                 }
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Data.ToString());
             }
 
         }

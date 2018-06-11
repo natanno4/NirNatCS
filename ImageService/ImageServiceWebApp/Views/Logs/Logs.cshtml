@@ -6,11 +6,13 @@
 }
 
 <div>
+
+    <h1 style="font-family:'Lucida Calligraphy'"> Logs</h1>
     @using (Html.BeginForm("Logs", "Logs", FormMethod.Post))
     {
 
         <div>
-            <h2>
+            <h2 style="font-family:Courier New, Courier">
                 please enter your Log type:
             </h2>
             @Html.TextBoxFor(m => m.TypeChose, new { @class = "form-control" })
@@ -21,15 +23,14 @@
 
 </div>
 
-`<h2>Logs list:</h2>
 
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr style="background-color:azure; tab-size:15px">
         <th>
-            Type
+           <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:22px"> Type</p>
         </th>
         <th>
-            Message
+            <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:22px"> Message</p>
         </th>
     </tr>
 

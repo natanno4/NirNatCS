@@ -3,31 +3,30 @@
     ViewBag.Title = "Config";
 }
 
-<h2>Config</h2>
+<h1 style="font-family:'Lucida Calligraphy'">Config</h1>
 
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.OutPutDir)</th><th>@Html.DisplayFor(m => m.OutPutDir)</th> 
+        <th> <span style="font-weight:bolder">@Html.DisplayNameFor(model => model.OutPutDir)</span></th><th>@Html.DisplayFor(m => m.OutPutDir)</th> 
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.SourceName)</th> <th>@Html.DisplayFor(m => m.SourceName)</th>
+        <th> <span style="font-weight:bolder">@Html.DisplayNameFor(model => model.SourceName) </span></th> <th>@Html.DisplayFor(m => m.SourceName)</th>
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.LogName)</th> <th>@Html.DisplayFor(m => m.LogName)</th>
+        <th> <span style="font-weight:bolder">@Html.DisplayNameFor(model => model.LogName) </span></th> <th>@Html.DisplayFor(m => m.LogName)</th>
     </tr>
 
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Thumbnail)</th> <th>@Html.DisplayFor(m => m.Thumbnail)</th>
+        <th> <span style="font-weight:bolder">@Html.DisplayNameFor(model => model.Thumbnail) </span></th> <th>@Html.DisplayFor(m => m.Thumbnail)</th>
     </tr>
 </table>
 
 
-<h2>@Html.DisplayNameFor(model => @Model.Handlers)</h2>
+<h3 style="font-family:Courier New, Courier"> <span style="font-weight:bolder">@Html.DisplayNameFor(model => @Model.Handlers)</span></h3>
 <div>
-    <ul>
-         
+    <ul style="list-style:square">  
         @foreach (var handler in Model.Handlers)
         {
             <li> @Html.ActionLink(@handler, "RemoveHandler", new { remove = @handler })</li>
@@ -37,7 +36,7 @@
     @{
         if (Model.Handlers.Count != 0)
         {
-            <h5> Click on the handler to remove</h5>
+            <h6 style="font-family:Courier New, Courier"> <span style="text-decoration:underline"> Click on the handler to remove </span></h6>
         }
     }
  </div>

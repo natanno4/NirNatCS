@@ -39,7 +39,7 @@ namespace ImageServiceWebApp.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Number Of Photos:")]
+        [Display(Name = "Number Of Photos in Output Directory:")]
         public int NumberOfPhotos { get; set; }
 
 
@@ -52,14 +52,20 @@ namespace ImageServiceWebApp.Models
         /// </summary>
         private void UpdateStudentList()
         {
-            string line;
-            StreamReader file = new StreamReader(HttpContext.Current.Server.MapPath("~/App_Data/StudentsInfo.txt"));
-            while ((line = file.ReadLine()) != null)
+            try
             {
-                string [] info = line.Split(';');
-                this.StudentsInfo.Add(new Student(info[0], info[1], info[2]));
+                string line;
+                StreamReader file = new StreamReader(HttpContext.Current.Server.MapPath("~/App_Data/StudentsInfo.txt"));
+                while ((line = file.ReadLine()) != null)
+                {
+                    string[] info = line.Split(';');
+                    this.StudentsInfo.Add(new Student(info[0], info[1], info[2]));
+                }
+                file.Close();
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Data.ToString());
             }
-            file.Close();
         }
 
         /// <summary>

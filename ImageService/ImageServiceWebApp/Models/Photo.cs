@@ -39,22 +39,27 @@ namespace ImageServiceWebApp.Models
         /// <param name="thumbPath">path to outputdir/thumbnails</param>
         public Photo(string thumbPath, string folderName)
         {
-            int folderNameLocation, length;
-            realTumbPath = thumbPath;
-            Name = Path.GetFileName(thumbPath);
-            Month = Path.GetDirectoryName(thumbPath);
-            Month = new DirectoryInfo(Month).Name;
-            Year = Path.GetDirectoryName(Path.GetDirectoryName(thumbPath));
-            Year = new DirectoryInfo(Year).Name;     
+            try
+            {
+                int folderNameLocation, length;
+                realTumbPath = thumbPath;
+                Name = Path.GetFileName(thumbPath);
+                Month = Path.GetDirectoryName(thumbPath);
+                Month = new DirectoryInfo(Month).Name;
+                Year = Path.GetDirectoryName(Path.GetDirectoryName(thumbPath));
+                Year = new DirectoryInfo(Year).Name;
 
-            length = thumbPath.Length;
-            folderNameLocation = thumbPath.IndexOf(folderName);
+                length = thumbPath.Length;
+                folderNameLocation = thumbPath.IndexOf(folderName);
 
-            string DirName = thumbPath.Substring(folderNameLocation, length - folderNameLocation);
+                string DirName = thumbPath.Substring(folderNameLocation, length - folderNameLocation);
 
-            PhotoThumbPath = @"~\" + DirName;
-            PhotoPath = realTumbPath.Replace(@"Thumbnails\", string.Empty);
-
+                PhotoThumbPath = @"~\" + DirName;
+                PhotoPath = realTumbPath.Replace(@"Thumbnails\", string.Empty);
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Data.ToString());
+            }
 
         }
     }

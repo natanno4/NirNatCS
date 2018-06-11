@@ -3,7 +3,7 @@
     ViewBag.Title = "ImageWeb";
 }
 
-<h2>Image Web</h2>
+<h1 style="font-family:'Lucida Calligraphy'">Image Web</h1>
 
 @{ 
     var txt = "";
@@ -16,13 +16,25 @@
     }
 }
 
-<h3 > service is @txt</h3>
+<h3 style="font-family:Courier New, Courier"> service is:
+    @{
+        if (txt == "on")
+        {
+            <span style="background-color:forestgreen"> @txt</span>
+        }
+        else
+        {
+            <span style="background-color:red"> @txt</span>
+        }
+    }
+    
+</h3>
 
-<h4> @Html.DisplayNameFor(model=> model.NumberOfPhotos) @Model.NumberOfPhotos</h4>
+<h4 style="font-family:Courier New, Courier"> @Html.DisplayNameFor(model=> model.NumberOfPhotos)  <span style="font-weight:bold"> @Model.NumberOfPhotos </span></h4>
 
-<h5>students info:</h5>
-<table class="table" border="1" style="border:1px dashed blue">
-    <tr>
+<h5  style="font-family:Courier New, Courier">students info:</h5>
+<table class="table table-bordered" border="1" style="border:1px dashed blue">
+    <tr style="background-color:azure">
         <th><p style="font-weight:bold">Student ID</p></th>
         <th><p style="font-weight:bold">FirstName</p></th>
         <th><p style="font-weight:bold">LastName</p></th>

@@ -134,7 +134,6 @@ namespace ImageServiceWebApp.Models
             string[] args = new string[2];
             args[0] = this.HandlerRemove;
             MsgCommand cmd = new MsgCommand((int)CommandEnum.RemoveHandlerCommand, args);
-            //this.m_client.SendAndRecived(cmd);
             this.m_client.Write(cmd);
             System.Threading.Thread.Sleep(5);
         }
@@ -179,6 +178,10 @@ namespace ImageServiceWebApp.Models
             this.Thumbnail = "NO connection";
         }
 
+        /// <summary>
+        /// IsConnected.
+        /// check if the client is connected
+        /// </summary>
         public bool IsConnected()
         {
             return m_client.IsConnected();

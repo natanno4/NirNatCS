@@ -14,7 +14,7 @@
     @{
         if (Model.viewPhoto != null)
         {
-            <img src="@Url.Content(Model.viewPhoto.PhotoThumbPath)" style="border:0.5px solid blue; margin-top:5px" />
+            <img src="@Url.Content(Model.viewPhoto.PhotoThumbPath)" style="border:1px solid blue; margin-top:5px" />
             <h5 style="font-family:Courier New, Courier, monospace">Name: @Model.viewPhoto.Name</h5>
         }
         else
@@ -22,7 +22,7 @@
             if (Model.photoToDelete != null)
             {
                 {
-                    <img src="@Url.Content(Model.photoToDelete.PhotoThumbPath)" style="border:0.5px solid blue; margin-top:5px;margin-left:5px" />
+                    <img src="@Url.Content(Model.photoToDelete.PhotoThumbPath)" style="border:1px solid blue; margin-top:5px" />
                     <h5 style="font-family:Courier New, Courier, monospace">Name: @Model.photoToDelete.Name</h5>
                 }
             }
