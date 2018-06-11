@@ -24,14 +24,17 @@ namespace ImageServiceWebApp.Controllers
         public ActionResult Logs(LogsModel LModel)
         {
             string type = LModel.TypeChose;
+            //check for entered type
             if(string.IsNullOrEmpty(type) || (!type.Equals("INFO") && !type.Equals("FAIL") && !type.Equals("WARNING")))
             {
+                //no enterd or not valid
                 foreach (Log log in model.Logs)
                 {
                     model.LogsFilter.Add(log);
                 }
             } else
             {
+                //filter the logs by the given type
                 model.LogsFilter.Clear();
                 foreach(Log log in model.Logs)
                 {

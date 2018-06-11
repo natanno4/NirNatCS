@@ -14,6 +14,7 @@ namespace ImageServiceWebApp.Controllers
         // GET: Photos
         public ActionResult Photos()
         {
+            //clear photos
             model.ListPhotos.Clear();
             model.InitiliazeList(model.OutputDir);
             return View(model);
@@ -22,11 +23,13 @@ namespace ImageServiceWebApp.Controllers
         // GET: PhotoViewer
         public ActionResult PhotoViewer(string photo)
         {
+            //view butten  cliked
             model.DeleteFromView = true;
             foreach(Photo p in model.ListPhotos)
             {
                 if(p.PhotoThumbPath.Equals(photo))
                 {
+                    //save view photo
                     model.viewPhoto = p;
                     break;
                 }
@@ -39,6 +42,7 @@ namespace ImageServiceWebApp.Controllers
         public ActionResult DeletePhoto(string photo)
         {
             Photo temp = null;
+            //check for picture,entered by view or d elet in the main Photos
             if(model.viewPhoto == null)
             {
                 foreach (Photo p in model.ListPhotos)
@@ -49,6 +53,7 @@ namespace ImageServiceWebApp.Controllers
                         break;
                     }
                 }
+                //save photo that may be deleted , entered by delet butten in main Photos.
                 model.photoToDelete = temp;
             }
             return View(model);
@@ -70,6 +75,7 @@ namespace ImageServiceWebApp.Controllers
                 model.photoToDelete = null;
             }
             JObject data = new JObject();
+            //witch page to return ,depend on the enter butten
             if (model.DeleteFromView)
             {
                 data["backTo"] = "PhotoViewer";
@@ -86,6 +92,7 @@ namespace ImageServiceWebApp.Controllers
         [HttpPost]
         public ActionResult OkDelete()
         {
+            //find and remove the photo
             if(model.photoToDelete == null)
             {
                 model.RemovePhoto(model.viewPhoto);
@@ -100,6 +107,7 @@ namespace ImageServiceWebApp.Controllers
             model.DeleteFromView = false;
             model.viewPhoto = null;
             model.photoToDelete = null;
+            //return to Photos page.
             return RedirectToAction("Photos");
         }
 
