@@ -22,19 +22,24 @@ namespace ImageServiceWebApp.Models
 
         public bool DeleteFromView { get; set; }
 
+        public string OutputDir { get; set; }
+
         public Photo viewPhoto { get; set; }
+
         public Photo photoToDelete { get; set; }
 
         public PhotosModel()
         {
-             string outputdir = conModel.OutPutDir;
-            
+            if(!conModel.IsConnected())
+            {
+                return;
+            }
+            OutputDir = conModel.OutPutDir;
             DeleteFromView = false;
             viewPhoto = null;
             photoToDelete = null;
- 
-            //InitiliazeList(outputdir);
         }
+
         /// <summary>
         /// return numbers of photos.
         /// </summary>
@@ -54,6 +59,8 @@ namespace ImageServiceWebApp.Models
         {
             string thumbnail = outputPath + @"\\Thumbnails";
             DirectoryInfo dirThumb = new DirectoryInfo(thumbnail);
+            DirectoryInfo dirFolder = new DirectoryInfo(outputPath);
+            string folderName = dirFolder.Name; 
             foreach (DirectoryInfo dir in dirThumb.GetDirectories())
             {
                 foreach (DirectoryInfo sub_dir in dir.GetDirectories())
@@ -62,7 +69,7 @@ namespace ImageServiceWebApp.Models
                     {
                         if (CheckIfValidPhoto(file.Extension.ToLower()))
                         {
-                            ListPhotos.Add(new Photo(outputPath + "//" + dir.Name + "//" + sub_dir.Name + "//" + file.Name, file.FullName));
+                            ListPhotos.Add(new Photo(file.FullName , folderName));
                         }
                     }
                 }
@@ -75,7 +82,7 @@ namespace ImageServiceWebApp.Models
         /// </summary>
         /// <param name="pht">path</param>
         /// <returns>true if fit to one of the four extension, else false</returns>
-        bool CheckIfValidPhoto(string pht)
+        private  bool CheckIfValidPhoto(string pht)
         {
             if (pht.Contains(".jpg") || pht.Contains(".bmp") || pht.Contains(".gif")
                 || pht.Contains(".png"))
@@ -90,16 +97,23 @@ namespace ImageServiceWebApp.Models
         /// <param name="rem">Photo to remove</param>
         public void RemovePhoto(Photo rem)
         {
-            foreach (Photo p in ListPhotos)
+            try
             {
-                if (rem.Name.Equals(p.Name))
+                foreach (Photo p in ListPhotos)
                 {
-                    ListPhotos.Remove(rem);
-                    string regularPathToRemove = rem.PhotoPath;
-                    File.Delete(regularPathToRemove);
-                    //need to add path of thumbnails to remove
+                    if (rem.Name.Equals(p.Name))
+                    {
+                        ListPhotos.Remove(rem);
+                        string regularPathToRemove = rem.PhotoPath;
+                        File.Delete(regularPathToRemove);
+                        string regularThumbPathToRemove = rem.realTumbPath;
+                        File.Delete(regularThumbPathToRemove);
                     break;
+                    }
                 }
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
             }
         }
     }

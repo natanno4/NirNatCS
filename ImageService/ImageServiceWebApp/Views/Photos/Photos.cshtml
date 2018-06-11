@@ -3,20 +3,22 @@
     ViewBag.Title = "Photos";
 }
 
-<h2>Photos</h2>
+<h1 style="font-family:'Lucida Calligraphy'">Photos</h1>
 
 
 <div class="container">
     <div class="row">
         @{
-            for (var i = 0; i < 10; i++)
-            {
-                <div class="col-md-4 col-sm-5 col-lg-3"  style="border:1px solid lightblue; margin:5px ; padding:10px;max-width:300px" >
-                    <img src="@Url.Content(@"~\C:\Users\natan\Desktop\a\test.jpg")" class="img-circle" style="max-width:200px; max-width:240px; border:0.5px solid blue; border-radius:50%" />
-                    <h6>Name: </h6>
-                    <h6>Date: </h6>
-
-                    <a href="@Url.Action("PhotoViewer", new {showThumbPath = "check"})" class="butten btn-info"  style="border:solid blue 1px; font-size:15px"  role="button">View</a> <a href="@Url.Action("DeletePhoto", new {showThumbPath = "check"})" class="butten btn-danger" style="border:blue solid 1px; font-size:15px" role="button">Delete</a> 
+            foreach(var item in Model.ListPhotos)
+            {   
+                <div class="col-md-3 col-sm-4 col-lg-3" style="border:1px solid lightblue; margin:5px;padding:10px;max-width:260px;max-height:600px;height:450px; flex-grow:100">
+                    <img src="@Url.Content(item.PhotoThumbPath)" class="img-circle" width="242" height="200" style="max-width:200px; max-width:242px; border:0.5px solid blue;  border-radius:50% ;margin:-3px; margin-top:5px" />
+                    <div style="word-wrap:break-word">
+                        <h4 style="margin-top:15px;font-family:Courier New, Courier, monospace;font-size:18px"><strong> Name: </strong> <br/>@item.Name</h4>
+                        <h4 style="margin-top:10px;margin-bottom:40px;font-family:Courier New, Courier, monospace;font-size:18px"><strong> Date: </strong> @item.Month / @item.Year</h4>
+                    </div>
+                    <a href="@Url.Action("PhotoViewer", new {photo = item.PhotoThumbPath})" class="butten btn-info"  style="border:solid blue 1px; font-size:20px"  role="button">View</a>
+                     <a href="@Url.Action("DeletePhoto", new {photo = item.PhotoThumbPath})" class="butten btn-danger" style="border:blue solid 1px; font-size:20px" role="button">Delete</a> 
                    
                 </div>
             }

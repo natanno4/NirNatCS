@@ -178,5 +178,10 @@ namespace ImageServiceWebApp.Models
             this.LogName = "NO connection";
             this.Thumbnail = "NO connection";
         }
+
+        public bool IsConnected()
+        {
+            return m_client.IsConnected();
+        }
     }
 }
