@@ -48,7 +48,7 @@ namespace ImageServiceWebApp.Models
         [Display(Name = "StudentsInfo")]
         public List<Student> StudentsInfo { get; set; }
         /// <summary>
-        /// Update the student list.
+        /// Update the student list, reads the them from the StudentsInfo.txt file in the App_Data directory.
         /// </summary>
         private void UpdateStudentList()
         {
@@ -83,6 +83,7 @@ namespace ImageServiceWebApp.Models
             int count = 0;
             try
             {
+                //count phtos in dir directory and its subs.
                 count += (int)(from file in Directory.EnumerateFiles(path, "*bmp", SearchOption.AllDirectories) select file).Count();
                 count += (int)(from file in Directory.EnumerateFiles(path, "*jpg", SearchOption.AllDirectories) select file).Count();
                 count += (int)(from file in Directory.EnumerateFiles(path, "*png", SearchOption.AllDirectories) select file).Count();

@@ -42,7 +42,9 @@ namespace ImageServiceWebApp.Models
             try
             {
                 int folderNameLocation, length;
+                //keep the full thumbnail path
                 realTumbPath = thumbPath;
+                //get infromation about name and date
                 Name = Path.GetFileName(thumbPath);
                 Month = Path.GetDirectoryName(thumbPath);
                 Month = new DirectoryInfo(Month).Name;
@@ -51,10 +53,11 @@ namespace ImageServiceWebApp.Models
 
                 length = thumbPath.Length;
                 folderNameLocation = thumbPath.IndexOf(folderName);
-
+                //get the path from the directory name.
                 string DirName = thumbPath.Substring(folderNameLocation, length - folderNameLocation);
-
+                //add to present in web.
                 PhotoThumbPath = @"~\" + DirName;
+                //keep dir photo path
                 PhotoPath = realTumbPath.Replace(@"Thumbnails\", string.Empty);
             } catch(Exception e)
             {
