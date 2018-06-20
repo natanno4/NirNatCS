@@ -19,6 +19,7 @@ namespace ImageService.Server
         #region Members
         private IImageController m_controller;
         private ILoggingService m_logging;
+        public string[] SavePathes;
 
         #endregion
         
@@ -38,6 +39,7 @@ namespace ImageService.Server
             this.m_controller = new ImageController(modal, logging);
             this.m_logging = logging;
             string[] pathes = (ConfigurationManager.AppSettings["handler"]).Split(';');
+            SavePathes = pathes;
             foreach (string path in pathes)
             {
                 this.CreateHandler(path);

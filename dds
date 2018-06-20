@@ -1,0 +1,547 @@
+[33mcommit 7903edbc242d2725ce6c1363c26b2ba89186fe47[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon Jun 11 19:52:12 2018 +0300
+
+    finish ex3
+
+[33mcommit 13af2dc0a1c98d675a873ffa7032a7d571eb2cb4[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon Jun 11 19:47:06 2018 +0300
+
+    small change\
+
+[33mcommit e5f3dcd8435b890ce5654dfabea381c1e37d7cb9[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon Jun 11 19:14:54 2018 +0300
+
+    update views
+
+[33mcommit 05151b0c3eb946b456e32c3fcca87a1fce946053[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon Jun 11 14:38:13 2018 +0300
+
+    update Photos
+
+[33mcommit 22c6171136262c32bcdda57d82e167b582c43572[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sun Jun 10 12:56:01 2018 +0300
+
+    add comments
+
+[33mcommit b47d004a786b34caaef57cafa81cb57aac35d104[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun Jun 10 01:11:44 2018 +0300
+
+    update views
+
+[33mcommit 188c6d734ccea4d839f9ed988975839262c81849[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Jun 9 22:53:24 2018 +0300
+
+    update models
+
+[33mcommit 22126523634ab75dd29b0dbba52aa257124f759a[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sat Jun 9 14:30:00 2018 +0300
+
+    update
+
+[33mcommit 2a418140e326e08f53dad383daf347bb1d277a4e[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Jun 9 13:03:07 2018 +0300
+
+    add Photos
+
+[33mcommit 7cb329dd18ac25eba53de0bd94d6a181c845c908[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Fri Jun 8 23:11:06 2018 +0300
+
+    update PhotosModel and Photo
+
+[33mcommit 88254bce2862f3b7cd4c902617fec6fa814d0dee[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri Jun 8 23:00:27 2018 +0300
+
+    add PohtoView
+
+[33mcommit c06b9cfeba98daebb78d7981e165e5108d8769b2[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Fri Jun 8 16:11:21 2018 +0300
+
+    add  Photo and PhohoList classes
+
+[33mcommit ad4ff07950727dd039bc68051ea52c70a1dbb600[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri Jun 8 11:24:52 2018 +0300
+
+    add RemoveHandler
+
+[33mcommit 2288366da68546d531fd19aa7f64564b059ec86f[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri Jun 8 09:45:58 2018 +0300
+
+    add LogView
+
+[33mcommit ae9f5a24dcb98127a835395b0cd592c396e4021e[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Thu Jun 7 12:22:36 2018 +0300
+
+    add logs view
+
+[33mcommit 377c99e18f3fc2e36b727f47b82e658d487ccc96[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed Jun 6 16:57:33 2018 +0300
+
+    image web update
+
+[33mcommit 4ea4035b8e99dc6c8e89e6f6657872c1888c48bb[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed Jun 6 15:01:22 2018 +0300
+
+    ImageWeb
+
+[33mcommit dd1b55bb8c536853a2ba3725bbc4002da9fa9cd4[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon Jun 4 18:00:47 2018 +0300
+
+    ex 3 first commit
+
+[33mcommit 290e87dcc3a9bb28e3207e332613fb4e5c5c1c58[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 27 18:27:26 2018 +0300
+
+    final update
+
+[33mcommit fb087ed430a2aa4d65e865ea860f4d5c9a3186aa[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 27 16:34:41 2018 +0300
+
+    add small things
+
+[33mcommit 57c9513562fdfca686ff3b6db4945bf3c934ee3b[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sun May 27 15:43:33 2018 +0300
+
+    add some comments
+
+[33mcommit 3b00413b0b9669336a6deb405653a5d6312eb2b9[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 27 15:23:55 2018 +0300
+
+    add communication config handler
+
+[33mcommit 9f59c32c87391021a661051fcfb7a293ce78e42a[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 27 13:21:27 2018 +0300
+
+    ImageServiceComm
+
+[33mcommit 73500aa3f061aee17d3d528d67186ba7457a5432[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 27 01:41:40 2018 +0300
+
+    fix
+
+[33mcommit 11d1d6a2e51adf55bd3b6cbb625e0fea2e4eb6d6[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sat May 26 15:09:43 2018 +0300
+
+    change MainWindow and Settings
+
+[33mcommit dea165820e5e4fe4bc31692f4ec4f823d0c5f013[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat May 26 14:31:59 2018 +0300
+
+    fix GUI
+
+[33mcommit 6281ec795b57697a4a283908e7ac0a60cd2db563[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat May 26 11:57:37 2018 +0300
+
+    fix
+
+[33mcommit 35b3618bb6f71bbcfca75fb31dfb686b8130af55[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat May 26 10:32:41 2018 +0300
+
+    fix
+
+[33mcommit 605e021af9beeb5d25ea66a7c62594476382944a[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 22:44:27 2018 +0300
+
+    updat GUI
+
+[33mcommit f2a773bbe926ff7ae56f3110abe82b2976554ba7[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 22:42:47 2018 +0300
+
+    updat ImageService
+
+[33mcommit 083437002a9f95c4cda08ee9bb33b90e0a9b022f[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 22:41:49 2018 +0300
+
+    updat communication
+
+[33mcommit 16a459ec9741154e82928378bc7e48256eefa4bd[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 22:40:30 2018 +0300
+
+    add inf
+
+[33mcommit af3545db9bf6045ef321b31e0a7ad8fd06af1b99[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Fri May 25 14:51:05 2018 +0300
+
+    update
+
+[33mcommit 1e63df5217c2193a56259c44f1a718add79d6a8c[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 13:43:39 2018 +0300
+
+    MainWindow.cs
+
+[33mcommit 3656065544c8df28c6307b1f089d29fa30fefc86[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 13:03:04 2018 +0300
+
+    MainWindowModel
+
+[33mcommit 61828006d20a9381c298c8db6d92f4c9f037a253[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Fri May 25 12:00:26 2018 +0300
+
+    add LogView.xml + ColorConverter
+
+[33mcommit 82b8e84faaef1c5ed9cb8e70998164ca37f72a4d[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 25 00:48:36 2018 +0300
+
+    creat RemoveHandlerCommand
+
+[33mcommit 2bd5b1bc379813194c3059ad403b0d7001ffb956[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Thu May 24 23:00:22 2018 +0300
+
+    another try
+
+[33mcommit 52df711f42a6183c5ac955d21de3e565f0301546[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Thu May 24 22:56:23 2018 +0300
+
+    add xml settingsView
+
+[33mcommit 524360ebeb8220376dc49387ad0e135c61f311b7[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Thu May 24 21:43:55 2018 +0300
+
+    update logging
+
+[33mcommit 5f1972634beccf463a790407be52b2ea9ca59c06[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Thu May 24 16:42:04 2018 +0300
+
+    change LogModel
+
+[33mcommit cb8170570de2f33c30ff779c88075ed78c314b4f[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Thu May 24 16:10:18 2018 +0300
+
+    change MsgCommand
+
+[33mcommit f80c629d965761c9937955ea62203f1914edd676[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Thu May 24 12:23:17 2018 +0300
+
+    add LogCommand and GetConfig
+
+[33mcommit 8817bddc201eb4c1caa60e2d710648b49850cd76[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed May 23 22:39:29 2018 +0300
+
+    ClientHandler
+
+[33mcommit 0692cdf9de04dd0e0264da9b3c1bb5e566365c77[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed May 23 18:15:56 2018 +0300
+
+    change
+
+[33mcommit d6c4d64e8f9dbb516c09fbc5189aa2c3e1d3b722[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed May 23 18:10:46 2018 +0300
+
+    change guiclient,logmodel,settingsmodel
+
+[33mcommit e65e1646520afbc84ce1e5154e8ebfca077ed27d[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Wed May 23 16:06:04 2018 +0300
+
+    change Json
+
+[33mcommit 1e06f679886ce73d1a58e3bf98fd5d4a37d80648[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Wed May 23 12:36:33 2018 +0300
+
+    change
+
+[33mcommit 7ec2d4d655cfef65047b62137e9987685bd6ecac[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Mon May 21 17:36:48 2018 +0300
+
+    change logModel
+
+[33mcommit 7429723e851d76361c62dcf9e09c24e14fdf03a7[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Thu May 17 17:49:19 2018 +0300
+
+    create LogModel
+
+[33mcommit 75c8594d091bd8d3184626575de617984257f255[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Thu May 17 13:54:12 2018 +0300
+
+    adding LogViewModel + upade VMocdel
+
+[33mcommit 0589a60f848d1959524501f74a6c4379af6d2853[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Thu May 17 13:16:11 2018 +0300
+
+    update LogViewModel
+
+[33mcommit 025eeb97f889065512b92ac66076855b2931f5ae[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Tue May 15 17:44:01 2018 +0300
+
+    update GuiClient
+
+[33mcommit 91d1b0ea4f729b4281d171d9bb8329b45de9cbdd[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Mon May 7 19:04:06 2018 +0300
+
+    adding commandMSG + new commands
+
+[33mcommit c1bbe6efd45870bca8a49503ae39c8da86e81c5e[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Mon May 7 18:00:19 2018 +0300
+
+    add server and update in client
+
+[33mcommit 6d0c6777404db4a3a35a379d6640f4f8866de930[m
+Merge: 34c661a b075a35
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 6 20:20:27 2018 +0300
+
+    add communication
+
+[33mcommit 34c661a6201fe84bca39ac44240f6c2fdba9fff0[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sun May 6 20:06:05 2018 +0300
+
+    update
+
+[33mcommit b075a351575e1167287f0b73d258dd82b19ada2e[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 6 19:52:23 2018 +0300
+
+    change
+
+[33mcommit 709e955734ce582ce7122175941fe5c829cbed91[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 6 16:55:05 2018 +0300
+
+    change
+
+[33mcommit 084b7f1d4d2e64cc46fda07902163c3ae8ea4792[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sun May 6 16:42:16 2018 +0300
+
+    change
+
+[33mcommit 1df3c34b1fd11c93b1a631f5f0b6912c3eeeac87[m
+Author: niraz888 <niraz888@gmail.com>
+Date:   Sat May 5 12:38:28 2018 +0300
+
+    first commit of nir
+
+[33mcommit fbb75bbef929e4868aefb6d26b33db1f5be93d46[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 4 17:55:38 2018 +0300
+
+    add to model directory
+
+[33mcommit 3635f6336a4b0dcacac8a05bdec763b8a2e21361[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 4 14:23:00 2018 +0300
+
+    ImageServiceGui
+
+[33mcommit ef62daf914d2da3f16e88223abaad689265d5b21[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Fri May 4 11:56:14 2018 +0300
+
+    new commit ex2
+
+[33mcommit 354ef0607333ee4895c0a733bcf16504de161607[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Apr 14 22:03:29 2018 +0300
+
+    final
+
+[33mcommit c69c631c3cdb41b9109ee6a2a7520c70dc8514c8[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Apr 14 21:58:21 2018 +0300
+
+    final update
+
+[33mcommit b66f13c2b9077a11e83dac0ec676571f47617db0[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Apr 14 21:56:50 2018 +0300
+
+    final update classes
+
+[33mcommit 6174c5d01f2d79a983ac363668fe8acd3577f208[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Apr 14 21:55:55 2018 +0300
+
+    final update service
+
+[33mcommit b99e067d3f358315554650461fb78f88eacad9eb[m
+Author: natanno4 <natanno4@gmail.com>
+Date:   Sat Apr 14 21:52:49 2018 +0300
+
+    change solution
+
+[33mcommit 4ed95998d34c5583275e6b32dfc6c46cbedd2376[m
+Author: nir <Niraz888@gmail.com>
+Date:   Thu Apr 12 22:07:15 2018 +0300
+
+    add NewFileCommand
+
+[33mcommit 8ea2231e44974bf2799ad91082a628798a18ef78[m
+Author: nir <Niraz888@gmail.com>
+Date:   Wed Apr 4 14:39:15 2018 +0300
+
+    change ImageService
+
+[33mcommit ba4be68241c10236f4f15cda88ba145f4d89ccb3[m
+Author: nir <Niraz888@gmail.com>
+Date:   Tue Apr 3 18:22:42 2018 +0300
+
+    commit ImageService again
+
+[33mcommit 040d60052c0d3d09876c70d31d939f91ff153fe4[m
+Author: nir <Niraz888@gmail.com>
+Date:   Tue Apr 3 17:28:15 2018 +0300
+
+    add files of service app
+
+[33mcommit fafb317de47a2b859a195ec8b7eb71a051def83f[m
+Author: nir <Niraz888@gmail.com>
+Date:   Tue Apr 3 16:51:24 2018 +0300
+
+    add comments to modal
+
+[33mcommit f475da300e66be36bb616bc034a207a1bf82b04a[m
+Author: natan <natanno4@gmail.com>
+Date:   Tue Apr 3 16:29:34 2018 +0300
+
+    update modal
+
+[33mcommit aca861eb521d684a1f9da46712c5c21bf42e43d6[m
+Author: nir <Niraz888@gmail.com>
+Date:   Tue Apr 3 16:04:15 2018 +0300
+
+    fixing server + handler
+
+[33mcommit cfc29c590f603e08631487f92fe096908d5fc5ee[m
+Author: nir <Niraz888@gmail.com>
+Date:   Tue Apr 3 12:38:40 2018 +0300
+
+    add closeServer + sendCommand and update handler
+
+[33mcommit 537222417ff6d17466cd129f31613a598b9af5ca[m
+Author: natan <natanno4@gmail.com>
+Date:   Mon Apr 2 18:56:26 2018 +0300
+
+    update modal
+
+[33mcommit f450e4d42d6a22e7e58c0c937b900aca89cbccc6[m
+Author: nir <Niraz888@gmail.com>
+Date:   Mon Apr 2 13:39:17 2018 +0300
+
+    nir update
+
+[33mcommit d896c5d5f2ca346ec8fdf9ff8f6100eab9cf9235[m
+Author: natan <natanno4@gmail.com>
+Date:   Sun Apr 1 16:48:20 2018 +0300
+
+    read from app.config
+
+[33mcommit 9d0f5346c84e995c46f210c78df7cd90eb59a317[m
+Merge: de1cb00 209b9fd
+Author: nir <Niraz888@gmail.com>
+Date:   Sat Mar 31 19:07:27 2018 +0300
+
+    update server methods
+
+[33mcommit de1cb007834bb19f1a0af33649539f1240ca846f[m
+Author: nir <Niraz888@gmail.com>
+Date:   Sat Mar 31 15:50:46 2018 +0300
+
+     update
+
+[33mcommit 209b9fd8b8645e07f7a0b99aaa27ea417abddc5a[m
+Author: natan <natanno4@gmail.com>
+Date:   Sat Mar 31 14:15:18 2018 +0300
+
+    update DirectoryHandler
+
+[33mcommit fa9bce898ec2f92057b645da2c61adbc0e649193[m
+Author: natan <natanno4@gmail.com>
+Date:   Sat Mar 31 12:33:29 2018 +0300
+
+    update DirectoryHandlers
+
+[33mcommit 42a95f1823a8b02f4736a4b21bbdd2937059d052[m
+Author: nir <Niraz888@gmail.com>
+Date:   Thu Mar 29 20:21:08 2018 +0300
+
+    update ILogging
+
+[33mcommit bd513daf0e382e1f122d5d3070f903f8b4eec18e[m
+Author: natan <natanno4@gmail.com>
+Date:   Thu Mar 29 20:10:53 2018 +0300
+
+    update ImageServer
+
+[33mcommit eee5caf96220d76ce07439a8f9dbcc161b7e0e9d[m
+Author: nir <Niraz888@gmail.com>
+Date:   Thu Mar 29 17:57:04 2018 +0300
+
+    update controller
+
+[33mcommit 986576858d1779321f04184fbc85cf613348d102[m
+Author: nir <Niraz888@gmail.com>
+Date:   Thu Mar 29 17:55:25 2018 +0300
+
+    update controller
+
+[33mcommit 80c6232e529da9177ebe679068f3a26bc3128886[m
+Author: niraz888 <33843980+niraz888@users.noreply.github.com>
+Date:   Thu Mar 29 16:52:15 2018 +0300
+
+    Delete ImageServiceModal.cs
+
+[33mcommit 8b1b4a30a35e8cfae5602ce209df4bfa0b0a5713[m
+Author: nir <nir@DESKTOP-44BO12S>
+Date:   Thu Mar 29 16:50:50 2018 +0300
+
+    project structure
+
+[33mcommit bf0f2c9276ca7eb77af415868d3af93716e11fb2[m
+Author: nir <nir@DESKTOP-44BO12S>
+Date:   Thu Mar 29 16:47:19 2018 +0300
+
+    first commit

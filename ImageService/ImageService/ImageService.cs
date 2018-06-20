@@ -26,6 +26,7 @@ namespace ImageService
         private ImageServer s_server;
         private LoggingService s_logger;
         private IServiceServer serviceServer;
+        private IServiceServer imgService;
 
         public enum ServiceState
         {
@@ -97,6 +98,8 @@ namespace ImageService
             this.s_server = new ImageServer(modal, this.s_logger);
             this.serviceServer = new ServiceServer(controler, this.s_logger);
             this.serviceServer.Start();
+            this.imgService = new ImageTransferServer(this.s_logger, this.s_server.SavePathes);
+            this.imgService.Start();
 
             // Update the service state to Running.  
             serviceStatus.dwCurrentState = ServiceState.SERVICE_RUNNING;
