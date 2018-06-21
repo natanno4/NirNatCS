@@ -43,13 +43,17 @@ namespace ImageService.ServiceCommunication
                         byte[] confirm = { 1 };
                         stream.Write(confirm, 0, 1);
                         List<byte> ImageByte = new List<byte>();
-                        byte[] tempBytes = new byte[6790];
+                        Byte[] temp;
+                        int length = 0, i;
+                        byte[] imgBytes = new byte[6790];
                         do
                         {
-                            int length = stream.Read(tempBytes, 0, tempBytes.Length);
-                            foreach(byte b in tempBytes)
+                            length = stream.Read(imgBytes, 0, imgBytes.Length);
+                            temp = new byte[length];
+                            for (i = 0; i < length; i++)
                             {
-                                ImageByte.Add(b); 
+                                temp[i] = imgBytes[i];
+                                ImageByte.Add(temp[i]); 
                             }
                             Thread.Sleep(300);
 
