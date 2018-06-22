@@ -16,7 +16,9 @@ namespace ImageService.ServiceCommunication
         private ImageTransferHandler handler;
         private TcpListener listener;
 
-
+        /// <summary>
+        /// create a Image Transfer server.
+        /// </summary>
         public ImageTransferServer(ILoggingService l, string[] handlers)
         {
             this.log = l;
@@ -24,6 +26,9 @@ namespace ImageService.ServiceCommunication
             handler = new ImageTransferHandler(clients, log,handlers[0]);
         }
 
+        /// <summary>
+        /// start the server.listens to clients and handle them.
+        /// </summary>
         public void Start()
         {
             try
@@ -63,6 +68,9 @@ namespace ImageService.ServiceCommunication
             }
         }
 
+        /// <summary>
+        /// stop listeninig
+        /// </summary>
         public void Stop()
         {
             listener.Stop();
